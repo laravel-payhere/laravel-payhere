@@ -2,7 +2,6 @@
 
 namespace Dasundev\PayHere\Http\Integrations\PayHere\Requests;
 
-use Dasundev\PayHere\Models\Contracts\PayHereOrder;
 use Dasundev\PayHere\PayHere;
 use Exception;
 use Illuminate\Support\Facades\URL;
