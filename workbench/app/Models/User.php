@@ -65,24 +65,24 @@ class User extends Authenticatable implements PayHereCustomer
         return $this->email;
     }
 
-    public function payHerePhone(): string
+    public function payHerePhone(): ?string
     {
-        return $this->phone;
+        return null;
     }
 
-    public function payHereAddress(): string
+    public function payHereAddress(): ?string
     {
-        return $this->address;
+        return null;
     }
 
-    public function payHereCity(): string
+    public function payHereCity(): ?string
     {
-        return $this->city;
+        return null;
     }
 
-    public function payHereCountry(): string
+    public function payHereCountry(): ?string
     {
-        return $this->country;
+        return null;
     }
 
     protected static function newFactory(): UserFactory
