@@ -8,7 +8,6 @@ use Workbench\App\Models\OrderLine;
 
 it('can handle webhook for normal checkout', function () {
     $order = Order::factory()
-        ->state(['id' => '9c1ef26d-29ef-463f-a541-2ccf4bfdb7aa'])
         ->has(OrderLine::factory()->count(2), 'lines')
         ->create();
 
@@ -16,13 +15,13 @@ it('can handle webhook for normal checkout', function () {
 
     $data = [
         'merchant_id' => config('payhere.merchant_id'),
-        'order_id' => '9c1ef26d-29ef-463f-a541-2ccf4bfdb7aa',
+        'order_id' => 1,
         'payment_id' => 320032387268,
         'captured_amount' => 1000.00,
         'payhere_amount' => 1000.00,
         'payhere_currency' => 'LKR',
         'status_code' => 2,
-        'md5sig' => '6FE468ECB69B54E58911E007F424379F',
+        'md5sig' => 'C7A4E240E6927F2F580BFEE05E5BC8B0',
         'status_message' => 'Successfully received the VISA payment',
         'method' => 'VISA',
         'card_holder_name' => 'Dasun Tharanga',
@@ -84,7 +83,7 @@ it('can handle webhook for preapproval checkout', function () {
         'payhere_amount' => 1000.00,
         'payhere_currency' => 'LKR',
         'status_code' => 2,
-        'md5sig' => '6FE468ECB69B54E58911E007F424379F',
+        'md5sig' => 'C7A4E240E6927F2F580BFEE05E5BC8B0',
         'status_message' => 'Successfully received the VISA payment',
         'method' => 'VISA',
         'card_holder_name' => 'Dasun Tharanga',
@@ -117,7 +116,7 @@ it('can handle webhook for recurring checkout', function () {
         'payhere_amount' => 1000.00,
         'payhere_currency' => 'LKR',
         'status_code' => 2,
-        'md5sig' => '6FE468ECB69B54E58911E007F424379F',
+        'md5sig' => 'C7A4E240E6927F2F580BFEE05E5BC8B0',
         'status_message' => 'Successfully received the VISA payment',
         'method' => 'VISA',
         'card_holder_name' => 'Dasun Tharanga',
@@ -161,7 +160,7 @@ it('can handle webhook for a payment charge', function () {
         'captured_amount' => 1000.00,
         'payhere_currency' => 'LKR',
         'status_code' => 2,
-        'md5sig' => '6FE468ECB69B54E58911E007F424379F',
+        'md5sig' => 'C7A4E240E6927F2F580BFEE05E5BC8B0',
         'status_message' => 'Successfully received the VISA payment',
         'method' => 'VISA',
         'card_holder_name' => 'Dasun Tharanga',
