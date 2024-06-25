@@ -1,5 +1,7 @@
 <?php
 
+use Dasundev\PayHere\Http\Controllers\WebhookController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 use Workbench\App\Http\Controllers\Authorize;
 use Workbench\App\Http\Controllers\Checkout;
@@ -32,3 +34,6 @@ Route::get('/authorize', Authorize::class)
 Route::get('/recurring', Recurring::class)
     ->middleware('auth')
     ->name('recurring');
+
+Route::post('/webhook', [WebhookController::class, 'handleWebhook'])
+    ->withoutMiddleware(VerifyCsrfToken::class);
