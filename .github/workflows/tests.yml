@@ -39,16 +39,21 @@ jobs:
       - name: Start Chrome Driver
         run: vendor/laravel/dusk/bin/chromedriver-linux &
 
+      - name: Run Laravel Server
+        run: php vendor/bin/testbench serve --no-reload &
+
       - name: Install Hookdeck CLI
         run: |
           VERSION=0.10.1
           FILE_NAME=hookdeck_${VERSION}_linux_amd64.tar.gz
           URL=https://github.com/hookdeck/hookdeck-cli/releases/download/v${VERSION}/${FILE_NAME}
-      
+          
           curl -LO ${URL} || { echo "Failed to download ${FILE_NAME}"; exit 1; }
-      
+          
           tar -xvf ${FILE_NAME} || { echo "Failed to extract ${FILE_NAME}"; exit 1; }
-      
+          
+          sudo mv hookdeck /usr/local/bin/
+          
           rm ${FILE_NAME}
 
       - name: Configure Hookdeck Workspace
