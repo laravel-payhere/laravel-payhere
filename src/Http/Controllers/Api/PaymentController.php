@@ -69,7 +69,7 @@ class PaymentController
     }
 
     /**
-     * Charge a payment.
+     * Capture a payment.
      *
      * @throws FatalRequestException
      * @throws RequestException
