@@ -37,6 +37,11 @@ class PayHere
     public static string $paymentRelationship = 'payment';
 
     /**
+     * The default subscription relationship name.
+     */
+    public static string $subscriptionRelationship = 'subscription';
+
+    /**
      * Set the customer model class name.
      */
     public static function useCustomerModel($customerModel): void
@@ -74,6 +79,14 @@ class PayHere
     public static function usePaymentRelationship(string $relationship): void
     {
         self::$paymentRelationship = $relationship;
+    }
+
+    /**
+     * Set the subscription relationship name.
+     */
+    public static function useSubscriptionRelationship(string $relationship): void
+    {
+        self::$subscriptionRelationship = $relationship;
     }
 
     /**

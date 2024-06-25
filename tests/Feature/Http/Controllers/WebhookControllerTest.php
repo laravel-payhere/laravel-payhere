@@ -105,7 +105,7 @@ it('can handle webhook for recurring checkout', function () {
     $order = Order::factory()
         ->state(['id' => '9c1ef26d-29ef-463f-a541-2ccf4bfdb7aa'])
         ->has(OrderLine::factory()->count(2), 'lines')
-        ->has(Subscription::factory(), 'payhereSubscription')
+        ->has(Subscription::factory(), 'subscription')
         ->create();
 
     $uri = URL::signedRoute('payhere.webhook');
@@ -139,7 +139,7 @@ it('can handle webhook for recurring checkout', function () {
     $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseHas('payments', $data);
     $this->assertDatabaseHas('subscriptions', [
-        'id' => $order->payhereSubscription->id,
+        'id' => $order->subscription->id,
         'status' => SubscriptionStatus::ACTIVE->name,
     ]);
 });
@@ -148,7 +148,7 @@ it('can handle webhook for a payment charge', function () {
     $order = Order::factory()
         ->state(['id' => '9c1ef26d-29ef-463f-a541-2ccf4bfdb7aa'])
         ->has(OrderLine::factory()->count(2), 'lines')
-        ->has(Subscription::factory(), 'payhereSubscription')
+        ->has(Subscription::factory(), 'subscription')
         ->create();
 
     $uri = URL::signedRoute('payhere.webhook');
