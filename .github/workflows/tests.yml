@@ -55,7 +55,7 @@ jobs:
         run: hookdeck ci --api-key ${{ secrets.HOOKDECK_API_KEY }}
 
       - name: Listen to Webhook
-        run: hookdeck listen 8000 payhere
+        run: hookdeck listen 8000 payhere &
 
       - name: Run Tests
         run: composer run test
