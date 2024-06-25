@@ -13,7 +13,6 @@ use Workbench\Database\Factories\SubscriptionFactory;
 class Subscription extends Model
 {
     use HasFactory;
-    use HasTrial;
 
     protected $guarded = [];
 
@@ -34,5 +33,13 @@ class Subscription extends Model
     protected static function newFactory(): SubscriptionFactory
     {
         return new SubscriptionFactory;
+    }
+
+    /**
+     * Determine if the subscription is within its trial period.
+     */
+    public function onTrial(): bool
+    {
+        return $this->trial_ends_at && $this->trial_ends_at->isFuture();
     }
 }
