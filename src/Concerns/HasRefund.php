@@ -6,7 +6,7 @@ use Dasundev\PayHere\Http\Integrations\PayHere\PayHereConnector;
 use Dasundev\PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
 
 /**
- * @property $payherePayment
+ * @property $payment
  */
 class HasRefund
 {
@@ -20,7 +20,7 @@ class HasRefund
 
         $response = $connector->send(new RefundPaymentRequest(
             description: $reason,
-            paymentId: $this->payherePayment->payment_id,
+            paymentId: $this->payment->payment_id,
         ));
 
         return $response->ok();
