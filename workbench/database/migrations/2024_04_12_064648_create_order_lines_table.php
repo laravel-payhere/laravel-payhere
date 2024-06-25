@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('order_lines', function (Blueprint $table) {
             $table->id();
-            $table->foreignUuid('order_id')->constrained();
+            $table->foreignId('order_id')->constrained();
             $table->morphs('purchasable');
             $table->integer('unit_price')->unsigned();
             $table->smallInteger('unit_quantity')->unsigned()->default(1);
