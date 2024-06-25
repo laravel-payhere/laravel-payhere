@@ -54,7 +54,7 @@ jobs:
       - name: Configure Hookdeck Workspace
         run: hookdeck ci --api-key ${{ secrets.HOOKDECK_API_KEY }}
 
-      - name: Listen to Webhook
+      - name: Listen to PayHere
         run: hookdeck listen 8000 payhere &
 
       - name: Run Tests
