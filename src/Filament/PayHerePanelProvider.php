@@ -23,6 +23,7 @@ class PayHerePanelProvider extends PanelProvider
         return $panel
             ->id('payhere')
             ->path('payhere')
+            ->spa()
             ->brandLogo(asset('vendor/payhere/images/logo.png'))
             ->brandLogoHeight('3rem')
             ->darkMode(isForced: true)
