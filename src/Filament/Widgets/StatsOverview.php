@@ -12,7 +12,7 @@ class StatsOverview extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Payments', Payment::count())
+            Stat::make('Payments', Payment::notRefunded()->count())
                 ->description('10k increase')
                 ->chart([7, 2, 10, 3, 15, 4, 17])
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
