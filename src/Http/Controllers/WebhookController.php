@@ -17,8 +17,7 @@ class WebhookController extends Controller
     public function __construct(
         private readonly PaymentRepository $paymentRepository,
         private readonly SubscriptionRepository $subscriptionRepository,
-    ) {
-    }
+    ) {}
 
     /**
      * Handle incoming webhook notification from PayHere.

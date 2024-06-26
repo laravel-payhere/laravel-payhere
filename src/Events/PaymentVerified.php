@@ -13,6 +13,5 @@ class PaymentVerified
 
     public function __construct(
         public readonly Payment $payment
-    ) {
-    }
+    ) {}
 }

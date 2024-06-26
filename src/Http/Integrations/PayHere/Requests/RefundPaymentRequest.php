@@ -17,9 +17,7 @@ class RefundPaymentRequest extends Request implements HasBody
         private readonly string $description,
         private readonly ?string $paymentId = null,
         private readonly ?string $authorizationToken = null,
-    ) {
-
-    }
+    ) {}
 
     public function resolveEndpoint(): string
     {

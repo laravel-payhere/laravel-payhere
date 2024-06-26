@@ -13,6 +13,5 @@ class SubscriptionActivated
 
     public function __construct(
         private readonly Subscription $subscription
-    ) {
-    }
+    ) {}
 }

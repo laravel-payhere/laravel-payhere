@@ -21,9 +21,7 @@ class PaymentChargeRequest extends Request implements HasBody
         private readonly ?string $type = null,
         private readonly ?string $customOne = null,
         private readonly ?string $customTwo = null,
-    ) {
-
-    }
+    ) {}
 
     public function resolveEndpoint(): string
     {

@@ -11,8 +11,7 @@ class ListPaymentsRequest extends Request
 
     public function __construct(
         private readonly ?string $orderId
-    ) {
-    }
+    ) {}
 
     public function resolveEndpoint(): string
     {

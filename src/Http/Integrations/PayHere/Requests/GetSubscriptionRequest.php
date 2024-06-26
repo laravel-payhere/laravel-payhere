@@ -11,8 +11,7 @@ class GetSubscriptionRequest extends Request
 
     public function __construct(
         private readonly string $subscription
-    ) {
-    }
+    ) {}
 
     public function resolveEndpoint(): string
     {

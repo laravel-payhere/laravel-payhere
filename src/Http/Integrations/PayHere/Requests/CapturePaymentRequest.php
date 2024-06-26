@@ -17,9 +17,7 @@ class CapturePaymentRequest extends Request implements HasBody
         private readonly string $description,
         private readonly string $authorizationToken,
         private readonly float $amount,
-    ) {
-
-    }
+    ) {}
 
     public function resolveEndpoint(): string
     {
