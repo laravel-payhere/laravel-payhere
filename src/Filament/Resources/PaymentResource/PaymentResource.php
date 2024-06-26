@@ -26,7 +26,7 @@ class PaymentResource extends Resource
 
                 TextColumn::make('order_id')
                     ->searchable(),
-                
+
                 TextColumn::make('subscription_id')
                     ->searchable(),
 

@@ -1,16 +1,23 @@
 providers:
   - Dasundev\PayHere\PayHereServiceProvider
+  - Dasundev\PayHere\Filament\PayHerePanelProvider
   - Workbench\App\Providers\WorkbenchServiceProvider
 
 migrations:
   - workbench/database/migrations
 
 workbench:
-  welcome: true
+  start: /payhere
   install: true
+  user: hello@dasun.dev
   guard: web
   discovers:
     web: true
   build:
+    - filament:assets
     - create-sqlite-db
     - migrate:fresh
+    - db:seed
+  sync:
+    - from: ./resources/dist/
+      to: public/vendor/payhere
