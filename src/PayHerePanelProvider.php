@@ -13,7 +13,8 @@ class PayHerePanelProvider extends PanelProvider
         return $panel
             ->id('payhere')
             ->path('payhere')
-            ->brandName('Laravel PayHere')
+            ->brandLogo(asset('vendor/payhere/images/logo.png'))
+            ->brandLogoHeight('3rem')
             ->pages([
                 Pages\Dashboard::class,
             ]);
