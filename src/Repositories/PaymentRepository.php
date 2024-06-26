@@ -47,16 +47,22 @@ class PaymentRepository
 
     public function getNotRefundedPaymentStats(): array
     {
+        $oneWeekAgo = Carbon::now()->subDays(7);
+        $twoWeeksAgo = Carbon::now()->subDays(14);
+        $currentTime = Carbon::now();
+
         $previousCount = Payment::notRefunded()
-            ->whereBetween('created_at', [Carbon::now()->subDays(14), Carbon::now()->subDays(7)])
+            ->whereBetween('created_at', [$twoWeeksAgo, $oneWeekAgo])
             ->count();
+
         $currentCount = Payment::notRefunded()
-            ->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
+            ->whereBetween('created_at', [$oneWeekAgo, $currentTime])
             ->count();
 
-        $increase = Number::abbreviate($currentCount - $previousCount);
+        $difference = $currentCount - $previousCount;
+        $increase = Number::abbreviate($difference);
 
-        $description = $increase > 0 ? "{$increase} increase" : "{$increase} decrease";
+        $description = $difference > 0 ? "{$increase} increase" : "{$increase} decrease";
 
         return [
             'count' => $currentCount,
