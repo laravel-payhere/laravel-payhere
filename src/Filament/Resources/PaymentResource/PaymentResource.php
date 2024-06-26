@@ -33,7 +33,8 @@ class PaymentResource extends Resource
                 TextColumn::make('payhere_amount')
                     ->money(),
 
-                TextColumn::make('captured_amount'),
+                TextColumn::make('captured_amount')
+                    ->money(),
 
                 TextColumn::make('payhere_currency'),
 
