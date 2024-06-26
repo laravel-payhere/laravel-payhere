@@ -2,7 +2,7 @@
 
 namespace Dasundev\PayHere\Filament;
 
-use Dasundev\PayHere\Http\Middleware\Authenticate;
+use Dasundev\PayHere\Filament\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;

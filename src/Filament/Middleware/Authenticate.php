@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Http\Middleware;
+namespace Dasundev\PayHere\Filament\Middleware;
 
 use Dasundev\PayHere\Filament\Contracts\PayHerePanelUser;
 use Filament\Facades\Filament;
