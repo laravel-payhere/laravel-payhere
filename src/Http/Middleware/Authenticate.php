@@ -4,7 +4,6 @@ namespace Dasundev\PayHere\Http\Middleware;
 
 use Dasundev\PayHere\Contracts\PayHerePanelUser;
 use Filament\Facades\Filament;
-use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Database\Eloquent\Model;
@@ -12,15 +11,15 @@ use Illuminate\Database\Eloquent\Model;
 class Authenticate extends Middleware
 {
     /**
-     * @param $request
-     * @param array<string> $guards
+     * @param  array<string>  $guards
+     *
      * @throws AuthenticationException
      */
     protected function authenticate($request, array $guards): void
     {
         $guard = Filament::auth();
 
-        if (!$guard->check()) {
+        if (! $guard->check()) {
             $this->unauthenticated($request, $guards);
         }
 
@@ -31,7 +30,7 @@ class Authenticate extends Middleware
 
         abort_if(
             $user instanceof PayHerePanelUser ?
-                (!$user->canAccessPayHerePanel()) :
+                (! $user->canAccessPayHerePanel()) :
                 (config('app.env') !== 'local'),
             403,
         );
