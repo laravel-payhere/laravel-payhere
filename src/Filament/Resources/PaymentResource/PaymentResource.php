@@ -24,11 +24,13 @@ class PaymentResource extends Resource
 
                 TextColumn::make('user_id'),
 
-                TextColumn::make('order_id'),
+                TextColumn::make('order_id')
+                    ->searchable(),
 
                 TextColumn::make('merchant_id'),
 
-                TextColumn::make('subscription_id'),
+                TextColumn::make('subscription_id')
+                    ->searchable(),
 
                 TextColumn::make('payhere_amount')
                     ->money(),
@@ -38,7 +40,8 @@ class PaymentResource extends Resource
 
                 TextColumn::make('payhere_currency'),
 
-                TextColumn::make('payment_id'),
+                TextColumn::make('payment_id')
+                    ->searchable(),
 
                 TextColumn::make('status_code'),
 
