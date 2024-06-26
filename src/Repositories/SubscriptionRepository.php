@@ -4,7 +4,6 @@ namespace Dasundev\PayHere\Repositories;
 
 use Dasundev\PayHere\Enums\SubscriptionStatus;
 use Dasundev\PayHere\Models\Subscription;
-use Dasundev\PayHere\PayHere;
 use Illuminate\Http\Request;
 
 class SubscriptionRepository
@@ -14,13 +13,12 @@ class SubscriptionRepository
      */
     public function activateSubscription($user, Request $request): Subscription
     {
-        $subscriptionId = $request->custom_id;
+        $subscriptionId = $request->custom_1;
 
         $subscription = Subscription::find($subscriptionId);
 
         $subscription->update([
-            'billable_id' => $user->id,
-            'billable_type' => PayHere::$customerModel,
+            'user_id' => $user->id,
             'ends_at' => $request->item_duration,
             'status' => SubscriptionStatus::ACTIVE,
         ]);

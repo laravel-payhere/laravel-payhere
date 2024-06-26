@@ -77,8 +77,7 @@ class PaymentResource extends Resource
                     ->label('Next recurring installment'),
 
                 TextColumn::make('item_rec_install_paid')
-                    ->label('Successful recurring installments')
-                    ->money(),
+                    ->label('Successful recurring installments'),
 
                 TextColumn::make('custom_1'),
 
