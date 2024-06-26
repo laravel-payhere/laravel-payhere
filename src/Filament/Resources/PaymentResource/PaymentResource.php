@@ -80,6 +80,9 @@ class PaymentResource extends Resource
                 TextColumn::make('custom_1'),
 
                 TextColumn::make('custom_2'),
+
+                TextColumn::make('created_at')
+                    ->date(),
             ]);
     }
 
