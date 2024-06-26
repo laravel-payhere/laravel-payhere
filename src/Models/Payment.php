@@ -45,6 +45,11 @@ class Payment extends Model
         $query->where('refunded');
     }
 
+    public function scopeNotRefunded(Builder $query): void
+    {
+        $query->whereNot('refunded');
+    }
+
     protected static function newFactory(): PaymentFactory
     {
         return new PaymentFactory;
