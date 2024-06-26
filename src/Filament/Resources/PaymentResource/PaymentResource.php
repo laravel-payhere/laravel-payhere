@@ -22,7 +22,7 @@ class PaymentResource extends Resource
             ->columns([
                 TextColumn::make('id'),
 
-                TextColumn::make('user_id'),
+                TextColumn::make('user.name'),
 
                 TextColumn::make('order_id')
                     ->searchable(),
