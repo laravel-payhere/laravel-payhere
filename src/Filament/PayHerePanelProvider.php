@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere;
+namespace Dasundev\PayHere\Filament;
 
 use Dasundev\PayHere\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;

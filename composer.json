@@ -41,7 +41,7 @@
         "laravel": {
             "providers": [
                 "Dasundev\\PayHere\\PayHereServiceProvider",
-                "Dasundev\\PayHere\\PayHerePanelProvider"
+                "Dasundev\\PayHere\\Filament\\PayHerePanelProvider"
             ]
         }
     },

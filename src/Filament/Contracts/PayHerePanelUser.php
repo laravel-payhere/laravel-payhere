@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Contracts;
+namespace Dasundev\PayHere\Filament\Contracts;
 
 interface PayHerePanelUser
 {
