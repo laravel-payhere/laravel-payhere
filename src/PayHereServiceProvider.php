@@ -2,6 +2,7 @@
 
 namespace Dasundev\PayHere;
 
+use Filament\Tables\Table;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -38,6 +39,21 @@ class PayHereServiceProvider extends PackageServiceProvider
 
     public function registeringPackage(): void
     {
+        $this->registerPayHereFacade();
+    }
+
+    public function packageRegistered(): void
+    {
+        $this->registerFilamentCurrency();
+    }
+
+    private function registerPayHereFacade(): void
+    {
         $this->app->singleton('payhere', fn () => new PayHere);
+    }
+
+    private function registerFilamentCurrency(): void
+    {
+        Table::$defaultCurrency = config('payhere.currency');
     }
 }
