@@ -5,16 +5,16 @@ namespace Dasundev\PayHere\Enums;
 /**
  * Payment methods supported by PayHere.
  */
-enum PaymentMethod
+enum PaymentMethod: string
 {
-    case VISA;
-    case MASTER;
-    case AMEX;
-    case EZCASH;
-    case MCASH;
-    case GENIE;
-    case VISHWA;
-    case PAYAPP;
-    case HNB;
-    case FRIMI;
+    case VISA = "VISA";
+    case MASTER = "MASTER";
+    case AMEX = "AMEX";
+    case EZCASH = "EZCASH";
+    case MCASH = "MCASH";
+    case GENIE = "GENIE";
+    case VISHWA = "VISHWA";
+    case PAYAPP = "PAYAPP";
+    case HNB = "HNB";
+    case FRIMI = "FRIMI";
 }
