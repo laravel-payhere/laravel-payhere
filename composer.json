@@ -40,7 +40,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Dasundev\\PayHere\\PayHereServiceProvider"
+                "Dasundev\\PayHere\\PayHereServiceProvider",
+                "Dasundev\\PayHere\\PayHerePanelProvider"
             ]
         }
     },
