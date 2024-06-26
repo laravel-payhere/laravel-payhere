@@ -38,12 +38,17 @@ class PayHerePanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->pages([
-                Pages\Dashboard::class,
-            ])
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->discoverPages(
+                in: __DIR__.'/../../src/Filament/Pages',
+                for: 'Dasundev\\PayHere\\Filament\\Pages'
+            )
+            ->discoverWidgets(
+                in: __DIR__.'/../../src/Filament/Widgets',
+                for: 'Dasundev\\PayHere\\Filament\\Widgets'
+            )
             ->discoverResources(
                 in: __DIR__.'/../../src/Filament/Resources',
                 for: 'Dasundev\\PayHere\\Filament\\Resources'
