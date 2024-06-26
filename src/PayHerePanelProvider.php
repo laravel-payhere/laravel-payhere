@@ -2,6 +2,7 @@
 
 namespace Dasundev\PayHere;
 
+use Dasundev\PayHere\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Panel;
@@ -38,6 +39,9 @@ class PayHerePanelProvider extends PanelProvider
             ])
             ->pages([
                 Pages\Dashboard::class,
+            ])
+            ->authMiddleware([
+                Authenticate::class,
             ]);
     }
 }
