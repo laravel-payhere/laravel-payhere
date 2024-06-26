@@ -13,6 +13,7 @@ workbench:
   guard: web
   discovers:
     web: true
+    api: true
   build:
     - filament:assets
     - create-sqlite-db

@@ -13,6 +13,7 @@ test('to array', function () {
         'order_id',
         'merchant_id',
         'payment_id',
+        'refunded',
         'subscription_id',
         'payhere_amount',
         'captured_amount',
