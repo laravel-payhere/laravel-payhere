@@ -43,6 +43,10 @@ class PayHerePanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->discoverResources(
+                in: __DIR__.'/../../src/Filament/Resources',
+                for: 'Dasundev\\PayHere\\Filament\\Resources'
+            );
     }
 }
