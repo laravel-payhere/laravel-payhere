@@ -11,7 +11,8 @@
         "php": "^8.2",
         "laravel/framework": "^10.0",
         "spatie/laravel-package-tools": "^1.16",
-        "saloonphp/saloon": "^3.0"
+        "saloonphp/saloon": "^3.0",
+        "filament/filament": "^3.2"
     },
     "require-dev": {
         "larastan/larastan": "^2.9",
