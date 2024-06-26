@@ -5,6 +5,8 @@ namespace Dasundev\PayHere\Repositories;
 use Dasundev\PayHere\Models\Payment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Number;
 
 class PaymentRepository
 {
@@ -41,5 +43,25 @@ class PaymentRepository
             'custom_1' => $request->custom_1,
             'custom_2' => $request->custom_2,
         ]);
+    }
+
+    public function getNotRefundedPaymentStats(): array
+    {
+        $previousCount = Payment::notRefunded()
+            ->whereBetween('created_at', [Carbon::now()->subDays(14), Carbon::now()->subDays(7)])
+            ->count();
+        $currentCount = Payment::notRefunded()
+            ->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
+            ->count();
+
+        $increase = Number::abbreviate($currentCount - $previousCount);
+
+        $description = $increase > 0 ? "{$increase} increase" : "{$increase} decrease";
+
+        return [
+            'count' => $currentCount,
+            'description' => $description,
+            'chartData' => [7, 2, 10, 3, 15, 4, 17]
+        ];
     }
 }
