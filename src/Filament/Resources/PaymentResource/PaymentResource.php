@@ -117,7 +117,7 @@ class PaymentResource extends Resource
                                 ->label('Created from'),
                             DatePicker::make('to')
                                 ->label('Created until'),
-                        ])
+                        ]),
                     ])
                     ->query(function (Builder $query, array $data): Builder {
                         return $query
@@ -130,7 +130,7 @@ class PaymentResource extends Resource
                                 fn (Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
                             );
                     })
-                    ->columnSpan(2)
+                    ->columnSpan(2),
             ], layout: FiltersLayout::AboveContentCollapsible);
     }
 

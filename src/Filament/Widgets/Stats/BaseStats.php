@@ -30,7 +30,7 @@ abstract class BaseStats
 
         return [
             'count' => $currentCount,
-            'description' => "{$increase} " . ($isIncrease ? 'increase' : 'decrease'),
+            'description' => "{$increase} ".($isIncrease ? 'increase' : 'decrease'),
             'icon' => $isIncrease ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down',
             'color' => $isIncrease ? 'success' : 'danger',
             'chartData' => static::getWeeklyTrendData(),
