@@ -132,7 +132,7 @@ class PaymentResource extends Resource
             ], layout: FiltersLayout::AboveContentCollapsible)
             ->actions([
                 Action::make('refund')
-                    ->hidden(fn (Payment $record) => $record->refunded())
+                    ->hidden(fn (Payment $record) => $record->isRefunded())
                     ->requiresConfirmation()
                     ->action(fn (Payment $record) => static::refund($record))
                     ->sendSuccessNotification(),
