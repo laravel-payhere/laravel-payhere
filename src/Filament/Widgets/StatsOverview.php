@@ -18,7 +18,7 @@ class StatsOverview extends BaseWidget
         $paymentStats = NotRefundedPaymentStats::getStats();
 
         return [
-            Stat::make('Payments', Payment::notRefunded()->count())
+            Stat::make('Payments', $paymentStats['count'])
                 ->description($paymentStats['description'])
                 ->chart($paymentStats['chartData'])
                 ->descriptionIcon($paymentStats['icon'])
