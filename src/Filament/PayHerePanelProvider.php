@@ -5,6 +5,7 @@ namespace Dasundev\PayHere\Filament;
 use Dasundev\PayHere\Filament\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -27,6 +28,13 @@ class PayHerePanelProvider extends PanelProvider
             ->brandLogoHeight('3rem')
             ->darkMode()
             ->login()
+            ->topNavigation()
+            ->navigationItems([
+                NavigationItem::make('Home')
+                    ->icon('heroicon-o-home')
+                    ->url('/')
+                    ->sort(1)
+            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
