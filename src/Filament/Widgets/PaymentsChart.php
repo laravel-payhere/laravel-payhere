@@ -13,7 +13,7 @@ class PaymentsChart extends ChartWidget
 
     protected static ?int $sort = 2;
 
-    public ?string $filter = 'today';
+    public ?string $filter = 'month';
 
     protected function getData(): array
     {
@@ -22,7 +22,7 @@ class PaymentsChart extends ChartWidget
                 start: now()->startOfYear(),
                 end: now()->endOfYear(),
             )
-            ->perMonth()
+            ->interval($this->filter)
             ->count();
 
         return [
@@ -38,21 +38,25 @@ class PaymentsChart extends ChartWidget
 
     public function getDescription(): ?string
     {
-        return "The total number of payments for $this->filter.";
+        return "The total number of payments per $this->filter.";
     }
 
     protected function getFilters(): ?array
     {
         return [
-            'today' => 'Today',
-            'week' => 'Last week',
-            'month' => 'Last month',
-            'year' => 'This year',
+            'day' => 'Daily',
+            'month' => 'Monthly',
+            'year' => 'Yearly',
         ];
     }
 
     protected function getType(): string
     {
         return 'line';
+    }
+
+    private function get()
+    {
+
     }
 }

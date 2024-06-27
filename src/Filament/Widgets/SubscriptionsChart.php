@@ -13,7 +13,7 @@ class SubscriptionsChart extends ChartWidget
 
     protected static ?int $sort = 2;
 
-    public ?string $filter = 'today';
+    public ?string $filter = 'month';
 
     protected function getData(): array
     {
@@ -22,7 +22,7 @@ class SubscriptionsChart extends ChartWidget
                 start: now()->startOfYear(),
                 end: now()->endOfYear(),
             )
-            ->perMonth()
+            ->interval($this->filter)
             ->count();
 
         return [
@@ -44,10 +44,9 @@ class SubscriptionsChart extends ChartWidget
     protected function getFilters(): ?array
     {
         return [
-            'today' => 'Today',
-            'week' => 'Last week',
-            'month' => 'Last month',
-            'year' => 'This year',
+            'day' => 'Daily',
+            'month' => 'Monthly',
+            'year' => 'Yearly',
         ];
     }
 
