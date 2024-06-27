@@ -26,7 +26,7 @@ class PaymentResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
+                TextColumn::make('payment_id')
                     ->searchable(),
 
                 TextColumn::make('user.name')
@@ -43,9 +43,6 @@ class PaymentResource extends Resource
                 TextColumn::make('payhere_currency')
                     ->searchable()
                     ->badge(),
-
-                TextColumn::make('payment_id')
-                    ->searchable(),
 
                 TextColumn::make('status_code')
                     ->searchable(),
