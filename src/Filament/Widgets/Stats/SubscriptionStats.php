@@ -3,9 +3,10 @@
 namespace Dasundev\PayHere\Filament\Widgets\Stats;
 
 use Dasundev\PayHere\Models\Payment;
+use Dasundev\PayHere\Models\Subscription;
 use Illuminate\Database\Eloquent\Builder;
 
-class NotRefundedPaymentStats extends BaseStats
+class SubscriptionStats extends BaseStats
 {
     protected static function getQuery(): Builder
     {
