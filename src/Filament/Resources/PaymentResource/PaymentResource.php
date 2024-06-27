@@ -32,9 +32,6 @@ class PaymentResource extends Resource
                 TextColumn::make('user.name')
                     ->searchable(),
 
-                TextColumn::make('order_id')
-                    ->searchable(),
-
                 TextColumn::make('payhere_amount')
                     ->searchable()
                     ->money(),
