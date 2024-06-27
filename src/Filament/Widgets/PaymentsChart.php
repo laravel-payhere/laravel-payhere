@@ -2,7 +2,11 @@
 
 namespace Dasundev\PayHere\Filament\Widgets;
 
+use Dasundev\PayHere\Models\Payment;
+use Dasundev\PayHere\Models\Subscription;
 use Filament\Widgets\ChartWidget;
+use Flowframe\Trend\Trend;
+use Flowframe\Trend\TrendValue;
 
 class PaymentsChart extends ChartWidget
 {
@@ -14,14 +18,22 @@ class PaymentsChart extends ChartWidget
 
     protected function getData(): array
     {
+        $data = Trend::model(Payment::class)
+            ->between(
+                start: now()->startOfYear(),
+                end: now()->endOfYear(),
+            )
+            ->perMonth()
+            ->count();
+
         return [
             'datasets' => [
                 [
-                    'label' => 'Payments created',
-                    'data' => [0, 10, 5, 2, 21, 32, 45, 74, 65, 45, 77, 89],
+                    'label' => 'Subscriptions',
+                    'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],
-            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            'labels' => $data->map(fn (TrendValue $value) => $value->date),
         ];
     }
 
