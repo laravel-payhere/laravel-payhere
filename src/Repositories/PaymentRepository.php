@@ -46,42 +46,4 @@ class PaymentRepository
             'custom_2' => $request->custom_2,
         ]);
     }
-
-    public function getNotRefundedPaymentStats(): array
-    {
-        $oneWeekAgo = Carbon::now()->subDays(7);
-        $twoWeeksAgo = Carbon::now()->subDays(14);
-        $currentTime = Carbon::now();
-
-        $previousCount = Payment::notRefunded()
-            ->whereBetween('created_at', [$twoWeeksAgo, $oneWeekAgo])
-            ->count();
-
-        $currentCount = Payment::notRefunded()
-            ->whereBetween('created_at', [$oneWeekAgo, $currentTime])
-            ->count();
-
-        $difference = $currentCount - $previousCount;
-        $increase = Number::abbreviate($difference);
-
-        $description = $difference > 0 ? "{$increase} increase" : "{$increase} decrease";
-        $icon = $difference > 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down';
-        $color = $difference > 0 ? 'success' : 'danger';
-
-        $trend = Trend::query(Payment::notRefunded())
-            ->between(
-                start: now()->startOfWeek(),
-                end: now()->endOfWeek(),
-            )
-            ->perDay()
-            ->count();
-
-        return [
-            'count' => $currentCount,
-            'description' => $description,
-            'icon' => $icon,
-            'color' => $color,
-            'chartData' => $trend->map(fn (TrendValue $value) => $value->aggregate)->toArray(),
-        ];
-    }
 }
