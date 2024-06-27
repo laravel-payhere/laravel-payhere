@@ -5,7 +5,7 @@ namespace Dasundev\PayHere\Enums;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum SubscriptionStatus implements HasLabel, HasColor
+enum SubscriptionStatus implements HasColor, HasLabel
 {
     case PENDING;
     case TRIALING;
