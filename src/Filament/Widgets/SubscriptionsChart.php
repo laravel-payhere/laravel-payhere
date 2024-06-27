@@ -38,7 +38,7 @@ class SubscriptionsChart extends ChartWidget
 
     public function getDescription(): ?string
     {
-        return "The number of subscriptions for $this->filter.";
+        return "The total number of subscriptions for $this->filter.";
     }
 
     protected function getFilters(): ?array

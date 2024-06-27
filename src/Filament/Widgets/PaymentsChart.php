@@ -39,7 +39,7 @@ class PaymentsChart extends ChartWidget
 
     public function getDescription(): ?string
     {
-        return "The number of payments for $this->filter.";
+        return "The total number of payments for $this->filter.";
     }
 
     protected function getType(): string
