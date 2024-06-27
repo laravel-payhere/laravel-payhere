@@ -27,6 +27,7 @@ class PayHerePanelProvider extends PanelProvider
             ->brandLogoHeight('3rem')
             ->darkMode()
             ->login()
+            ->databaseNotifications()
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
