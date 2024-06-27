@@ -7,6 +7,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class PaymentResource extends Resource
 {
@@ -63,10 +64,12 @@ class PaymentResource extends Resource
                     ->label('Status message'),
 
                 TextColumn::make('item_recurrence')
-                    ->label('How often it charges'),
+                    ->label('How often it charges')
+                    ->formatStateUsing(fn ($record) => Str::ucwords(strtolower($record->item_recurrence))),
 
                 TextColumn::make('item_duration')
-                    ->label('How long it charges'),
+                    ->label('How long it charges')
+                    ->formatStateUsing(fn ($record) => Str::ucwords(strtolower($record->item_duration))),
 
                 TextColumn::make('item_rec_status')
                     ->label('Recurring subscription status'),
