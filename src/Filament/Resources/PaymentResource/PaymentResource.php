@@ -56,9 +56,11 @@ class PaymentResource extends Resource
                 TextColumn::make('method')
                     ->label('Payment method'),
 
-                TextColumn::make('card_holder_name'),
+                TextColumn::make('card_holder_name')
+                    ->searchable(),
 
-                TextColumn::make('card_no'),
+                TextColumn::make('card_no')
+                    ->searchable(),
 
                 TextColumn::make('card_expiry'),
 
