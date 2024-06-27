@@ -2,7 +2,7 @@
 
 namespace Dasundev\PayHere\Filament\Widgets;
 
-use Dasundev\PayHere\Filament\Widgets\Stats\NotRefundedPaymentStats;
+use Dasundev\PayHere\Filament\Widgets\Stats\PaymentStats;
 use Dasundev\PayHere\Models\Payment;
 use Dasundev\PayHere\Models\Subscription;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
@@ -14,7 +14,7 @@ class StatsOverview extends BaseWidget
 
     protected function getStats(): array
     {
-        $paymentStats = NotRefundedPaymentStats::getStats();
+        $paymentStats = PaymentStats::getStats();
 
         return [
             Stat::make('Payments', $paymentStats['count'])
