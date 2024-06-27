@@ -3,10 +3,15 @@
 namespace Dasundev\PayHere\Filament\Resources\PaymentResource;
 
 use Dasundev\PayHere\Models\Payment;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Split;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class PaymentResource extends Resource
@@ -84,7 +89,30 @@ class PaymentResource extends Resource
 
                 TextColumn::make('created_at')
                     ->date(),
-            ]);
+            ])
+            ->filters([
+                Filter::make('created_at')
+                    ->form([
+                        Split::make([
+                            DatePicker::make('from')
+                                ->label('Created from'),
+                            DatePicker::make('to')
+                                ->label('Created until'),
+                        ])
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['from'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['to'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
+                    })
+                    ->columnSpan(2)
+            ], layout: FiltersLayout::AboveContentCollapsible);
     }
 
     public static function getPages(): array
