@@ -63,7 +63,6 @@ abstract class BaseStats
 
         $differenceData = static::calculateDifference($currentCount, $previousCount);
 
-        // Default values if no difference calculated
         $defaultStats = [
             'count' => $currentCount,
             'description' => null,
