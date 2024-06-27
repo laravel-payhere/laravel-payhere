@@ -27,6 +27,7 @@ class PayHerePanelProvider extends PanelProvider
             ->brandLogo(asset('vendor/payhere/images/logo.png'))
             ->brandLogoHeight('3rem')
             ->darkMode()
+            ->login()
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
