@@ -3,7 +3,6 @@
 namespace Dasundev\PayHere\Filament\Widgets;
 
 use Dasundev\PayHere\Models\Payment;
-use Dasundev\PayHere\Models\Subscription;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
