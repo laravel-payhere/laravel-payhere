@@ -32,7 +32,8 @@ class PayHerePanelProvider extends PanelProvider
             ->navigationItems([
                 NavigationItem::make('Home')
                     ->icon('heroicon-o-home')
-                    ->url('/')
+                    ->url(config('app.url'))
+                    ->openUrlInNewTab()
                     ->sort(1)
             ])
             ->middleware([
