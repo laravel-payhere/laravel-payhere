@@ -54,9 +54,4 @@ class PaymentsChart extends ChartWidget
     {
         return 'line';
     }
-
-    private function get()
-    {
-
-    }
 }
