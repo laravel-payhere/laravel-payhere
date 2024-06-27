@@ -34,7 +34,7 @@ class PayHerePanelProvider extends PanelProvider
                     ->icon('heroicon-o-home')
                     ->url(config('app.url'))
                     ->openUrlInNewTab()
-                    ->sort(1)
+                    ->sort(1),
             ])
             ->middleware([
                 EncryptCookies::class,

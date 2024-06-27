@@ -5,11 +5,11 @@ namespace Dasundev\PayHere\Filament\Resources\PaymentResource;
 use Dasundev\PayHere\Enums\RefundStatus;
 use Dasundev\PayHere\Models\Payment;
 use Dasundev\PayHere\Services\Contracts\PayHereService;
-use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Split;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
@@ -134,7 +134,7 @@ class PaymentResource extends Resource
                 Action::make('refund')
                     ->requiresConfirmation()
                     ->action(fn (Payment $record) => static::refund($record))
-                    ->sendSuccessNotification()
+                    ->sendSuccessNotification(),
             ]);
     }
 
