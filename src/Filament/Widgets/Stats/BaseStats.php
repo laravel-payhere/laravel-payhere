@@ -54,8 +54,8 @@ abstract class BaseStats
 
     public static function getStats(): array
     {
-        $oneWeekAgo = now()->subDays(7);
-        $twoWeeksAgo = now()->subDays(14);
+        $oneWeekAgo = Carbon::now()->subDays(7);
+        $twoWeeksAgo = Carbon::now()->subDays(14);
         $currentTime = Carbon::now();
 
         $previousCount = static::getCountForPeriod($twoWeeksAgo, $oneWeekAgo);
