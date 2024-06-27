@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         User::factory()
             ->state([
                 'name' => 'Dasun Tharanga',
-                'email' => 'hello@dasun.dev'
+                'email' => 'hello@dasun.dev',
             ])
             ->create();
     }

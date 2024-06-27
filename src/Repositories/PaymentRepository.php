@@ -81,7 +81,7 @@ class PaymentRepository
             'description' => $description,
             'icon' => $icon,
             'color' => $color,
-            'chartData' => $trend->map(fn (TrendValue $value) => $value->aggregate)->toArray()
+            'chartData' => $trend->map(fn (TrendValue $value) => $value->aggregate)->toArray(),
         ];
     }
 }

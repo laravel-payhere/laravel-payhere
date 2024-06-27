@@ -122,6 +122,6 @@ return [
         |
         */
 
-        'login' => env('PAYHERE_PANEL_LOGIN', true)
+        'login' => env('PAYHERE_PANEL_LOGIN', true),
     ],
 ];
