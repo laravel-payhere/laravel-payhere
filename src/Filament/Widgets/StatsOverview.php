@@ -3,8 +3,8 @@
 namespace Dasundev\PayHere\Filament\Widgets;
 
 use Dasundev\PayHere\Filament\Widgets\Stats\PaymentStats;
-use Dasundev\PayHere\Models\Payment;
-use Dasundev\PayHere\Models\Subscription;
+use Dasundev\PayHere\Filament\Widgets\Stats\RefundStats;
+use Dasundev\PayHere\Filament\Widgets\Stats\SubscriptionStats;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
@@ -14,26 +14,21 @@ class StatsOverview extends BaseWidget
 
     protected function getStats(): array
     {
-        $paymentStats = PaymentStats::getStats();
-
         return [
-            Stat::make('Payments', $paymentStats['count'])
-                ->description($paymentStats['description'])
-                ->chart($paymentStats['chartData'])
-                ->descriptionIcon($paymentStats['icon'])
-                ->color($paymentStats['color']),
-
-            Stat::make('Subscriptions', Subscription::count())
-                ->description('10k increase')
-                ->chart([7, 2, 10, 3, 15, 4, 17])
-                ->descriptionIcon('heroicon-m-arrow-trending-up')
-                ->color('info'),
-
-            Stat::make('Refunds', Payment::refunded()->count())
-                ->description('10k increase')
-                ->chart([7, 2, 10, 3, 15, 4, 17])
-                ->descriptionIcon('heroicon-m-arrow-trending-up')
-                ->color('danger'),
+            $this->makeStat('Payments', PaymentStats::class),
+            $this->makeStat('Subscriptions', SubscriptionStats::class),
+            $this->makeStat('Refunds', RefundStats::class),
         ];
+    }
+
+    protected function makeStat(string $label, string $statsClass): Stat
+    {
+        $stats = $statsClass::getStats();
+
+        return Stat::make($label, $stats['count'])
+            ->description($stats['description'])
+            ->chart($stats['chartData'])
+            ->descriptionIcon($stats['icon'])
+            ->color($stats['color']);
     }
 }
