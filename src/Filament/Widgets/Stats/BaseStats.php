@@ -68,7 +68,7 @@ abstract class BaseStats
             'description' => null,
             'icon' => null,
             'color' => 'success',
-            'chartData' => static::getWeeklyTrendData(),
+            'chartData' => null,
         ];
 
         return $differenceData ?? $defaultStats;
