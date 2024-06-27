@@ -17,21 +17,27 @@ abstract class BaseStats
         return static::getQuery()->whereBetween('created_at', [$start, $end])->count();
     }
 
-    protected static function calculateDifference(int $currentCount, int $previousCount): array
+    protected static function calculateDifference(int $currentCount, int $previousCount): ?array
     {
         $difference = $currentCount - $previousCount;
-        $increase = Number::abbreviate($difference);
 
+        if ($difference === 0) {
+            return null;
+        }
+
+        $increase = Number::abbreviate($difference);
         $isIncrease = $difference > 0;
 
         return [
-            'description' => "{$increase} ".($isIncrease ? 'increase' : 'decrease'),
+            'count' => $currentCount,
+            'description' => "{$increase} " . ($isIncrease ? 'increase' : 'decrease'),
             'icon' => $isIncrease ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down',
             'color' => $isIncrease ? 'success' : 'danger',
+            'chartData' => static::getWeeklyTrendData(),
         ];
     }
 
-    protected static function getTrendData(): array
+    protected static function getWeeklyTrendData(): array
     {
         $query = static::getQuery();
 
@@ -57,12 +63,15 @@ abstract class BaseStats
 
         $differenceData = static::calculateDifference($currentCount, $previousCount);
 
-        return [
+        // Default values if no difference calculated
+        $defaultStats = [
             'count' => $currentCount,
-            'description' => $differenceData['description'],
-            'icon' => $differenceData['icon'],
-            'color' => $differenceData['color'],
-            'chartData' => static::getTrendData(),
+            'description' => null,
+            'icon' => null,
+            'color' => 'success',
+            'chartData' => static::getWeeklyTrendData(),
         ];
+
+        return $differenceData ?? $defaultStats;
     }
 }
