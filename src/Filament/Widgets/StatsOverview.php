@@ -22,11 +22,13 @@ class StatsOverview extends BaseWidget
                 ->chart($paymentStats['chartData'])
                 ->descriptionIcon($paymentStats['icon'])
                 ->color($paymentStats['color']),
+
             Stat::make('Subscriptions', Subscription::count())
                 ->description('10k increase')
                 ->chart([7, 2, 10, 3, 15, 4, 17])
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 ->color('info'),
+
             Stat::make('Refunds', Payment::refunded()->count())
                 ->description('10k increase')
                 ->chart([7, 2, 10, 3, 15, 4, 17])
