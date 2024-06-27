@@ -2,7 +2,11 @@
 
 namespace Dasundev\PayHere\Filament\Resources\PaymentResource;
 
+use Dasundev\PayHere\Enums\RefundStatus;
 use Dasundev\PayHere\Models\Payment;
+use Dasundev\PayHere\Services\Contracts\PayHereService;
+use Filament\Notifications\Notification;
+use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Split;
 use Filament\Resources\Resource;
@@ -125,7 +129,13 @@ class PaymentResource extends Resource
                             );
                     })
                     ->columnSpan(2),
-            ], layout: FiltersLayout::AboveContentCollapsible);
+            ], layout: FiltersLayout::AboveContentCollapsible)
+            ->actions([
+                Action::make('refund')
+                    ->requiresConfirmation()
+                    ->action(fn (Payment $record) => static::refund($record))
+                    ->sendSuccessNotification()
+            ]);
     }
 
     public static function getPages(): array
@@ -133,5 +143,21 @@ class PaymentResource extends Resource
         return [
             'index' => Pages\ListPayments::route('/'),
         ];
+    }
+
+    public static function refund(Payment $payment): void
+    {
+        $service = app(PayHereService::class);
+        $payload = $service->refund($payment->payment_id);
+
+        $status = $payload['status'];
+        $message = $payload['msg'];
+
+        $notification = Notification::make()->title($message);
+
+        match ($status) {
+            RefundStatus::REFUND_SUCCESS->value => $notification->success()->send(),
+            default => $notification->danger()->send(),
+        };
     }
 }

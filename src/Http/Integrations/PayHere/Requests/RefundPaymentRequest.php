@@ -14,8 +14,8 @@ class RefundPaymentRequest extends Request implements HasBody
     protected Method $method = Method::POST;
 
     public function __construct(
-        private readonly string $description,
-        private readonly ?string $paymentId = null,
+        private readonly string $paymentId,
+        private readonly ?string $description = null,
         private readonly ?string $authorizationToken = null,
     ) {}
 
