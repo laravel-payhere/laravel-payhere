@@ -75,7 +75,8 @@ class PaymentResource extends Resource
                     ->label('Recurring subscription status'),
 
                 TextColumn::make('item_rec_date_next')
-                    ->label('Next recurring installment'),
+                    ->label('Next recurring installment')
+                    ->date(),
 
                 TextColumn::make('item_rec_install_paid')
                     ->label('Successful recurring installments'),
