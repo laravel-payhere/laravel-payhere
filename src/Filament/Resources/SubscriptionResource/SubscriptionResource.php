@@ -27,18 +27,23 @@ class SubscriptionResource extends Resource
                 TextColumn::make('id')
                     ->searchable(),
 
-                TextColumn::make('user.name'),
+                TextColumn::make('user.name')
+                    ->searchable(),
 
                 TextColumn::make('status')
+                    ->searchable()
                     ->badge(),
 
                 TextColumn::make('trial_ends_at')
+                    ->searchable()
                     ->date(),
 
                 TextColumn::make('created_at')
+                    ->searchable()
                     ->date(),
 
                 TextColumn::make('ends_at')
+                    ->searchable()
                     ->date(),
             ])
             ->filters([
