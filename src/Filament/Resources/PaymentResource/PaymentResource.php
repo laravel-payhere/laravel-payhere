@@ -35,9 +35,6 @@ class PaymentResource extends Resource
                 TextColumn::make('order_id')
                     ->searchable(),
 
-                TextColumn::make('subscription_id')
-                    ->searchable(),
-
                 TextColumn::make('payhere_amount')
                     ->searchable()
                     ->money(),
@@ -80,6 +77,9 @@ class PaymentResource extends Resource
 
                 TextColumn::make('message_type')
                     ->label('Status message')
+                    ->searchable(),
+
+                TextColumn::make('subscription_id')
                     ->searchable(),
 
                 TextColumn::make('item_recurrence')
