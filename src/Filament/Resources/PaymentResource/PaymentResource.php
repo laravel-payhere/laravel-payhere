@@ -44,9 +44,6 @@ class PaymentResource extends Resource
                     ->searchable()
                     ->badge(),
 
-                TextColumn::make('status_code')
-                    ->searchable(),
-
                 TextColumn::make('status_message')
                     ->searchable()
                     ->label('Payment gateway message'),
@@ -71,6 +68,9 @@ class PaymentResource extends Resource
 
                 TextColumn::make('message_type')
                     ->label('Status message')
+                    ->searchable(),
+
+                TextColumn::make('status_code')
                     ->searchable(),
 
                 TextColumn::make('subscription_id')
