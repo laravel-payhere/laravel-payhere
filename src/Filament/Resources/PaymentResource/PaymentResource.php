@@ -132,6 +132,7 @@ class PaymentResource extends Resource
             ], layout: FiltersLayout::AboveContentCollapsible)
             ->actions([
                 Action::make('refund')
+                    ->hidden(fn (Payment $record) => $record->refunded())
                     ->requiresConfirmation()
                     ->action(fn (Payment $record) => static::refund($record))
                     ->sendSuccessNotification(),
@@ -148,7 +149,7 @@ class PaymentResource extends Resource
     public static function refund(Payment $payment): void
     {
         $service = app(PayHereService::class);
-        $payload = $service->refund($payment->payment_id);
+        $payload = $service->refund($payment);
 
         $status = $payload['status'];
         $message = $payload['msg'];
