@@ -2,6 +2,7 @@
 
 namespace Dasundev\PayHere\Filament\Widgets;
 
+use Dasundev\PayHere\Filament\Widgets\Stats\NotRefundedPaymentStats;
 use Dasundev\PayHere\Models\Payment;
 use Dasundev\PayHere\Models\Subscription;
 use Dasundev\PayHere\Repositories\PaymentRepository;
@@ -14,14 +15,14 @@ class StatsOverview extends BaseWidget
 
     protected function getStats(): array
     {
-        $paymentStats = app(PaymentRepository::class)->getNotRefundedPaymentStats();
+        $paymentStats = NotRefundedPaymentStats::getStats();
 
         return [
             Stat::make('Payments', Payment::notRefunded()->count())
                 ->description($paymentStats['description'])
                 ->chart($paymentStats['chartData'])
-                ->descriptionIcon('heroicon-m-arrow-trending-up')
-                ->color('success'),
+                ->descriptionIcon($paymentStats['icon'])
+                ->color($paymentStats['color']),
             Stat::make('Subscriptions', Subscription::count())
                 ->description('10k increase')
                 ->chart([7, 2, 10, 3, 15, 4, 17])

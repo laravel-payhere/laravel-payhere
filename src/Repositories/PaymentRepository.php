@@ -65,6 +65,8 @@ class PaymentRepository
         $increase = Number::abbreviate($difference);
 
         $description = $difference > 0 ? "{$increase} increase" : "{$increase} decrease";
+        $icon = $difference > 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down';
+        $color = $difference > 0 ? 'success' : 'danger';
 
         $trend = Trend::query(Payment::notRefunded())
             ->between(
@@ -77,6 +79,8 @@ class PaymentRepository
         return [
             'count' => $currentCount,
             'description' => $description,
+            'icon' => $icon,
+            'color' => $color,
             'chartData' => $trend->map(fn (TrendValue $value) => $value->aggregate)->toArray()
         ];
     }
