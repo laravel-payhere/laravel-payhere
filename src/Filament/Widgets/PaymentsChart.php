@@ -29,7 +29,7 @@ class PaymentsChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Subscriptions',
+                    'label' => 'Payments',
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],
