@@ -10,6 +10,8 @@ class PaymentsChart extends ChartWidget
 
     protected static ?int $sort = 2;
 
+    public ?string $filter = 'today';
+
     protected function getData(): array
     {
         return [
@@ -21,6 +23,11 @@ class PaymentsChart extends ChartWidget
             ],
             'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         ];
+    }
+
+    public function getDescription(): ?string
+    {
+        return "The number of payments for $this->filter.";
     }
 
     protected function getType(): string
