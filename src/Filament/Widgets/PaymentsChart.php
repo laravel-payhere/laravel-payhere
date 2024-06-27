@@ -42,6 +42,16 @@ class PaymentsChart extends ChartWidget
         return "The total number of payments for $this->filter.";
     }
 
+    protected function getFilters(): ?array
+    {
+        return [
+            'today' => 'Today',
+            'week' => 'Last week',
+            'month' => 'Last month',
+            'year' => 'This year',
+        ];
+    }
+
     protected function getType(): string
     {
         return 'line';
