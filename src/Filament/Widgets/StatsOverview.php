@@ -19,7 +19,7 @@ class StatsOverview extends BaseWidget
         return [
             Stat::make('Payments', Payment::notRefunded()->count())
                 ->description($paymentStats['description'])
-                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->chart($paymentStats['chartData'])
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 ->color('success'),
             Stat::make('Subscriptions', Subscription::count())

@@ -12,7 +12,8 @@
         "laravel/framework": "^10.0",
         "spatie/laravel-package-tools": "^1.16",
         "saloonphp/saloon": "^3.0",
-        "filament/filament": "^3.2"
+        "filament/filament": "^3.2",
+        "flowframe/laravel-trend": "^0.2.0"
     },
     "require-dev": {
         "larastan/larastan": "^2.9",

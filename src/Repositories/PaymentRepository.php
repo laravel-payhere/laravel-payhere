@@ -3,6 +3,8 @@
 namespace Dasundev\PayHere\Repositories;
 
 use Dasundev\PayHere\Models\Payment;
+use Flowframe\Trend\Trend;
+use Flowframe\Trend\TrendValue;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -64,10 +66,18 @@ class PaymentRepository
 
         $description = $difference > 0 ? "{$increase} increase" : "{$increase} decrease";
 
+        $trend = Trend::query(Payment::notRefunded())
+            ->between(
+                start: now()->startOfWeek(),
+                end: now()->endOfWeek(),
+            )
+            ->perDay()
+            ->count();
+
         return [
             'count' => $currentCount,
             'description' => $description,
-            'chartData' => [7, 2, 10, 3, 15, 4, 17]
+            'chartData' => $trend->map(fn (TrendValue $value) => $value->aggregate)->toArray()
         ];
     }
 }
