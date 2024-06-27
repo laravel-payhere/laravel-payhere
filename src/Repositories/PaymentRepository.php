@@ -3,12 +3,8 @@
 namespace Dasundev\PayHere\Repositories;
 
 use Dasundev\PayHere\Models\Payment;
-use Flowframe\Trend\Trend;
-use Flowframe\Trend\TrendValue;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Number;
 
 class PaymentRepository
 {
