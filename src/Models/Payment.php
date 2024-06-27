@@ -40,6 +40,11 @@ class Payment extends Model
         return $this->belongsTo(PayHere::$orderModel);
     }
 
+    public function markAsRefunded(): bool
+    {
+        return $this->update(['refunded' => true]);
+    }
+
     public function scopeRefunded(Builder $query): void
     {
         $query->where('refunded');
