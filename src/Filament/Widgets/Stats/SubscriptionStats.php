@@ -10,6 +10,6 @@ class SubscriptionStats extends BaseStats
 {
     protected static function getQuery(): Builder
     {
-        return Payment::notRefunded();
+        return Subscription::query();
     }
 }
