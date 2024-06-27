@@ -26,9 +26,11 @@ class PaymentResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id'),
+                TextColumn::make('id')
+                    ->searchable(),
 
-                TextColumn::make('user.name'),
+                TextColumn::make('user.name')
+                    ->searchable(),
 
                 TextColumn::make('order_id')
                     ->searchable(),
@@ -37,23 +39,29 @@ class PaymentResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('payhere_amount')
+                    ->searchable()
                     ->money(),
 
                 TextColumn::make('captured_amount')
+                    ->searchable()
                     ->money(),
 
                 TextColumn::make('payhere_currency')
+                    ->searchable()
                     ->badge(),
 
                 TextColumn::make('payment_id')
                     ->searchable(),
 
-                TextColumn::make('status_code'),
+                TextColumn::make('status_code')
+                    ->searchable(),
 
                 TextColumn::make('status_message')
+                    ->searchable()
                     ->label('Payment gateway message'),
 
                 TextColumn::make('method')
+                    ->searchable()
                     ->label('Payment method'),
 
                 TextColumn::make('card_holder_name')
@@ -62,35 +70,44 @@ class PaymentResource extends Resource
                 TextColumn::make('card_no')
                     ->searchable(),
 
-                TextColumn::make('card_expiry'),
+                TextColumn::make('card_expiry')
+                    ->searchable(),
 
                 IconColumn::make('recurring')
                     ->label('Recurring payment')
-                    ->boolean(),
+                    ->boolean()
+                    ->searchable(),
 
                 TextColumn::make('message_type')
-                    ->label('Status message'),
+                    ->label('Status message')
+                    ->searchable(),
 
                 TextColumn::make('item_recurrence')
                     ->label('How often it charges')
-                    ->formatStateUsing(fn ($record) => Str::ucwords(strtolower($record->item_recurrence))),
+                    ->formatStateUsing(fn ($record) => Str::ucwords(strtolower($record->item_recurrence)))
+                    ->searchable(),
 
                 TextColumn::make('item_duration')
                     ->label('How long it charges')
-                    ->formatStateUsing(fn ($record) => Str::ucwords(strtolower($record->item_duration))),
+                    ->formatStateUsing(fn ($record) => Str::ucwords(strtolower($record->item_duration)))
+                    ->searchable(),
 
                 TextColumn::make('item_rec_status')
-                    ->label('Recurring subscription status'),
+                    ->label('Recurring subscription status')
+                    ->searchable(),
 
                 TextColumn::make('item_rec_date_next')
                     ->label('Next recurring installment')
-                    ->date(),
+                    ->date()
+                    ->searchable(),
 
                 TextColumn::make('item_rec_install_paid')
-                    ->label('Successful recurring installments'),
+                    ->label('Successful recurring installments')
+                    ->searchable(),
 
                 TextColumn::make('created_at')
-                    ->date(),
+                    ->date()
+                    ->searchable(),
             ])
             ->filters([
                 Filter::make('created_at')
