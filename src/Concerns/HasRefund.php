@@ -4,25 +4,18 @@ namespace Dasundev\PayHere\Concerns;
 
 use Dasundev\PayHere\Http\Integrations\PayHere\PayHereConnector;
 use Dasundev\PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
+use Dasundev\PayHere\Services\Contracts\PayHereService;
 
 /**
  * @property $payment
  */
 class HasRefund
 {
+    /**
+     * Initiate a refund for the payment.
+     */
     public function refund(?string $reason = null): bool
     {
-        $connector = new PayHereConnector;
-
-        $authenticator = $connector->getAccessToken();
-
-        $connector->authenticate($authenticator);
-
-        $response = $connector->send(new RefundPaymentRequest(
-            description: $reason,
-            paymentId: $this->payment->payment_id,
-        ));
-
-        return $response->ok();
+        return app(PayHereService::class)->refund($this->payment->id, $reason);
     }
 }
