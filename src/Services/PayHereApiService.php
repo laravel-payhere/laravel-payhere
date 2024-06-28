@@ -28,7 +28,7 @@ class PayHereApiService implements PayHereService
         $status = $payload['status'];
 
         if ((int) $status === RefundStatus::REFUND_SUCCESS->value) {
-            $payment->markAsRefunded();
+            $payment->markAsRefunded($reason);
         }
 
         return $payload;

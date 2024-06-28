@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('merchant_id');
             $table->string('payment_id')->unique()->nullable();
             $table->boolean('refunded')->default(false);
+            $table->string('refund_reason')->nullable();
             $table->string('authorization_token')->nullable();
             $table->string('subscription_id')->nullable();
             $table->float('payhere_amount');

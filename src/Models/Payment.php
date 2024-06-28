@@ -41,9 +41,12 @@ class Payment extends Model
         return $this->belongsTo(PayHere::$orderModel);
     }
 
-    public function markAsRefunded(): bool
+    public function markAsRefunded(?string $reason = null): bool
     {
-        return $this->update(['refunded' => true]);
+        return $this->update([
+            'refunded' => true,
+            'refund_reason' => $reason
+        ]);
     }
 
     public function isRefundable(): bool
