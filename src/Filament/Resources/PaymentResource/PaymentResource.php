@@ -40,11 +40,6 @@ class PaymentResource extends Resource
                     ->label(__('User'))
                     ->searchable(),
 
-                TextColumn::make('payhere_currency')
-                    ->label(__('Currency'))
-                    ->searchable()
-                    ->badge(),
-
                 TextColumn::make('payhere_amount')
                     ->label(__('Amount'))
                     ->searchable()
@@ -119,6 +114,11 @@ class PaymentResource extends Resource
                 TextColumn::make('refund_reason')
                     ->label(__('Refund reason'))
                     ->searchable(),
+
+                TextColumn::make('payhere_currency')
+                    ->label(__('Currency'))
+                    ->searchable()
+                    ->badge(),
 
                 TextColumn::make('created_at')
                     ->date()
