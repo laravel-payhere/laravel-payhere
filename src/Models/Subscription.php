@@ -56,21 +56,21 @@ class Subscription extends Model
      */
     public function scopeActive(Builder $query): void
     {
-        $query->where('status', SubscriptionStatus::ACTIVE);
+        $query->where('status', SubscriptionStatus::Active);
     }
 
     public function markAsCancelled(): void
     {
-        $this->update(['status' => SubscriptionStatus::CANCELLED]);
+        $this->update(['status' => SubscriptionStatus::Cancelled]);
     }
 
     public function isCancelled(): bool
     {
-        return $this->status === SubscriptionStatus::CANCELLED;
+        return $this->status === SubscriptionStatus::Cancelled;
     }
 
     public function isCancellable(): bool
     {
-        return ! is_null($this->payhere_subscription_id) && $this->status === SubscriptionStatus::ACTIVE;
+        return ! is_null($this->payhere_subscription_id) && $this->status === SubscriptionStatus::Active;
     }
 }

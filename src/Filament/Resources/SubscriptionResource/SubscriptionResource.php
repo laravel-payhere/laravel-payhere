@@ -88,7 +88,7 @@ class SubscriptionResource extends Resource
             ->filters([
                 SelectFilter::make('status')
                     ->options(SubscriptionStatus::class)
-                    ->default(SubscriptionStatus::ACTIVE->value)
+                    ->default(SubscriptionStatus::Active->value)
             ])
             ->defaultSort('created_at', 'desc');
     }

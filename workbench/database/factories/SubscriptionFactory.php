@@ -19,7 +19,7 @@ class SubscriptionFactory extends Factory
             'order_id' => Order::factory(),
             'trial_ends_at' => now()->addMonth(),
             'ends_at' => now()->addYear(),
-            'status' => SubscriptionStatus::ACTIVE,
+            'status' => SubscriptionStatus::Active,
         ];
     }
 }

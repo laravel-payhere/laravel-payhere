@@ -21,7 +21,7 @@ class SubscriptionRepository
             'user_id' => $user->id,
             'payhere_subscription_id' => $request->subscription_id,
             'ends_at' => $request->item_duration,
-            'status' => SubscriptionStatus::ACTIVE,
+            'status' => SubscriptionStatus::Active,
         ]);
 
         $subscription->refresh();
