@@ -37,6 +37,7 @@ class PaymentResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('payhere_amount')
+                    ->label('Amount')
                     ->searchable()
                     ->money(),
 
