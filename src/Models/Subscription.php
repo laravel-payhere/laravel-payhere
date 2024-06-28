@@ -68,4 +68,9 @@ class Subscription extends Model
     {
         return $this->status === SubscriptionStatus::CANCELLED;
     }
+
+    public function isCancellable(): bool
+    {
+        return is_null($this->payhere_subscription_id) || $this->isCancelled();
+    }
 }
