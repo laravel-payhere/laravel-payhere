@@ -40,6 +40,11 @@ class PaymentResource extends Resource
                     ->label(__('User'))
                     ->searchable(),
 
+                TextColumn::make('payhere_currency')
+                    ->label(__('Currency'))
+                    ->searchable()
+                    ->badge(),
+
                 TextColumn::make('payhere_amount')
                     ->label(__('Amount'))
                     ->searchable()
@@ -58,11 +63,6 @@ class PaymentResource extends Resource
                 IconColumn::make('refunded')
                     ->label(__('Refunded'))
                     ->boolean(),
-
-                TextColumn::make('payhere_currency')
-                    ->label(__('Currency'))
-                    ->searchable()
-                    ->badge(),
 
                 TextColumn::make('method')
                     ->label(__('Payment method'))
