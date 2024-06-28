@@ -10,6 +10,7 @@ use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Support\Colors\Color;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -140,6 +141,7 @@ class PaymentResource extends Resource
             ], layout: FiltersLayout::AboveContentCollapsible)
             ->actions([
                 Action::make('refund')
+                    ->button()
                     ->hidden(fn (Payment $record) => $record->isRefunded())
                     ->requiresConfirmation()
                     ->modalDescription(__('Are you sure you want to refund this payment?'))
