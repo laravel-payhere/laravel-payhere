@@ -5,7 +5,7 @@ namespace Dasundev\PayHere\Enums;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum PaymentStatus: int implements HasLabel, HasColor
+enum PaymentStatus: int implements HasColor, HasLabel
 {
     case AUTHORIZATION_SUCCESS = 3;
     case SUCCESS = 2;
