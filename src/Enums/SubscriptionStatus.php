@@ -5,14 +5,14 @@ namespace Dasundev\PayHere\Enums;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum SubscriptionStatus implements HasColor, HasLabel
+enum SubscriptionStatus: string implements HasColor, HasLabel
 {
-    case PENDING;
-    case TRIALING;
-    case ACTIVE;
-    case COMPLETED;
-    case FAILED;
-    case CANCELLED;
+    case PENDING = 'PENDING';
+    case TRIALING = 'TRIALING';
+    case ACTIVE = 'ACTIVE';
+    case COMPLETED = 'COMPLETED';
+    case FAILED = 'FAILED';
+    case CANCELLED = 'CANCELLED';
 
     public function getLabel(): ?string
     {

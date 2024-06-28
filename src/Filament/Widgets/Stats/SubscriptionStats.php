@@ -9,6 +9,6 @@ class SubscriptionStats extends BaseStats
 {
     protected static function getQuery(): Builder
     {
-        return Subscription::query();
+        return Subscription::active();
     }
 }

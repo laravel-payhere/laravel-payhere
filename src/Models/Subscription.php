@@ -51,6 +51,14 @@ class Subscription extends Model
         $query->whereNotNull('trial_ends_at')->where('trial_ends_at', '>', now());
     }
 
+    /**
+     * Filter active subscriptions.
+     */
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('status', SubscriptionStatus::ACTIVE);
+    }
+
     public function markAsCancelled(): void
     {
         $this->update(['status' => SubscriptionStatus::CANCELLED]);
