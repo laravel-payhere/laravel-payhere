@@ -35,9 +35,9 @@ return new class extends Migration
                 'HNB',
                 'FRIMI',
             ]);
-            $table->string('card_holder_name');
-            $table->string('card_no');
-            $table->string('card_expiry');
+            $table->string('card_holder_name')->nullable();
+            $table->string('card_no')->nullable();
+            $table->string('card_expiry')->nullable();
             $table->enum('recurring', [0, 1])->default(0);
             $table->enum('message_type', [
                 'AUTHORIZATION_SUCCESS',
