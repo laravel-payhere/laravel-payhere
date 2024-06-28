@@ -148,9 +148,11 @@ class PaymentResource extends Resource
                             );
                     })
                     ->columnSpan(2),
+
                 SelectFilter::make('status_code')
                     ->label('Status')
                     ->options(PaymentStatus::class)
+
             ], layout: FiltersLayout::AboveContentCollapsible)
             ->actions([
                 Action::make('refund')
