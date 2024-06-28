@@ -135,7 +135,8 @@ class PaymentResource extends Resource
                     ->hidden(fn (Payment $record) => $record->isRefunded())
                     ->requiresConfirmation()
                     ->action(fn (Payment $record) => static::refund($record)),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getPages(): array
