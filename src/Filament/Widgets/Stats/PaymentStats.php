@@ -9,6 +9,6 @@ class PaymentStats extends BaseStats
 {
     protected static function getQuery(): Builder
     {
-        return Payment::notRefunded();
+        return Payment::query();
     }
 }
