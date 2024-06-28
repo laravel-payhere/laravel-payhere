@@ -2,7 +2,9 @@
 
 namespace Dasundev\PayHere\Filament\Resources\PaymentResource;
 
+use Dasundev\PayHere\Enums\PaymentStatus;
 use Dasundev\PayHere\Enums\RefundStatus;
+use Dasundev\PayHere\Enums\SubscriptionStatus;
 use Dasundev\PayHere\Models\Payment;
 use Dasundev\PayHere\Services\Contracts\PayHereService;
 use Filament\Forms\Components\DatePicker;
@@ -15,6 +17,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
@@ -131,7 +134,7 @@ class PaymentResource extends Resource
                                 ->label(__('Created from')),
                             DatePicker::make('to')
                                 ->label(__('Created until')),
-                        ]),
+                        ])
                     ])
                     ->query(function (Builder $query, array $data): Builder {
                         return $query
@@ -145,6 +148,9 @@ class PaymentResource extends Resource
                             );
                     })
                     ->columnSpan(2),
+                SelectFilter::make('status_code')
+                    ->label('Status')
+                    ->options(PaymentStatus::class)
             ], layout: FiltersLayout::AboveContentCollapsible)
             ->actions([
                 Action::make('refund')
