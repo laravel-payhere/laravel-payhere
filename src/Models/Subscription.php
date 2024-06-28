@@ -71,6 +71,8 @@ class Subscription extends Model
 
     public function isCancellable(): bool
     {
-        return ! is_null($this->payhere_subscription_id) && ! $this->isCancelled();
+        return ! is_null($this->payhere_subscription_id)
+            && $this->status === SubscriptionStatus::TRIALING
+            || $this->status === SubscriptionStatus::ACTIVE;
     }
 }
