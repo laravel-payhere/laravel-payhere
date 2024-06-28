@@ -1,9 +1,7 @@
 <?php
 
-namespace Dasundev\PayHere\Concerns;
+namespace Dasundev\PayHere\Models\Concerns;
 
-use Dasundev\PayHere\Http\Integrations\PayHere\PayHereConnector;
-use Dasundev\PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
 use Dasundev\PayHere\Services\Contracts\PayHereService;
 
 /**
