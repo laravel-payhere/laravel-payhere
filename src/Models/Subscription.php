@@ -50,4 +50,9 @@ class Subscription extends Model
     {
         $query->whereNotNull('trial_ends_at')->where('trial_ends_at', '>', now());
     }
+
+    public function markAsCancelled(): void
+    {
+        $this->update(['status' => SubscriptionStatus::CANCELLED]);
+    }
 }

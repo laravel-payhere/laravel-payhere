@@ -12,6 +12,7 @@ enum SubscriptionStatus implements HasColor, HasLabel
     case ACTIVE;
     case COMPLETED;
     case FAILED;
+    case CANCELLED;
 
     public function getLabel(): ?string
     {
@@ -21,6 +22,7 @@ enum SubscriptionStatus implements HasColor, HasLabel
             self::ACTIVE => 'Active',
             self::COMPLETED => 'Completed',
             self::FAILED => 'Failed',
+            self::CANCELLED => 'Cancelled',
         };
     }
 
@@ -28,7 +30,7 @@ enum SubscriptionStatus implements HasColor, HasLabel
     {
         return match ($this) {
             self::PENDING => 'warning',
-            self::TRIALING => 'gray',
+            self::TRIALING, self::CANCELLED => 'gray',
             self::ACTIVE => 'success',
             self::COMPLETED => 'info',
             self::FAILED => 'danger',

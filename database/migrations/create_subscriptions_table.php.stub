@@ -21,6 +21,7 @@ return new class extends Migration
                 SubscriptionStatus::ACTIVE->name,
                 SubscriptionStatus::FAILED->name,
                 SubscriptionStatus::COMPLETED->name,
+                SubscriptionStatus::CANCELLED->name,
             ])->default(SubscriptionStatus::PENDING->name)->nullable();
             $table->timestamps();
         });

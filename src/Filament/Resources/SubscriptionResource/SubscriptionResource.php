@@ -2,10 +2,15 @@
 
 namespace Dasundev\PayHere\Filament\Resources\SubscriptionResource;
 
+use Dasundev\PayHere\Enums\RefundStatus;
+use Dasundev\PayHere\Models\Payment;
 use Dasundev\PayHere\Models\Subscription;
+use Dasundev\PayHere\Services\Contracts\PayHereService;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Split;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
@@ -70,6 +75,13 @@ class SubscriptionResource extends Resource
                     })
                     ->columnSpan(2),
             ], layout: FiltersLayout::AboveContentCollapsible)
+            ->actions([
+                Action::make('Cancel')
+                    ->button()
+                    ->requiresConfirmation()
+                    ->modalDescription('Are you sure you want to cancel this subscription?')
+                    ->action(fn (Subscription $record) => static::cancelSubscription($record))
+            ])
             ->defaultSort('created_at', 'desc');
     }
 
@@ -78,5 +90,24 @@ class SubscriptionResource extends Resource
         return [
             'index' => Pages\ListSubscriptions::route('/'),
         ];
+    }
+
+    private static function cancelSubscription(Subscription $subscription): void
+    {
+        $service = app(PayHereService::class);
+        $payload = $service->cancelSubscription($subscription);
+
+        $status = $payload['status'];
+        $message = $payload['msg'];
+
+        $notification = Notification::make()->title($message);
+
+        if ($status === 1) {
+            $notification->success()->send();
+
+            return;
+        }
+
+        $notification->danger()->send();
     }
 }
