@@ -64,10 +64,6 @@ class PaymentResource extends Resource
                     ->searchable()
                     ->badge(),
 
-                TextColumn::make('status_message')
-                    ->label(__('Payment gateway message'))
-                    ->searchable(),
-
                 TextColumn::make('method')
                     ->label(__('Payment method'))
                     ->searchable(),
@@ -79,6 +75,10 @@ class PaymentResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('card_expiry')
+                    ->searchable(),
+
+                TextColumn::make('status_message')
+                    ->label(__('Payment gateway message'))
                     ->searchable(),
 
                 IconColumn::make('recurring')
