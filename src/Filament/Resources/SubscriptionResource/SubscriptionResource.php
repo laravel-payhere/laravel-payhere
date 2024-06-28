@@ -68,7 +68,8 @@ class SubscriptionResource extends Resource
                             );
                     })
                     ->columnSpan(2),
-            ], layout: FiltersLayout::AboveContentCollapsible);
+            ], layout: FiltersLayout::AboveContentCollapsible)
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getPages(): array
