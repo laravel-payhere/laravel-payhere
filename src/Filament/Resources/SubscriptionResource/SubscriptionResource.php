@@ -25,6 +25,7 @@ class SubscriptionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('payhere_subscription_id')
+                    ->label('Subscription id')
                     ->searchable(),
 
                 TextColumn::make('user.name')
