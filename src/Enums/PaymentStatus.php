@@ -2,7 +2,10 @@
 
 namespace Dasundev\PayHere\Enums;
 
-enum PaymentStatus: int
+use Filament\Support\Contracts\HasColor;
+use Filament\Support\Contracts\HasLabel;
+
+enum PaymentStatus: int implements HasLabel, HasColor
 {
     case AUTHORIZATION_SUCCESS = 3;
     case SUCCESS = 2;
@@ -10,4 +13,27 @@ enum PaymentStatus: int
     case CANCELLED = -1;
     case FAILED = -2;
     case CHARGEBACK = -3;
+
+    public function getLabel(): ?string
+    {
+        return match ($this) {
+            self::AUTHORIZATION_SUCCESS => 'Authorization Success',
+            self::SUCCESS => 'Success',
+            self::PENDING => 'Pending',
+            self::CANCELLED => 'Cancelled',
+            self::FAILED => 'Failed',
+            self::CHARGEBACK => 'Chargeback'
+        };
+    }
+
+    public function getColor(): string|array|null
+    {
+        return match ($this) {
+            self::AUTHORIZATION_SUCCESS, self::SUCCESS => 'success',
+            self::PENDING => 'warning',
+            self::CANCELLED => 'gray',
+            self::FAILED => 'danger',
+            self::CHARGEBACK => 'info'
+        };
+    }
 }
