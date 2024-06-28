@@ -112,6 +112,10 @@ class PaymentResource extends Resource
                     ->label(__('Successful recurring installments'))
                     ->searchable(),
 
+                TextColumn::make('refund_reason')
+                    ->label(__('Refund reason'))
+                    ->searchable(),
+
                 TextColumn::make('created_at')
                     ->date()
                     ->searchable(),
