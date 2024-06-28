@@ -157,6 +157,7 @@ class PaymentResource extends Resource
             ->actions([
                 Action::make('refund')
                     ->button()
+                    ->color('danger')
                     ->hidden(fn (Payment $record) => ! $record->isRefundable())
                     ->requiresConfirmation()
                     ->modalDescription(__('Are you sure you want to refund this payment?'))
