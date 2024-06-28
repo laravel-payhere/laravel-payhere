@@ -157,8 +157,8 @@ class PaymentResource extends Resource
 
         if ($status === RefundStatus::REFUND_SUCCESS->value) {
             $notification->success()->send();
+        } else {
+            $notification->danger()->send();
         }
-
-        $notification->danger()->send();
     }
 }
