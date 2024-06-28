@@ -49,14 +49,14 @@ class PaymentResource extends Resource
                     ->searchable()
                     ->money(fn (Payment $payment) => $payment->payhere_currency),
 
+                IconColumn::make('recurring')
+                    ->label(__('Recurring'))
+                    ->boolean()
+                    ->searchable(),
+
                 TextColumn::make('status_code')
                     ->label(__('Status'))
                     ->badge()
-                    ->searchable(),
-
-                IconColumn::make('recurring')
-                    ->label(__('Recurring payment'))
-                    ->boolean()
                     ->searchable(),
 
                 TextColumn::make('method')
