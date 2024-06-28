@@ -50,6 +50,7 @@ class PaymentResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('payhere_currency')
+                    ->label('Currency')
                     ->searchable()
                     ->badge(),
 
