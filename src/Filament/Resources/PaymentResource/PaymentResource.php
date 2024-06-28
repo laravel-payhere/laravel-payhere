@@ -134,8 +134,7 @@ class PaymentResource extends Resource
                 Action::make('refund')
                     ->hidden(fn (Payment $record) => $record->isRefunded())
                     ->requiresConfirmation()
-                    ->action(fn (Payment $record) => static::refund($record))
-                    ->sendSuccessNotification(),
+                    ->action(fn (Payment $record) => static::refund($record)),
             ]);
     }
 
@@ -156,9 +155,10 @@ class PaymentResource extends Resource
 
         $notification = Notification::make()->title($message);
 
-        match ($status) {
-            RefundStatus::REFUND_SUCCESS->value => $notification->success()->send(),
-            default => $notification->danger()->send(),
-        };
+        if ($status === RefundStatus::REFUND_SUCCESS->value) {
+            $notification->success()->send();
+        }
+
+        $notification->danger()->send();
     }
 }
