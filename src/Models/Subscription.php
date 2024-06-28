@@ -63,4 +63,9 @@ class Subscription extends Model
     {
         $this->update(['status' => SubscriptionStatus::CANCELLED]);
     }
+
+    public function isCancelled(): bool
+    {
+        return $this->status === SubscriptionStatus::CANCELLED;
+    }
 }

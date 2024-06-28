@@ -78,6 +78,7 @@ class SubscriptionResource extends Resource
             ->actions([
                 Action::make('Cancel')
                     ->button()
+                    ->hidden(fn (Subscription $record) => $record->isCancelled())
                     ->requiresConfirmation()
                     ->modalDescription('Are you sure you want to cancel this subscription?')
                     ->action(fn (Subscription $record) => static::cancelSubscription($record))
