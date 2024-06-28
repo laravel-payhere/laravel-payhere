@@ -10,7 +10,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('subscriptions', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id');
             $table->foreignId('user_id')->nullable();
             $table->foreignId('order_id');
             $table->timestamp('trial_ends_at')->nullable();
