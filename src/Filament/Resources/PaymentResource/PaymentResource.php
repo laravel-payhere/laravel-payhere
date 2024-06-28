@@ -7,6 +7,7 @@ use Dasundev\PayHere\Models\Payment;
 use Dasundev\PayHere\Services\Contracts\PayHereService;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Split;
+use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
@@ -138,7 +139,10 @@ class PaymentResource extends Resource
                 Action::make('refund')
                     ->hidden(fn (Payment $record) => $record->isRefunded())
                     ->requiresConfirmation()
-                    ->action(fn (Payment $record) => static::refund($record)),
+                    ->form([
+                        Textarea::make('reason')
+                    ])
+                    ->action(fn (Payment $record, array $data) => static::refund($record, $data['reason'])),
             ])
             ->defaultSort('created_at', 'desc');
     }
@@ -150,10 +154,10 @@ class PaymentResource extends Resource
         ];
     }
 
-    public static function refund(Payment $payment): void
+    public static function refund(Payment $payment, string $reason): void
     {
         $service = app(PayHereService::class);
-        $payload = $service->refund($payment);
+        $payload = $service->refund($payment, $reason);
 
         $status = $payload['status'];
         $message = $payload['msg'];
