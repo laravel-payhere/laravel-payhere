@@ -46,9 +46,9 @@ class Payment extends Model
         return $this->update(['refunded' => true]);
     }
 
-    public function isRefunded(): bool
+    public function isRefundable(): bool
     {
-        return $this->refunded === true;
+        return ! is_null($this->payment_id) && $this->refunded === false;
     }
 
     public function scopeRefunded(Builder $query): void
