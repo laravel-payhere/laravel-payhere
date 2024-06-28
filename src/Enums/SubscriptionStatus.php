@@ -27,7 +27,7 @@ enum SubscriptionStatus implements HasColor, HasLabel
     public function getColor(): string|array|null
     {
         return match ($this) {
-            self::PENDING => 'pending',
+            self::PENDING => 'warning',
             self::TRIALING => 'gray',
             self::ACTIVE => 'success',
             self::COMPLETED => 'info',
