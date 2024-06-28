@@ -59,6 +59,11 @@ class PaymentResource extends Resource
                     ->label(__('Refunded'))
                     ->boolean(),
 
+                IconColumn::make('recurring')
+                    ->label(__('Recurring payment'))
+                    ->boolean()
+                    ->searchable(),
+
                 TextColumn::make('method')
                     ->label(__('Payment method'))
                     ->searchable(),
@@ -74,11 +79,6 @@ class PaymentResource extends Resource
 
                 TextColumn::make('status_message')
                     ->label(__('Payment gateway message'))
-                    ->searchable(),
-
-                IconColumn::make('recurring')
-                    ->label(__('Recurring payment'))
-                    ->boolean()
                     ->searchable(),
 
                 TextColumn::make('message_type')
