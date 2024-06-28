@@ -12,7 +12,7 @@ use Dasundev\PayHere\Services\Contracts\PayHereService;
 class HasRefund
 {
     /**
-     * Initiate a refund for the payment.
+     * Initiate a refund for the order.
      */
     public function refund(?string $reason = null): bool
     {
