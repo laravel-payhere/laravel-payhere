@@ -44,6 +44,11 @@ class PaymentResource extends Resource
                     ->searchable()
                     ->money(),
 
+                TextColumn::make('status_code')
+                    ->label('Status')
+                    ->badge()
+                    ->searchable(),
+
                 TextColumn::make('payhere_currency')
                     ->searchable()
                     ->badge(),
@@ -72,9 +77,6 @@ class PaymentResource extends Resource
 
                 TextColumn::make('message_type')
                     ->label('Status message')
-                    ->searchable(),
-
-                TextColumn::make('status_code')
                     ->searchable(),
 
                 TextColumn::make('subscription_id')
