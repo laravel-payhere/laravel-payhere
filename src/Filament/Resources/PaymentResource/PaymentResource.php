@@ -34,90 +34,112 @@ class PaymentResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('payment_id')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('user.name')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('payhere_amount')
                     ->label('Amount')
+                    ->sortable()
                     ->searchable()
                     ->money(fn (Payment $payment) => $payment->payhere_currency),
 
                 TextColumn::make('captured_amount')
+                    ->sortable()
                     ->searchable()
                     ->money(fn (Payment $payment) => $payment->payhere_currency),
 
                 IconColumn::make('recurring')
+                    ->sortable()
                     ->boolean()
                     ->searchable(),
 
                 TextColumn::make('status_code')
                     ->label('Status')
+                    ->sortable()
                     ->badge()
                     ->searchable(),
 
                 TextColumn::make('method')
                     ->label('Payment method')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('card_holder_name')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('card_no')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('card_expiry')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('status_message')
                     ->label('Payment gateway message')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
 
                 TextColumn::make('message_type')
                     ->label('Status message')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
 
                 TextColumn::make('subscription_id')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
 
                 TextColumn::make('item_recurrence')
                     ->label('How often it charges')
                     ->formatStateUsing(fn ($record) => Str::ucwords(strtolower($record->item_recurrence)))
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
 
                 TextColumn::make('item_duration')
                     ->label('How long it charges')
                     ->formatStateUsing(fn ($record) => Str::ucwords(strtolower($record->item_duration)))
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('item_rec_status')
                     ->label('Recurring subscription status')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('item_rec_date_next')
                     ->label('Next recurring installment')
                     ->date()
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('item_rec_install_paid')
                     ->label('Successful recurring installments')
+                    ->sortable()
                     ->searchable(),
 
                 IconColumn::make('refunded')
-                    ->boolean(),
+                    ->boolean()
+                    ->sortable(),
 
                 TextColumn::make('refund_reason')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
 
                 TextColumn::make('payhere_currency')
                     ->label('Currency')
                     ->searchable()
-                    ->badge(),
+                    ->badge()
+                    ->sortable(),
 
                 TextColumn::make('created_at')
                     ->date()
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 Filter::make('created_at')
@@ -159,7 +181,6 @@ class PaymentResource extends Resource
                     ])
                     ->action(fn (Payment $record, array $data) => static::refund($record, $data['reason'])),
             ])
-            ->defaultGroup('subscription_id')
             ->defaultSort('created_at', 'desc');
     }
 

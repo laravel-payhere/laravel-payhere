@@ -31,24 +31,30 @@ class SubscriptionResource extends Resource
             ->columns([
                 TextColumn::make('payhere_subscription_id')
                     ->label('Subscription id')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('user.name')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('status')
+                    ->sortable()
                     ->searchable()
                     ->badge(),
 
                 TextColumn::make('trial_ends_at')
+                    ->sortable()
                     ->searchable()
                     ->dateTime(),
 
                 TextColumn::make('created_at')
+                    ->sortable()
                     ->searchable()
                     ->date(),
 
                 TextColumn::make('ends_at')
+                    ->sortable()
                     ->searchable()
                     ->date(),
             ])
