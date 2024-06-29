@@ -2,6 +2,7 @@
 
 namespace Dasundev\PayHere\Filament\Resources\PaymentResource;
 
+use Dasundev\PayHere\Enums\PaymentMethod;
 use Dasundev\PayHere\Enums\PaymentStatus;
 use Dasundev\PayHere\Enums\RefundStatus;
 use Dasundev\PayHere\Models\Payment;
@@ -66,7 +67,14 @@ class PaymentResource extends Resource
                 TextColumn::make('method')
                     ->label('Payment method')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->alignCenter()
+                    ->formatStateUsing(fn (Payment $record) => match ($record->method) {
+                        PaymentMethod::VISA => view('payhere::icons.visa'),
+                        PaymentMethod::MASTER => view('payhere::icons.master'),
+                        PaymentMethod::AMEX => view('payhere::icons.amex'),
+                        default => $record->method
+                    }),
 
                 TextColumn::make('card_holder_name')
                     ->sortable()
