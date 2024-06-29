@@ -24,6 +24,10 @@ class WebhookController extends Controller
      */
     public function handleWebhook(WebhookRequest $request)
     {
+        if (! $request->hasValidSignature()) {
+            return;
+        }
+
         $orderId = $request->order_id;
 
         $verifiedPayment = PayHere::verifyPaymentNotification(
