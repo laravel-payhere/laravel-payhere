@@ -2,6 +2,7 @@
 
 namespace Dasundev\PayHere\Http\Controllers;
 
+use Dasundev\PayHere\Enums\SubscriptionStatus;
 use Dasundev\PayHere\Events\PaymentVerified;
 use Dasundev\PayHere\Events\SubscriptionActivated;
 use Dasundev\PayHere\Http\Requests\WebhookRequest;
@@ -9,6 +10,7 @@ use Dasundev\PayHere\Models\Payment;
 use Dasundev\PayHere\PayHere;
 use Dasundev\PayHere\Repositories\PaymentRepository;
 use Dasundev\PayHere\Repositories\SubscriptionRepository;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 
@@ -22,7 +24,7 @@ class WebhookController extends Controller
     /**
      * Handle incoming webhook notification from PayHere.
      */
-    public function handleWebhook(WebhookRequest $request)
+    public function handleWebhook(Request $request)
     {
         if (! $request->hasValidSignature()) {
             return;
@@ -67,10 +69,16 @@ class WebhookController extends Controller
 
         event(new PaymentVerified($payment));
 
-        if ($request->isRecurring()) {
+        if ($this->hasActiveSubscription($request)) {
             $subscription = $this->subscriptionRepository->activateSubscription($user, $request);
 
             event(new SubscriptionActivated($subscription));
         }
+    }
+
+    private function hasActiveSubscription($request)
+    {
+        return (int) $request->recurring === 1
+            && (int) $request->item_rec_status === SubscriptionStatus::Active->value;
     }
 }
