@@ -104,7 +104,11 @@ class WebhookController extends Controller
     {
         $subscriptionId = $request->custom_1;
 
-        $subscription = Subscription::find($subscriptionId);
+        if (! $subscription = Subscription::find($subscriptionId)) {
+            Log::warning('[PayHere] Subscription not found', ['subscriptionId' => $subscriptionId]);
+
+            return;
+        }
 
         $subscription->update([
             'user_id' => $user->id,
@@ -127,11 +131,17 @@ class WebhookController extends Controller
         }
     }
 
+    /**
+     * Check if the payment is recurring.
+     */
     private function isRecurringPayment($request)
     {
         return (int) $request->recurring === 1;
     }
 
+    /**
+     * Check if the subscription is new.
+     */
     private function isNewSubscription($request): bool
     {
         return (int) $request->item_rec_install_paid === 1;
