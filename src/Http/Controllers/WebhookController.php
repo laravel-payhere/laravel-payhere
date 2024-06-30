@@ -73,16 +73,6 @@ class WebhookController extends Controller
         return (int) $request->recurring === 1;
     }
 
-    private function isSubscriptionCancelled($request)
-    {
-        return $request->item_rec_status === SubscriptionStatus::Active->value;
-    }
-
-    private function isSubscriptionCompleted($request)
-    {
-        return $request->item_rec_status === SubscriptionStatus::Completed->value;
-    }
-
     private function isNewSubscription($request): bool
     {
         return (int) $request->item_rec_install_paid === 1;
@@ -134,18 +124,16 @@ class WebhookController extends Controller
 
         $subscription->refresh();
 
+        match ($request->item_rec_status) {
+            SubscriptionStatus::Active->value => $subscription->markAsActive(),
+            SubscriptionStatus::Cancelled->value => $subscription->markAsCancelled(),
+            SubscriptionStatus::Completed->value => $subscription->markAsCompleted(),
+        };
+
         if ($this->isNewSubscription($request)) {
             event(new SubscriptionActivated($subscription));
         } else {
             event(new SubscriptionRenewed($subscription));
-        }
-
-        if ($this->isSubscriptionCancelled($request)) {
-            $subscription->markAsCancelled();
-        }
-
-        if ($this->isSubscriptionCompleted($request)) {
-            $subscription->markAsCompleted();
         }
     }
 }
