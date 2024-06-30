@@ -5,23 +5,15 @@ namespace Dasundev\PayHere\Http\Controllers;
 use Dasundev\PayHere\Enums\SubscriptionStatus;
 use Dasundev\PayHere\Events\PaymentVerified;
 use Dasundev\PayHere\Events\SubscriptionActivated;
-use Dasundev\PayHere\Http\Requests\WebhookRequest;
 use Dasundev\PayHere\Models\Payment;
+use Dasundev\PayHere\Models\Subscription;
 use Dasundev\PayHere\PayHere;
-use Dasundev\PayHere\Repositories\PaymentRepository;
-use Dasundev\PayHere\Repositories\SubscriptionRepository;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 
 class WebhookController extends Controller
 {
-    public function __construct(
-        private readonly PaymentRepository $paymentRepository,
-        private readonly SubscriptionRepository $subscriptionRepository,
-    ) {}
-
     /**
      * Handle incoming webhook notification from PayHere.
      */
@@ -71,7 +63,7 @@ class WebhookController extends Controller
         event(new PaymentVerified($payment));
 
         if ($this->hasActiveSubscription($request)) {
-            $subscription = $this->subscriptionRepository->activateSubscription($user, $request);
+            $subscription = $this->activateSubscription($user, $request);
 
             event(new SubscriptionActivated($subscription));
         }
@@ -113,5 +105,23 @@ class WebhookController extends Controller
             'custom_1' => $request->custom_1,
             'custom_2' => $request->custom_2,
         ]);
+    }
+
+    public function activateSubscription($user, Request $request): Subscription
+    {
+        $subscriptionId = $request->custom_1;
+
+        $subscription = Subscription::find($subscriptionId);
+
+        $subscription->update([
+            'user_id' => $user->id,
+            'payhere_subscription_id' => $request->subscription_id,
+            'ends_at' => $request->item_duration,
+            'status' => SubscriptionStatus::Active,
+        ]);
+
+        $subscription->refresh();
+
+        return $subscription;
     }
 }
