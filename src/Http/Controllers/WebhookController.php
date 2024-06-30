@@ -5,6 +5,7 @@ namespace Dasundev\PayHere\Http\Controllers;
 use Dasundev\PayHere\Enums\SubscriptionStatus;
 use Dasundev\PayHere\Events\PaymentVerified;
 use Dasundev\PayHere\Events\SubscriptionActivated;
+use Dasundev\PayHere\Events\SubscriptionRenewed;
 use Dasundev\PayHere\Models\Payment;
 use Dasundev\PayHere\Models\Subscription;
 use Dasundev\PayHere\PayHere;
@@ -63,7 +64,7 @@ class WebhookController extends Controller
         event(new PaymentVerified($payment));
 
         if ($this->hasActiveSubscription($request)) {
-            $this->activateSubscription($user, $request);
+            $this->updateSubscription($user, $request);
         }
     }
 
@@ -71,6 +72,11 @@ class WebhookController extends Controller
     {
         return (int) $request->recurring === 1
             && (int) $request->item_rec_status === SubscriptionStatus::Active->value;
+    }
+
+    private function isNewSubscription($request): bool
+    {
+        return (int) $request->item_rec_install_paid === 1;
     }
 
     private function createPayment($user, Request $request): Payment
@@ -105,7 +111,7 @@ class WebhookController extends Controller
         ]);
     }
 
-    public function activateSubscription($user, Request $request): void
+    public function updateSubscription($user, Request $request): void
     {
         $subscriptionId = $request->custom_1;
 
@@ -120,6 +126,10 @@ class WebhookController extends Controller
 
         $subscription->refresh();
 
-        event(new SubscriptionActivated($subscription));
+        if ($this->isNewSubscription($request)) {
+            event(new SubscriptionActivated($subscription));
+        } else {
+            event(new SubscriptionRenewed($subscription));
+        }
     }
 }
