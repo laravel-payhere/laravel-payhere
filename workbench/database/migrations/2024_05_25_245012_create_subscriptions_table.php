@@ -15,13 +15,7 @@ return new class extends Migration
             $table->foreignId('order_id');
             $table->timestamp('trial_ends_at')->nullable();
             $table->timestamp('ends_at')->nullable();
-            $table->enum('status', [
-                'Pending',
-                'Active',
-                'Failed',
-                'Completed',
-                'Cancelled',
-            ])->default('Pending')->nullable();
+            $table->enum('status', [0, 1, -1, -2, -3,])->default(-3)->nullable();
             $table->timestamps();
         });
     }
