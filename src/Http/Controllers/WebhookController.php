@@ -68,16 +68,6 @@ class WebhookController extends Controller
         }
     }
 
-    private function isRecurringPayment($request)
-    {
-        return (int) $request->recurring === 1;
-    }
-
-    private function isNewSubscription($request): bool
-    {
-        return (int) $request->item_rec_install_paid === 1;
-    }
-
     private function createPayment($user, Request $request): Payment
     {
         return Payment::create([
@@ -135,5 +125,15 @@ class WebhookController extends Controller
         } else {
             event(new SubscriptionRenewed($subscription));
         }
+    }
+
+    private function isRecurringPayment($request)
+    {
+        return (int) $request->recurring === 1;
+    }
+
+    private function isNewSubscription($request): bool
+    {
+        return (int) $request->item_rec_install_paid === 1;
     }
 }
