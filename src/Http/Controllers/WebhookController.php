@@ -118,7 +118,7 @@ class WebhookController extends Controller
 
         $subscription->refresh();
 
-        match ($request->item_rec_status) {
+        match ((int) $request->item_rec_status) {
             SubscriptionStatus::Active->value => $subscription->markAsActive(),
             SubscriptionStatus::Cancelled->value => $subscription->markAsCancelled(),
             SubscriptionStatus::Completed->value => $subscription->markAsCompleted(),
