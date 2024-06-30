@@ -2,6 +2,9 @@
 
 namespace Dasundev\PayHere\Services;
 
+use Dasundev\PayHere\Events\SubscriptionActivated;
+use Dasundev\PayHere\Events\SubscriptionCancelled;
+use Dasundev\PayHere\Events\SubscriptionRetrySucceeded;
 use Dasundev\PayHere\Http\Integrations\PayHere\PayHereConnector;
 use Dasundev\PayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
 use Dasundev\PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
@@ -52,6 +55,8 @@ class PayHereApiService implements PayHereService
 
         if ((int) $status === 1) {
             $subscription->markAsCancelled();
+
+            SubscriptionCancelled::dispatch($subscription);
         }
 
         return $payload;
@@ -73,6 +78,8 @@ class PayHereApiService implements PayHereService
 
         if ((int) $status === 1) {
             $subscription->markAsActive();
+
+            SubscriptionRetrySucceeded::dispatch($subscription);
         }
 
         return $payload;
