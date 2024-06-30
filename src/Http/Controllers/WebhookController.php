@@ -50,7 +50,7 @@ class WebhookController extends Controller
 
         // Abort if order not found.
         if (! $order = PayHere::$orderModel::find($orderId)) {
-            Log::warning('[PayHere] Order not found', ['orderId' => $orderId]);
+            Log::warning('[PayHere] Order not found', ['order_id' => $orderId]);
 
             return;
         }
@@ -105,7 +105,7 @@ class WebhookController extends Controller
         $subscriptionId = $request->custom_1;
 
         if (! $subscription = Subscription::find($subscriptionId)) {
-            Log::warning('[PayHere] Subscription not found', ['subscriptionId' => $subscriptionId]);
+            Log::warning('[PayHere] Subscription not found', ['subscription_id' => $subscriptionId]);
 
             return;
         }
