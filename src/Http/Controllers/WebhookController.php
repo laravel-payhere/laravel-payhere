@@ -110,10 +110,12 @@ class WebhookController extends Controller
             return;
         }
 
+        $daysUntilNextRecurrence = now()->diffInDays($request->item_rec_date_next);
+
         $subscription->update([
             'user_id' => $user->id,
             'payhere_subscription_id' => $request->subscription_id,
-            'ends_at' => $request->item_duration,
+            'ends_at' => now()->addDays($daysUntilNextRecurrence),
         ]);
 
         $subscription->refresh();
