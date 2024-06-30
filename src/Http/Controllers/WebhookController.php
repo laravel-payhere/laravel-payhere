@@ -63,9 +63,7 @@ class WebhookController extends Controller
         event(new PaymentVerified($payment));
 
         if ($this->hasActiveSubscription($request)) {
-            $subscription = $this->activateSubscription($user, $request);
-
-            event(new SubscriptionActivated($subscription));
+            $this->activateSubscription($user, $request);
         }
     }
 
@@ -107,7 +105,7 @@ class WebhookController extends Controller
         ]);
     }
 
-    public function activateSubscription($user, Request $request): Subscription
+    public function activateSubscription($user, Request $request): void
     {
         $subscriptionId = $request->custom_1;
 
@@ -122,6 +120,6 @@ class WebhookController extends Controller
 
         $subscription->refresh();
 
-        return $subscription;
+        event(new SubscriptionActivated($subscription));
     }
 }
