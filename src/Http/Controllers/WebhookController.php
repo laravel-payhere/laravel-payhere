@@ -63,15 +63,24 @@ class WebhookController extends Controller
 
         event(new PaymentVerified($payment));
 
-        if ($this->hasActiveSubscription($request)) {
+        if ($this->isRecurringPayment($request)) {
             $this->updateSubscription($user, $request);
         }
     }
 
-    private function hasActiveSubscription($request)
+    private function isRecurringPayment($request)
     {
-        return (int) $request->recurring === 1
-            && (int) $request->item_rec_status === SubscriptionStatus::Active->value;
+        return (int) $request->recurring === 1;
+    }
+
+    private function isSubscriptionCancelled($request)
+    {
+        return $request->item_rec_status === SubscriptionStatus::Active->value;
+    }
+
+    private function isSubscriptionCompleted($request)
+    {
+        return $request->item_rec_status === SubscriptionStatus::Completed->value;
     }
 
     private function isNewSubscription($request): bool
@@ -121,7 +130,6 @@ class WebhookController extends Controller
             'user_id' => $user->id,
             'payhere_subscription_id' => $request->subscription_id,
             'ends_at' => $request->item_duration,
-            'status' => SubscriptionStatus::Active,
         ]);
 
         $subscription->refresh();
@@ -130,6 +138,14 @@ class WebhookController extends Controller
             event(new SubscriptionActivated($subscription));
         } else {
             event(new SubscriptionRenewed($subscription));
+        }
+
+        if ($this->isSubscriptionCancelled($request)) {
+            $subscription->markAsCancelled();
+        }
+
+        if ($this->isSubscriptionCompleted($request)) {
+            $subscription->markAsCompleted();
         }
     }
 }

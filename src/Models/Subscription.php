@@ -70,6 +70,11 @@ class Subscription extends Model
         $this->update(['status' => SubscriptionStatus::Active]);
     }
 
+    public function markAsCompleted(): void
+    {
+        $this->update(['status' => SubscriptionStatus::Completed]);
+    }
+
     public function isFailed(): bool
     {
         return $this->status === SubscriptionStatus::Failed;
