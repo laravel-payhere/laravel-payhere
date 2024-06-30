@@ -93,5 +93,4 @@ class PayHerePanelProvider extends PanelProvider
             abort(404);
         }
     }
-
 }
