@@ -137,12 +137,6 @@ class PaymentResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('payhere_currency')
-                    ->label('Currency')
-                    ->searchable()
-                    ->badge()
-                    ->sortable(),
-
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->searchable()

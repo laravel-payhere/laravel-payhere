@@ -136,7 +136,7 @@ trait CheckoutFormData
             'cancel_url' => config('payhere.cancel_url') ?? url('/'),
             'order_id' => $this->order->id,
             'items' => $this->item ?? "Order #{$this->order->id}",
-            'currency' => $this->currency ?? config('payhere.currency'),
+            'currency' => $this->getCurrency(),
             'amount' => $this->order->total,
             'hash' => $this->generateHash(),
         ];
@@ -254,5 +254,28 @@ trait CheckoutFormData
         $this->currency = $currency;
 
         return $this;
+    }
+
+    /**
+     * Generate a hash string.
+     *
+     * The hash value is required starting from 2023-01-16.
+     */
+    private function generateHash(): string
+    {
+        return strtoupper(
+            md5(
+                config('payhere.merchant_id').
+                $this->order->id.
+                number_format($this->order->total, 2, '.', '').
+                $this->getCurrency().
+                strtoupper(md5(config('payhere.merchant_secret')))
+            )
+        );
+    }
+
+    private function getCurrency()
+    {
+        return $this->currency ?? config('payhere.currency');
     }
 }

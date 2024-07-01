@@ -2,13 +2,11 @@
 
 namespace Dasundev\PayHere;
 
-use Dasundev\PayHere\Concerns\GenerateHash;
 use Dasundev\PayHere\Concerns\HandleCheckout;
 use Dasundev\PayHere\Enums\PaymentStatus;
 
 class PayHere
 {
-    use GenerateHash;
     use HandleCheckout;
 
     /**
