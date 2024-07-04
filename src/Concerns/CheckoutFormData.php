@@ -108,7 +108,7 @@ trait CheckoutFormData
     /**
      * Get item details for the form.
      */
-    private function items(): array
+    private function items(): string|array
     {
         $relationship = PayHere::$orderLinesRelationship;
         $orderLines = $this->order->{$relationship} ?? [];
@@ -119,6 +119,10 @@ trait CheckoutFormData
             $items["item_name_$number"] = $line->payHereOrderLineTitle();
             $items["quantity_$number"] = $line->payHereOrderLineQty();
             $items["amount_$number"] = $line->payHereOrderLineTotal();
+        }
+
+        if (empty($items)) {
+            return ['items' => $this->item ?? "Order #{$this->order->id}"];
         }
 
         return $items;
@@ -136,7 +140,6 @@ trait CheckoutFormData
             'return_url' => config('payhere.return_url') ?? URL::signedRoute('payhere.return'),
             'cancel_url' => config('payhere.cancel_url') ?? url('/'),
             'order_id' => $this->order->id,
-            'items' => $this->item ?? "Order #{$this->order->id}",
             'currency' => $this->getCurrency(),
             'amount' => $this->order->total,
             'hash' => $this->generateHash(),
