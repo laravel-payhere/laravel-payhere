@@ -62,6 +62,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('payhere_payments');
     }
 };

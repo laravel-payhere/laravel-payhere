@@ -14,6 +14,7 @@ test('to array', function () {
         'merchant_id',
         'payment_id',
         'refunded',
+        'refund_reason',
         'subscription_id',
         'payhere_amount',
         'captured_amount',

@@ -9,6 +9,7 @@ test('to array', function () {
 
     expect(array_keys($payment->toArray()))->toBe([
         'id',
+        'payhere_subscription_id',
         'user_id',
         'order_id',
         'trial_ends_at',
