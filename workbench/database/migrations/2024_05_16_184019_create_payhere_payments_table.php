@@ -10,14 +10,14 @@ return new class extends Migration
     {
         Schema::create('payhere_payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
-            $table->foreignId('order_id');
+            $table->foreignId('user_id')->index()->nullable();
+            $table->foreignId('order_id')->index();
             $table->string('merchant_id');
-            $table->string('payment_id')->unique()->nullable();
+            $table->string('payment_id')->unique()->index()->nullable();
             $table->boolean('refunded')->default(false);
             $table->text('refund_reason')->nullable();
             $table->string('authorization_token')->nullable();
-            $table->string('subscription_id')->nullable();
+            $table->string('subscription_id')->index()->nullable();
             $table->float('payhere_amount');
             $table->float('captured_amount')->nullable();
             $table->string('payhere_currency');
