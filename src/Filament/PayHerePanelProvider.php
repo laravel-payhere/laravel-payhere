@@ -89,7 +89,7 @@ class PayHerePanelProvider extends PanelProvider
      */
     private static function ensurePayHerePanelAccessEnabled(): void
     {
-        if (! config('payhere.panel_access_enabled')) {
+        if (! config('payhere.panel_access')) {
             abort(404);
         }
     }

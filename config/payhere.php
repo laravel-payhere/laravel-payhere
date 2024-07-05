@@ -120,7 +120,7 @@ return [
     |
     */
 
-    'panel_access_enabled' => env('PAYHERE_PANEL_ACCESS_ENABLED', true),
+    'panel_access' => env('PAYHERE_PANEL_ACCESS', true),
 
     /*
     |--------------------------------------------------------------------------
