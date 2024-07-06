@@ -4,6 +4,7 @@ namespace Dasundev\PayHere\Concerns;
 
 use Dasundev\PayHere\Exceptions\UnsupportedCurrencyException;
 use Dasundev\PayHere\Models\Contracts\PayHereCustomer;
+use Dasundev\PayHere\Models\Contracts\PayHereOrder;
 use Dasundev\PayHere\PayHere;
 use Illuminate\Support\Facades\URL;
 
@@ -122,7 +123,7 @@ trait CheckoutFormData
         }
 
         if (empty($items)) {
-            return ['items' => $this->item ?? "Order #{$this->order->id}"];
+            return ['items' => $this->item ?? "Order #{$this->order->getOrderId()}"];
         }
 
         return $items;
@@ -139,7 +140,7 @@ trait CheckoutFormData
             'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
             'return_url' => config('payhere.return_url') ?? URL::signedRoute('payhere.return'),
             'cancel_url' => config('payhere.cancel_url') ?? url('/'),
-            'order_id' => $this->order->id,
+            'order_id' => $this->getOrderId(),
             'currency' => $this->getCurrency(),
             'amount' => $this->order->total,
             'hash' => $this->generateHash(),
@@ -197,7 +198,7 @@ trait CheckoutFormData
 
         $subscription = $this->subscriptions()->create([
             'user_id' => $this->id,
-            'order_id' => $this->order->id,
+            'order_id' => $this->order->getOrderId(),
             'ends_at' => now()->add($duration),
             'trial_ends_at' => $this->trialEndsAt,
         ]);
@@ -270,7 +271,7 @@ trait CheckoutFormData
         return strtoupper(
             md5(
                 config('payhere.merchant_id').
-                $this->order->id.
+                $this->getOrderId().
                 number_format($this->order->total, 2, '.', '').
                 $this->getCurrency().
                 strtoupper(md5(config('payhere.merchant_secret')))
@@ -278,7 +279,7 @@ trait CheckoutFormData
         );
     }
 
-    private function getCurrency()
+    private function getCurrency(): string
     {
         $currency = $this->currency ?? config('payhere.currency');
 
@@ -287,5 +288,14 @@ trait CheckoutFormData
         }
 
         return $currency;
+    }
+
+    private function getOrderId(): string
+    {
+        if ($this instanceof PayHereOrder) {
+            return $this->order->payhereOrderId();
+        }
+
+        return $this->order->id;
     }
 }
