@@ -142,7 +142,7 @@ trait CheckoutFormData
             'cancel_url' => config('payhere.cancel_url') ?? url('/'),
             'order_id' => $this->getOrderId(),
             'currency' => $this->getCurrency(),
-            'amount' => $this->order->total,
+            'amount' => $this->order->payHereOrderTotal(),
             'hash' => $this->generateHash(),
         ];
     }
@@ -272,7 +272,7 @@ trait CheckoutFormData
             md5(
                 config('payhere.merchant_id').
                 $this->getOrderId().
-                number_format($this->order->total, 2, '.', '').
+                number_format($this->order->payHereOrderTotal(), 2, '.', '').
                 $this->getCurrency().
                 strtoupper(md5(config('payhere.merchant_secret')))
             )
