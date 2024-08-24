@@ -1,12 +1,12 @@
 <?php
 
-namespace Dasundev\PayHere\Http\Controllers\Api;
+namespace LaravelPayHere\Http\Controllers\Api;
 
-use Dasundev\PayHere\Http\Integrations\PayHere\PayHereConnector;
-use Dasundev\PayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
-use Dasundev\PayHere\Http\Integrations\PayHere\Requests\GetSubscriptionRequest;
-use Dasundev\PayHere\Http\Integrations\PayHere\Requests\ListSubscriptionsRequest;
-use Dasundev\PayHere\Http\Integrations\PayHere\Requests\RetrySubscriptionRequest;
+use LaravelPayHere\Http\Integrations\PayHere\PayHereConnector;
+use LaravelPayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
+use LaravelPayHere\Http\Integrations\PayHere\Requests\GetSubscriptionRequest;
+use LaravelPayHere\Http\Integrations\PayHere\Requests\ListSubscriptionsRequest;
+use LaravelPayHere\Http\Integrations\PayHere\Requests\RetrySubscriptionRequest;
 use JsonException;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Dasundev\PayHere;
+namespace LaravelPayHere;
 
-use Dasundev\PayHere\Concerns\HandleCheckout;
-use Dasundev\PayHere\Concerns\ManagesPayments;
-use Dasundev\PayHere\Concerns\ManagesSubscriptions;
+use LaravelPayHere\Concerns\HandleCheckout;
+use LaravelPayHere\Concerns\ManagesPayments;
+use LaravelPayHere\Concerns\ManagesSubscriptions;
 
 trait Billable
 {

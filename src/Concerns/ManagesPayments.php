@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Concerns;
+namespace LaravelPayHere\Concerns;
 
-use Dasundev\PayHere\Models\Payment;
+use LaravelPayHere\Models\Payment;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 trait ManagesPayments

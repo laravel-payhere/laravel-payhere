@@ -1,17 +1,17 @@
 <?php
 
-namespace Dasundev\PayHere\Services;
+namespace LaravelPayHere\Services;
 
-use Dasundev\PayHere\Events\PaymentRefunded;
-use Dasundev\PayHere\Events\SubscriptionCancelled;
-use Dasundev\PayHere\Events\SubscriptionRetrySucceeded;
-use Dasundev\PayHere\Http\Integrations\PayHere\PayHereConnector;
-use Dasundev\PayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
-use Dasundev\PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
-use Dasundev\PayHere\Http\Integrations\PayHere\Requests\RetrySubscriptionRequest;
-use Dasundev\PayHere\Models\Payment;
-use Dasundev\PayHere\Models\Subscription;
-use Dasundev\PayHere\Services\Contracts\PayHereService;
+use LaravelPayHere\Events\PaymentRefunded;
+use LaravelPayHere\Events\SubscriptionCancelled;
+use LaravelPayHere\Events\SubscriptionRetrySucceeded;
+use LaravelPayHere\Http\Integrations\PayHere\PayHereConnector;
+use LaravelPayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
+use LaravelPayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
+use LaravelPayHere\Http\Integrations\PayHere\Requests\RetrySubscriptionRequest;
+use LaravelPayHere\Models\Payment;
+use LaravelPayHere\Models\Subscription;
+use LaravelPayHere\Services\Contracts\PayHereService;
 
 class PayHereApiService implements PayHereService
 {

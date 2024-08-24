@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Http\Controllers;
+namespace LaravelPayHere\Http\Controllers;
 
-use Dasundev\PayHere\PayHere;
+use LaravelPayHere\PayHere;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;

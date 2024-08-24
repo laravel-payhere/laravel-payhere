@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Filament\Resources\SubscriptionResource\Pages;
+namespace LaravelPayHere\Filament\Resources\SubscriptionResource\Pages;
 
-use Dasundev\PayHere\Filament\Resources\SubscriptionResource\SubscriptionResource;
+use LaravelPayHere\Filament\Resources\SubscriptionResource\SubscriptionResource;
 use Filament\Resources\Pages\ListRecords;
 
 class ListSubscriptions extends ListRecords

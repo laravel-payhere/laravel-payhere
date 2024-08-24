@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Tests;
+namespace LaravelPayHere\Tests;
 
-use Dasundev\PayHere\PayHereServiceProvider;
+use LaravelPayHere\PayHereServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Workbench\App\Providers\WorkbenchServiceProvider;

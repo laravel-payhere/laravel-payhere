@@ -1,6 +1,6 @@
 <?php
 
-use Dasundev\PayHere\Models\Payment;
+use LaravelPayHere\Models\Payment;
 use Workbench\App\Models\Order;
 use Workbench\App\Models\User;
 

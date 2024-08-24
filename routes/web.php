@@ -1,7 +1,7 @@
 <?php
 
-use Dasundev\PayHere\Http\Controllers\PayHereController;
-use Dasundev\PayHere\Http\Controllers\WebhookController;
+use LaravelPayHere\Http\Controllers\PayHereController;
+use LaravelPayHere\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'payhere', 'as' => 'payhere.'], function () {

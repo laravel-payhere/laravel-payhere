@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Filament\Middleware;
+namespace LaravelPayHere\Filament\Middleware;
 
-use Dasundev\PayHere\Filament\Contracts\PayHerePanelUser;
+use LaravelPayHere\Filament\Contracts\PayHerePanelUser;
 use Filament\Facades\Filament;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;

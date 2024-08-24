@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Exceptions;
+namespace LaravelPayHere\Exceptions;
 
 use Exception;
 

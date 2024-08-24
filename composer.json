@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Dasundev\\PayHere\\": "src/"
+            "LaravelPayHere\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dasundev\\PayHere\\Tests\\": "tests",
+            "LaravelPayHere\\Tests\\": "tests",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Database\\Seeders\\": "workbench/database/seeders/"
@@ -42,8 +42,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Dasundev\\PayHere\\PayHereServiceProvider",
-                "Dasundev\\PayHere\\Filament\\PayHerePanelProvider"
+                "LaravelPayHere\\PayHereServiceProvider",
+                "LaravelPayHere\\Filament\\PayHerePanelProvider"
             ]
         }
     },

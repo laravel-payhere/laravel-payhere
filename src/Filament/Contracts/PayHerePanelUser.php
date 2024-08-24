@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Filament\Contracts;
+namespace LaravelPayHere\Filament\Contracts;
 
 interface PayHerePanelUser
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Enums;
+namespace LaravelPayHere\Enums;
 
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;

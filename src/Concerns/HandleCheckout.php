@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Concerns;
+namespace LaravelPayHere\Concerns;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;

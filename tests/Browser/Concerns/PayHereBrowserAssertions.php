@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Tests\Browser\Concerns;
+namespace LaravelPayHere\Tests\Browser\Concerns;
 
 use Laravel\Dusk\Browser;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Dasundev\PayHere\Concerns;
+namespace LaravelPayHere\Concerns;
 
-use Dasundev\PayHere\Exceptions\UnsupportedCurrencyException;
-use Dasundev\PayHere\Models\Contracts\PayHereCustomer;
-use Dasundev\PayHere\Models\Contracts\PayHereOrder;
-use Dasundev\PayHere\PayHere;
+use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
+use LaravelPayHere\Models\Contracts\PayHereCustomer;
+use LaravelPayHere\Models\Contracts\PayHereOrder;
+use LaravelPayHere\PayHere;
 use Illuminate\Support\Facades\URL;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-use Dasundev\PayHere\Models\Subscription;
+use LaravelPayHere\Models\Subscription;
 use Workbench\App\Models\Order;
 use Workbench\App\Models\User;
 

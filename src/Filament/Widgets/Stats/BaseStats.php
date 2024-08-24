@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Filament\Widgets\Stats;
+namespace LaravelPayHere\Filament\Widgets\Stats;
 
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;

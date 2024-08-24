@@ -1,9 +1,9 @@
 <?php
 
-namespace Dasundev\PayHere\Services\Contracts;
+namespace LaravelPayHere\Services\Contracts;
 
-use Dasundev\PayHere\Models\Payment;
-use Dasundev\PayHere\Models\Subscription;
+use LaravelPayHere\Models\Payment;
+use LaravelPayHere\Models\Subscription;
 
 interface PayHereService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Filament\Pages;
+namespace LaravelPayHere\Filament\Pages;
 
 use Filament\Pages\Dashboard as BaseDashboard;
 

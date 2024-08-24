@@ -1,6 +1,6 @@
 <?php
 
-use Dasundev\PayHere\Models\Payment;
+use LaravelPayHere\Models\Payment;
 
 it('can search payments without an order id', function () {
     $response = $this->getJson('payhere/api/payments/search');

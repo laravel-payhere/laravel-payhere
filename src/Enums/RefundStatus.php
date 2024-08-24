@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Enums;
+namespace LaravelPayHere\Enums;
 
 enum RefundStatus: int
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Dasundev\PayHere\Tests;
+namespace LaravelPayHere\Tests;
 
-use Dasundev\PayHere\Filament\PayHerePanelProvider;
-use Dasundev\PayHere\PayHereServiceProvider;
+use LaravelPayHere\Filament\PayHerePanelProvider;
+use LaravelPayHere\PayHereServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\Dusk\TestCase;
 use Workbench\App\Models\User;

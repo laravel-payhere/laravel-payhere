@@ -1,10 +1,10 @@
 <?php
 
-namespace Dasundev\PayHere\Tests\Browser\Pages;
+namespace LaravelPayHere\Tests\Browser\Pages;
 
-use Dasundev\PayHere\Tests\Browser\Concerns\HandlesPayment;
-use Dasundev\PayHere\Tests\Browser\Concerns\HasPayHereSiteElements;
-use Dasundev\PayHere\Tests\Browser\Concerns\PayHereBrowserAssertions;
+use LaravelPayHere\Tests\Browser\Concerns\HandlesPayment;
+use LaravelPayHere\Tests\Browser\Concerns\HasPayHereSiteElements;
+use LaravelPayHere\Tests\Browser\Concerns\PayHereBrowserAssertions;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page;
 

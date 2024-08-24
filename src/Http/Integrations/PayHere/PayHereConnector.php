@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Http\Integrations\PayHere;
+namespace LaravelPayHere\Http\Integrations\PayHere;
 
 use Saloon\Helpers\OAuth2\OAuthConfig;
 use Saloon\Http\Auth\BasicAuthenticator;

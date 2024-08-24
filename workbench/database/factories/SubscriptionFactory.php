@@ -2,8 +2,8 @@
 
 namespace Workbench\Database\Factories;
 
-use Dasundev\PayHere\Enums\SubscriptionStatus;
-use Dasundev\PayHere\Models\Subscription;
+use LaravelPayHere\Enums\SubscriptionStatus;
+use LaravelPayHere\Models\Subscription;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Workbench\App\Models\Order;
 use Workbench\App\Models\User;

@@ -1,14 +1,14 @@
 <?php
 
-namespace Dasundev\PayHere\Http\Controllers;
+namespace LaravelPayHere\Http\Controllers;
 
-use Dasundev\PayHere\Enums\SubscriptionStatus;
-use Dasundev\PayHere\Events\PaymentVerified;
-use Dasundev\PayHere\Events\SubscriptionActivated;
-use Dasundev\PayHere\Events\SubscriptionRenewed;
-use Dasundev\PayHere\Models\Payment;
-use Dasundev\PayHere\Models\Subscription;
-use Dasundev\PayHere\PayHere;
+use LaravelPayHere\Enums\SubscriptionStatus;
+use LaravelPayHere\Events\PaymentVerified;
+use LaravelPayHere\Events\SubscriptionActivated;
+use LaravelPayHere\Events\SubscriptionRenewed;
+use LaravelPayHere\Models\Payment;
+use LaravelPayHere\Models\Subscription;
+use LaravelPayHere\PayHere;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;

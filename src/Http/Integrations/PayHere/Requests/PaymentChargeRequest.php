@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Http\Integrations\PayHere\Requests;
+namespace LaravelPayHere\Http\Integrations\PayHere\Requests;
 
-use Dasundev\PayHere\PayHere;
+use LaravelPayHere\PayHere;
 use Exception;
 use Illuminate\Support\Facades\URL;
 use Saloon\Contracts\Body\HasBody;

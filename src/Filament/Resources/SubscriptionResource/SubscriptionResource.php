@@ -1,10 +1,10 @@
 <?php
 
-namespace Dasundev\PayHere\Filament\Resources\SubscriptionResource;
+namespace LaravelPayHere\Filament\Resources\SubscriptionResource;
 
-use Dasundev\PayHere\Enums\SubscriptionStatus;
-use Dasundev\PayHere\Models\Subscription;
-use Dasundev\PayHere\Services\Contracts\PayHereService;
+use LaravelPayHere\Enums\SubscriptionStatus;
+use LaravelPayHere\Models\Subscription;
+use LaravelPayHere\Services\Contracts\PayHereService;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Split;
 use Filament\Notifications\Notification;

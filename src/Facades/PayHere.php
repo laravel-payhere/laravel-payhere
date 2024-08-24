@@ -1,6 +1,6 @@
 <?php
 
-namespace Dasundev\PayHere\Facades;
+namespace LaravelPayHere\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

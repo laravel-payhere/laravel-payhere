@@ -1,7 +1,7 @@
 <?php
 
-use Dasundev\PayHere\Http\Controllers\Api\PaymentController;
-use Dasundev\PayHere\Http\Controllers\Api\SubscriptionController;
+use LaravelPayHere\Http\Controllers\Api\PaymentController;
+use LaravelPayHere\Http\Controllers\Api\SubscriptionController;
 
 Route::group(['prefix' => 'payhere/api', 'as' => 'payhere.api.'], function () {
     Route::prefix('payments')->as('payment.')->group(function () {

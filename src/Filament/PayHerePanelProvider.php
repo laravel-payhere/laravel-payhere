@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Filament;
+namespace LaravelPayHere\Filament;
 
-use Dasundev\PayHere\Filament\Middleware\Authenticate;
+use LaravelPayHere\Filament\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\NavigationItem;

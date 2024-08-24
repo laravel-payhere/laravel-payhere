@@ -1,9 +1,9 @@
 <?php
 
-namespace Dasundev\PayHere\Rules;
+namespace LaravelPayHere\Rules;
 
 use Closure;
-use Dasundev\PayHere\Enums\ChargeType as ChargeTypeEnum;
+use LaravelPayHere\Enums\ChargeType as ChargeTypeEnum;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class ChargeType implements ValidationRule

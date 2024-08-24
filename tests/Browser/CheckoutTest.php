@@ -1,12 +1,12 @@
 <?php
 
-namespace Dasundev\PayHere\Tests\Browser;
+namespace LaravelPayHere\Tests\Browser;
 
-use Dasundev\PayHere\Tests\Browser\Pages\Authorize;
-use Dasundev\PayHere\Tests\Browser\Pages\Checkout;
-use Dasundev\PayHere\Tests\Browser\Pages\Preapproval;
-use Dasundev\PayHere\Tests\Browser\Pages\Recurring;
-use Dasundev\PayHere\Tests\DuskTestCase;
+use LaravelPayHere\Tests\Browser\Pages\Authorize;
+use LaravelPayHere\Tests\Browser\Pages\Checkout;
+use LaravelPayHere\Tests\Browser\Pages\Preapproval;
+use LaravelPayHere\Tests\Browser\Pages\Recurring;
+use LaravelPayHere\Tests\DuskTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Orchestra\Testbench\Attributes\WithMigration;

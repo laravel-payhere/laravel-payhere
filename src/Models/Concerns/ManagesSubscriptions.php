@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Models\Concerns;
+namespace LaravelPayHere\Models\Concerns;
 
-use Dasundev\PayHere\Services\Contracts\PayHereService;
+use LaravelPayHere\Services\Contracts\PayHereService;
 
 trait ManagesSubscriptions
 {

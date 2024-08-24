@@ -1,12 +1,12 @@
 <?php
 
-namespace Dasundev\PayHere\Filament\Resources\PaymentResource;
+namespace LaravelPayHere\Filament\Resources\PaymentResource;
 
-use Dasundev\PayHere\Enums\PaymentMethod;
-use Dasundev\PayHere\Enums\PaymentStatus;
-use Dasundev\PayHere\Enums\RefundStatus;
-use Dasundev\PayHere\Models\Payment;
-use Dasundev\PayHere\Services\Contracts\PayHereService;
+use LaravelPayHere\Enums\PaymentMethod;
+use LaravelPayHere\Enums\PaymentStatus;
+use LaravelPayHere\Enums\RefundStatus;
+use LaravelPayHere\Models\Payment;
+use LaravelPayHere\Services\Contracts\PayHereService;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Textarea;

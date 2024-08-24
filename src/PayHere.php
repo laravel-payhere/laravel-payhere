@@ -1,9 +1,9 @@
 <?php
 
-namespace Dasundev\PayHere;
+namespace LaravelPayHere;
 
-use Dasundev\PayHere\Concerns\HandleCheckout;
-use Dasundev\PayHere\Enums\PaymentStatus;
+use LaravelPayHere\Concerns\HandleCheckout;
+use LaravelPayHere\Enums\PaymentStatus;
 
 class PayHere
 {

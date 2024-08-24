@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Events;
+namespace LaravelPayHere\Events;
 
-use Dasundev\PayHere\Models\Payment;
+use LaravelPayHere\Models\Payment;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;

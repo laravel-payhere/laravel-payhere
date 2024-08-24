@@ -1,9 +1,9 @@
 <?php
 
-namespace Dasundev\PayHere;
+namespace LaravelPayHere;
 
-use Dasundev\PayHere\Services\Contracts\PayHereService;
-use Dasundev\PayHere\Services\PayHereApiService;
+use LaravelPayHere\Services\Contracts\PayHereService;
+use LaravelPayHere\Services\PayHereApiService;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;

@@ -1,6 +1,6 @@
 <?php
 
-use Dasundev\PayHere\Http\Controllers\WebhookController;
+use LaravelPayHere\Http\Controllers\WebhookController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 use Workbench\App\Http\Controllers\Authorize;

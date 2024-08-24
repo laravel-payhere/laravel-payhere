@@ -1,8 +1,8 @@
 <?php
 
-namespace Dasundev\PayHere\Filament\Widgets;
+namespace LaravelPayHere\Filament\Widgets;
 
-use Dasundev\PayHere\Models\Payment;
+use LaravelPayHere\Models\Payment;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;

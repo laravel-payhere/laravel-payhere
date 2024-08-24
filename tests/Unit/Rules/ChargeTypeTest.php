@@ -1,6 +1,6 @@
 <?php
 
-use Dasundev\PayHere\Rules\ChargeType;
+use LaravelPayHere\Rules\ChargeType;
 
 test('valid charge type', function ($chargeType) {
     $rule = new ChargeType();

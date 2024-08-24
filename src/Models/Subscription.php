@@ -1,10 +1,10 @@
 <?php
 
-namespace Dasundev\PayHere\Models;
+namespace LaravelPayHere\Models;
 
-use Dasundev\PayHere\Enums\SubscriptionStatus;
-use Dasundev\PayHere\Models\Concerns\ManagesSubscriptions;
-use Dasundev\PayHere\PayHere;
+use LaravelPayHere\Enums\SubscriptionStatus;
+use LaravelPayHere\Models\Concerns\ManagesSubscriptions;
+use LaravelPayHere\PayHere;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

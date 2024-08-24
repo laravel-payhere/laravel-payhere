@@ -1,10 +1,10 @@
 <?php
 
-namespace Dasundev\PayHere\Filament\Widgets;
+namespace LaravelPayHere\Filament\Widgets;
 
-use Dasundev\PayHere\Filament\Widgets\Stats\PaymentStats;
-use Dasundev\PayHere\Filament\Widgets\Stats\RefundStats;
-use Dasundev\PayHere\Filament\Widgets\Stats\SubscriptionStats;
+use LaravelPayHere\Filament\Widgets\Stats\PaymentStats;
+use LaravelPayHere\Filament\Widgets\Stats\RefundStats;
+use LaravelPayHere\Filament\Widgets\Stats\SubscriptionStats;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 

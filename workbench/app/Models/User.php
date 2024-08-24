@@ -2,8 +2,8 @@
 
 namespace Workbench\App\Models;
 
-use Dasundev\PayHere\Billable;
-use Dasundev\PayHere\Models\Contracts\PayHereCustomer;
+use LaravelPayHere\Billable;
+use LaravelPayHere\Models\Contracts\PayHereCustomer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

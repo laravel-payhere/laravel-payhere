@@ -1,6 +1,6 @@
 <?php
 
-use Dasundev\PayHere\Tests\TestCase;
+use LaravelPayHere\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /*
