@@ -3,7 +3,7 @@
 namespace Workbench\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Workbench\App\Models\Order;
+use LaravelPayHere\Models\Order;
 use Workbench\App\Models\User;
 
 class OrderFactory extends Factory

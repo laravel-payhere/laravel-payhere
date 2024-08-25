@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use LaravelPayHere\Enums\MessageType;
 use LaravelPayHere\Enums\PaymentMethod;
 use LaravelPayHere\Enums\PaymentStatus;
+use LaravelPayHere\Models\Order;
 use LaravelPayHere\Models\Payment;
-use Workbench\App\Models\Order;
 use Workbench\App\Models\User;
 
 class PaymentFactory extends Factory

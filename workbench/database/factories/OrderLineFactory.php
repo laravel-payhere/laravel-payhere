@@ -3,13 +3,13 @@
 namespace Workbench\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Workbench\App\Models\Order;
-use Workbench\App\Models\OrderLine;
-use Workbench\App\Models\Product;
+use LaravelPayHere\Models\Item;
+use LaravelPayHere\Models\Order;
+use LaravelPayHere\Models\OrderItem;
 
 class OrderLineFactory extends Factory
 {
-    protected $model = OrderLine::class;
+    protected $model = OrderItem::class;
 
     public function definition(): array
     {
@@ -19,8 +19,8 @@ class OrderLineFactory extends Factory
 
         return [
             'order_id' => Order::factory(),
-            'purchasable_type' => Product::class,
-            'purchasable_id' => Product::factory(),
+            'purchasable_type' => Item::class,
+            'purchasable_id' => Item::factory(),
             'unit_price' => $unitPrice,
             'unit_quantity' => $unitQty,
             'total' => $total,
