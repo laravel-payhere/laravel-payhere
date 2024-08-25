@@ -32,14 +32,14 @@ it('can handle webhook for normal checkout', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
-    $this->assertDatabaseEmpty('subscriptions');
+    $this->assertDatabaseEmpty('payhere_subscriptions');
 });
 
 it('can handle webhook for authorize checkout', function () {
     $order = Order::factory()
-        ->has(OrderLine::factory()->count(2), 'items')
+        ->has(OrderItem::factory()->count(2), 'items')
         ->create();
 
     $uri = URL::signedRoute('payhere.webhook');
@@ -62,14 +62,14 @@ it('can handle webhook for authorize checkout', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
-    $this->assertDatabaseEmpty('subscriptions');
+    $this->assertDatabaseEmpty('payhere_subscriptions');
 });
 
 it('can handle webhook for preapproval checkout', function () {
     $order = Order::factory()
-        ->has(OrderLine::factory()->count(2), 'items')
+        ->has(OrderItem::factory()->count(2), 'items')
         ->create();
 
     $uri = URL::signedRoute('payhere.webhook');
@@ -93,14 +93,14 @@ it('can handle webhook for preapproval checkout', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
-    $this->assertDatabaseEmpty('subscriptions');
+    $this->assertDatabaseEmpty('payhere_subscriptions');
 });
 
 it('can handle webhook for recurring checkout', function () {
     $order = Order::factory()
-        ->has(OrderLine::factory()->count(2), 'items')
+        ->has(OrderItem::factory()->count(2), 'items')
         ->has(Subscription::factory(), 'subscription')
         ->create();
 
@@ -132,9 +132,9 @@ it('can handle webhook for recurring checkout', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
-    $this->assertDatabaseHas('subscriptions', [
+    $this->assertDatabaseHas('payhere_subscriptions', [
         'id' => $order->subscription->id,
         'status' => SubscriptionStatus::Active->value,
     ]);
@@ -142,7 +142,7 @@ it('can handle webhook for recurring checkout', function () {
 
 it('can handle webhook for a payment charge', function () {
     $order = Order::factory()
-        ->has(OrderLine::factory()->count(2), 'items')
+        ->has(OrderItem::factory()->count(2), 'items')
         ->has(Subscription::factory(), 'subscription')
         ->create();
 
@@ -167,6 +167,6 @@ it('can handle webhook for a payment charge', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
 });
