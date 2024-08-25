@@ -14,7 +14,7 @@ class Order extends Model implements PayHereOrder
 {
     protected $guarded = [];
 
-    protected $table = 'payhere_orders';
+    protected $table = 'orders';
 
     public function user(): BelongsTo
     {

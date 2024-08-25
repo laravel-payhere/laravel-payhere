@@ -32,7 +32,7 @@ it('can handle webhook for normal checkout', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
     $this->assertDatabaseEmpty('payhere_subscriptions');
 });
@@ -62,7 +62,7 @@ it('can handle webhook for authorize checkout', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
     $this->assertDatabaseEmpty('payhere_subscriptions');
 });
@@ -93,7 +93,7 @@ it('can handle webhook for preapproval checkout', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
     $this->assertDatabaseEmpty('payhere_subscriptions');
 });
@@ -132,7 +132,7 @@ it('can handle webhook for recurring checkout', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
     $this->assertDatabaseHas('payhere_subscriptions', [
         'id' => $order->subscription->id,
@@ -167,6 +167,6 @@ it('can handle webhook for a payment charge', function () {
 
     $this->post($uri, $data);
 
-    $this->assertDatabaseHas('payhere_orders', ['id' => $order->id]);
+    $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
 });

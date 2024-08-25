@@ -9,7 +9,7 @@ class Item extends Model
 {
     protected $guarded = [];
 
-    protected $table = 'payhere_items';
+    protected $table = 'items';
 
     public static function factory(): ItemFactory
     {

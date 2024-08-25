@@ -12,7 +12,7 @@ class OrderItem extends Model implements PayHereOrderLine
 {
     protected $guarded = [];
 
-    protected $table = 'payhere_order_items';
+    protected $table = 'order_items';
 
     public function purchasable(): MorphTo
     {
