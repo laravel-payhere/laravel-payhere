@@ -21,4 +21,9 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
+
+    protected static function newFactory(): UserFactory
+    {
+        return new UserFactory;
+    }
 }

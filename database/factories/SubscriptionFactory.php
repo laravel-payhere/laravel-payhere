@@ -22,4 +22,9 @@ class SubscriptionFactory extends Factory
             'status' => SubscriptionStatus::Active,
         ];
     }
+
+    protected static function newFactory(): SubscriptionFactory
+    {
+        return new SubscriptionFactory;
+    }
 }

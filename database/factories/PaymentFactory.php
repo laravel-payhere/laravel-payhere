@@ -45,4 +45,9 @@ class PaymentFactory extends Factory
             'custom_2' => fake()->word,
         ];
     }
+
+    protected static function newFactory(): PaymentFactory
+    {
+        return new PaymentFactory;
+    }
 }

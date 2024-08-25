@@ -17,4 +17,9 @@ class OrderFactory extends Factory
             'total' => 1000,
         ];
     }
+
+    protected static function newFactory(): OrderFactory
+    {
+        return new OrderFactory;
+    }
 }

@@ -26,4 +26,9 @@ class OrderLineFactory extends Factory
             'total' => $total,
         ];
     }
+
+    protected static function newFactory(): OrderLineFactory
+    {
+        return new OrderLineFactory;
+    }
 }
