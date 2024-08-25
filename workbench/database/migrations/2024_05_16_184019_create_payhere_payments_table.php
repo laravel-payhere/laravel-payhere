@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('payhere_payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->index()->nullable();
-            $table->foreignId('order_id')->index();
+            $table->foreignId('payhere_order_id')->index();
             $table->string('merchant_id');
             $table->string('payment_id')->unique()->index()->nullable();
             $table->boolean('refunded')->default(false);
