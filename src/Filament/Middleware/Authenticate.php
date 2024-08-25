@@ -2,11 +2,11 @@
 
 namespace LaravelPayHere\Filament\Middleware;
 
-use LaravelPayHere\Filament\Contracts\PayHerePanelUser;
 use Filament\Facades\Filament;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Database\Eloquent\Model;
+use LaravelPayHere\Filament\Contracts\PayHerePanelUser;
 
 class Authenticate extends Middleware
 {

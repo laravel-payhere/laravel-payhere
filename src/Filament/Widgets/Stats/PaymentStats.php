@@ -2,8 +2,8 @@
 
 namespace LaravelPayHere\Filament\Widgets\Stats;
 
-use LaravelPayHere\Models\Payment;
 use Illuminate\Database\Eloquent\Builder;
+use LaravelPayHere\Models\Payment;
 
 class PaymentStats extends BaseStats
 {

@@ -1,8 +1,8 @@
 <?php
 
-use LaravelPayHere\Http\Controllers\WebhookController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
+use LaravelPayHere\Http\Controllers\WebhookController;
 use Workbench\App\Http\Controllers\Authorize;
 use Workbench\App\Http\Controllers\Checkout;
 use Workbench\App\Http\Controllers\Preapproval;

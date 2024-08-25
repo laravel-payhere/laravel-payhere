@@ -2,13 +2,13 @@
 
 namespace LaravelPayHere\Tests\Browser;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
 use LaravelPayHere\Tests\Browser\Pages\Authorize;
 use LaravelPayHere\Tests\Browser\Pages\Checkout;
 use LaravelPayHere\Tests\Browser\Pages\Preapproval;
 use LaravelPayHere\Tests\Browser\Pages\Recurring;
 use LaravelPayHere\Tests\DuskTestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Laravel\Dusk\Browser;
 use Orchestra\Testbench\Attributes\WithMigration;
 use PHPUnit\Framework\Attributes\Test;
 use Workbench\App\Models\User;

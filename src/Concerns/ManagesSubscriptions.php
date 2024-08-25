@@ -2,8 +2,8 @@
 
 namespace LaravelPayHere\Concerns;
 
-use LaravelPayHere\Models\Subscription;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use LaravelPayHere\Models\Subscription;
 
 trait ManagesSubscriptions
 {

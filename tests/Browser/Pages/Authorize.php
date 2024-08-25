@@ -2,11 +2,11 @@
 
 namespace LaravelPayHere\Tests\Browser\Pages;
 
+use Laravel\Dusk\Browser;
+use Laravel\Dusk\Page;
 use LaravelPayHere\Tests\Browser\Concerns\HandlesPayment;
 use LaravelPayHere\Tests\Browser\Concerns\HasPayHereSiteElements;
 use LaravelPayHere\Tests\Browser\Concerns\PayHereBrowserAssertions;
-use Laravel\Dusk\Browser;
-use Laravel\Dusk\Page;
 
 class Authorize extends Page
 {

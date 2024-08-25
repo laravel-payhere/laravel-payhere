@@ -3,8 +3,8 @@
 namespace LaravelPayHere\Rules;
 
 use Closure;
-use LaravelPayHere\Enums\ChargeType as ChargeTypeEnum;
 use Illuminate\Contracts\Validation\ValidationRule;
+use LaravelPayHere\Enums\ChargeType as ChargeTypeEnum;
 
 class ChargeType implements ValidationRule
 {

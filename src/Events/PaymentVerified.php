@@ -2,10 +2,10 @@
 
 namespace LaravelPayHere\Events;
 
-use LaravelPayHere\Models\Payment;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use LaravelPayHere\Models\Payment;
 
 class PaymentVerified
 {

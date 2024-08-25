@@ -2,10 +2,10 @@
 
 namespace Workbench\App\Models;
 
-use LaravelPayHere\Models\Contracts\PayHereOrderLine;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use LaravelPayHere\Models\Contracts\PayHereOrderLine;
 use Workbench\Database\Factories\OrderLineFactory;
 
 class OrderLine extends Model implements PayHereOrderLine

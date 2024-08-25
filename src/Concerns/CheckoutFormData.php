@@ -2,11 +2,11 @@
 
 namespace LaravelPayHere\Concerns;
 
+use Illuminate\Support\Facades\URL;
 use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
 use LaravelPayHere\Models\Contracts\PayHereCustomer;
 use LaravelPayHere\Models\Contracts\PayHereOrder;
 use LaravelPayHere\PayHere;
-use Illuminate\Support\Facades\URL;
 
 /**
  * @method string payhereFirstName()

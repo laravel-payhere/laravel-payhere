@@ -15,7 +15,7 @@ class Order extends Model implements PayHereOrder
     {
         return $this->belongsTo(PayHere::$customerModel);
     }
-    
+
     public function payHereOrderId(): string
     {
         return $this->id;

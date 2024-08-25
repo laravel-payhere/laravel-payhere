@@ -2,14 +2,14 @@
 
 namespace LaravelPayHere\Models;
 
-use LaravelPayHere\Enums\MessageType;
-use LaravelPayHere\Enums\PaymentMethod;
-use LaravelPayHere\Enums\PaymentStatus;
-use LaravelPayHere\PayHere;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use LaravelPayHere\Enums\MessageType;
+use LaravelPayHere\Enums\PaymentMethod;
+use LaravelPayHere\Enums\PaymentStatus;
+use LaravelPayHere\PayHere;
 use Workbench\Database\Factories\PaymentFactory;
 
 class Payment extends Model

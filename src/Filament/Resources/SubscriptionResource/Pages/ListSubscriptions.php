@@ -2,8 +2,8 @@
 
 namespace LaravelPayHere\Filament\Resources\SubscriptionResource\Pages;
 
-use LaravelPayHere\Filament\Resources\SubscriptionResource\SubscriptionResource;
 use Filament\Resources\Pages\ListRecords;
+use LaravelPayHere\Filament\Resources\SubscriptionResource\SubscriptionResource;
 
 class ListSubscriptions extends ListRecords
 {
