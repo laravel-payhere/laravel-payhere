@@ -17,7 +17,7 @@ class PayHere
     /**
      * The default order model class name.
      */
-    public static string $orderModel = 'App\\Models\\Order';
+    public static string $orderModel = 'LaravelPayHere\\Models\\Order';
 
     /**
      * The default order items relationship name.
