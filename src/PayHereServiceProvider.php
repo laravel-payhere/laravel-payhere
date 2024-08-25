@@ -13,7 +13,7 @@ class PayHereServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('payhere')
+            ->name('laravel-payhere')
             ->hasViews()
             ->runsMigrations()
             ->hasConfigFile()
