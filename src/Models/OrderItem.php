@@ -3,6 +3,7 @@
 namespace LaravelPayHere\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use LaravelPayHere\Models\Contracts\PayHereOrderLine;
 
 class OrderItem extends Model implements PayHereOrderLine
@@ -11,28 +12,33 @@ class OrderItem extends Model implements PayHereOrderLine
 
     protected $table = 'payhere_order_items';
 
+    public function purchasable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
     public function payHereOrderLineId(): string
     {
-        // TODO: Implement payHereOrderLineId() method.
+        return $this->id;
     }
 
     public function payHereOrderLineTitle(): string
     {
-        // TODO: Implement payHereOrderLineTitle() method.
+        return $this->purchasable->title;
     }
 
     public function payHereOrderLineQty(): int
     {
-        // TODO: Implement payHereOrderLineQty() method.
+        return $this->unit_quantity;
     }
 
     public function payHereOrderLineTotal(): float
     {
-        // TODO: Implement payHereOrderLineTotal() method.
+        return $this->total;
     }
 
     public function payHereOrderLineUnitPrice(): float
     {
-        // TODO: Implement payHereOrderLineUnitPrice() method.
+        return $this->unit_price;
     }
 }
