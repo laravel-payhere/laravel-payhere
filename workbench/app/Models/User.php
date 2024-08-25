@@ -7,7 +7,7 @@ use LaravelPayHere\Models\Contracts\PayHereCustomer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Workbench\App\Database\Factories\UserFactory;
+use Workbench\Database\Factories\UserFactory;
 
 class User extends Authenticatable implements PayHereCustomer
 {
