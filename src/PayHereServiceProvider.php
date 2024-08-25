@@ -21,7 +21,7 @@ class PayHereServiceProvider extends PackageServiceProvider
             ->hasRoutes(['web', 'api'])
             ->hasMigrations([
                 'create_payhere_payments_table',
-                'create_subscriptions_table',
+                'create_payhere_subscriptions_table',
             ])
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
