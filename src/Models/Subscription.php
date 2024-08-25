@@ -15,6 +15,8 @@ class Subscription extends Model
 {
     use HasFactory;
     use ManagesSubscriptions;
+    
+    protected $table = 'payhere_subscriptions';
 
     protected $guarded = [];
 
