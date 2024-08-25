@@ -5,7 +5,7 @@ namespace Workbench\App\Providers;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use LaravelPayHere\PayHere;
-use Workbench\App\Models\Order;
+use LaravelPayHere\Models\Order;
 use Workbench\App\Models\User;
 
 class WorkbenchServiceProvider extends ServiceProvider
