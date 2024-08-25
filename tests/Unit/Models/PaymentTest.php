@@ -10,7 +10,7 @@ test('to array', function () {
     expect(array_keys($payment->toArray()))->toBe([
         'id',
         'user_id',
-        'order_id',
+        'payhere_order_id',
         'merchant_id',
         'payment_id',
         'refunded',
