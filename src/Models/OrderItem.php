@@ -5,11 +5,11 @@ namespace LaravelPayHere\Models;
 use Illuminate\Database\Eloquent\Model;
 use LaravelPayHere\Models\Contracts\PayHereOrderLine;
 
-class OrderLine extends Model implements PayHereOrderLine
+class OrderItem extends Model implements PayHereOrderLine
 {
     protected $guarded = [];
 
-    protected $table = 'payhere_order_lines';
+    protected $table = 'payhere_order_items';
 
     public function payHereOrderLineId(): string
     {

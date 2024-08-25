@@ -22,7 +22,7 @@ class Order extends Model implements PayHereOrder
 
     public function lines(): HasMany
     {
-        return $this->hasMany(OrderLine::class);
+        return $this->hasMany(OrderItem::class);
     }
 
     public function payment(): HasOne
