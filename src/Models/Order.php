@@ -31,6 +31,11 @@ class Order extends Model implements PayHereOrder
         return $this->hasOne(Payment::class);
     }
 
+    public function subscription(): HasOne
+    {
+        return $this->hasOne(Subscription::class);
+    }
+
     public function payHereOrderId(): string
     {
         return $this->id;
