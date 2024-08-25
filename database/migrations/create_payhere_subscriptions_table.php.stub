@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('payhere_subscriptions', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('payhere_subscription_id')->index()->nullable();
             $table->foreignId('user_id')->index()->nullable();
@@ -22,6 +22,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('payhere_subscriptions');
+        Schema::dropIfExists('subscriptions');
     }
 };

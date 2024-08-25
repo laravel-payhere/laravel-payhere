@@ -34,7 +34,7 @@ it('can handle webhook for normal checkout', function () {
 
     $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
-    $this->assertDatabaseEmpty('payhere_subscriptions');
+    $this->assertDatabaseEmpty('subscriptions');
 });
 
 it('can handle webhook for authorize checkout', function () {
@@ -64,7 +64,7 @@ it('can handle webhook for authorize checkout', function () {
 
     $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
-    $this->assertDatabaseEmpty('payhere_subscriptions');
+    $this->assertDatabaseEmpty('subscriptions');
 });
 
 it('can handle webhook for preapproval checkout', function () {
@@ -95,7 +95,7 @@ it('can handle webhook for preapproval checkout', function () {
 
     $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
-    $this->assertDatabaseEmpty('payhere_subscriptions');
+    $this->assertDatabaseEmpty('subscriptions');
 });
 
 it('can handle webhook for recurring checkout', function () {
@@ -134,7 +134,7 @@ it('can handle webhook for recurring checkout', function () {
 
     $this->assertDatabaseHas('orders', ['id' => $order->id]);
     $this->assertDatabaseCount('payhere_payments', 1);
-    $this->assertDatabaseHas('payhere_subscriptions', [
+    $this->assertDatabaseHas('subscriptions', [
         'id' => $order->subscription->id,
         'status' => SubscriptionStatus::Active->value,
     ]);
