@@ -12,7 +12,7 @@ class Preapproval extends Controller
     public function __invoke(Request $request)
     {
         $order = Order::factory()
-            ->has(OrderItem::factory()->count(2), 'lines')
+            ->has(OrderItem::factory()->count(2), 'items')
             ->create();
 
         return $request

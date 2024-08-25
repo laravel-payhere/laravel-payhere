@@ -20,9 +20,9 @@ class PayHere
     public static string $orderModel = 'App\\Models\\Order';
 
     /**
-     * The default order lines relationship name.
+     * The default order items relationship name.
      */
-    public static string $orderLinesRelationship = 'lines';
+    public static string $orderItemsRelationship = 'items';
 
     /**
      * The default customer relationship name.
@@ -56,11 +56,11 @@ class PayHere
     }
 
     /**
-     * Set the order lines relationship name.
+     * Set the order items relationship name.
      */
     public static function useOrderLinesRelationship(string $relationship): void
     {
-        self::$orderLinesRelationship = $relationship;
+        self::$orderItemsRelationship = $relationship;
     }
 
     /**

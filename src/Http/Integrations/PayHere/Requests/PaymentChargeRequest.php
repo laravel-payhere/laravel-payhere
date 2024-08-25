@@ -45,7 +45,7 @@ class PaymentChargeRequest extends Request implements HasBody
             'amount' => $order->total,
             'currency' => config('payhere.currency'),
             'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
-            'itemList' => $order->lines->map(function ($line) {
+            'itemList' => $order->items->map(function ($line) {
                 return [
                     'name' => $line->payHereOrderLineTitle(),
                     'number' => $line->payHereOrderLineId(),

@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\URL;
 use LaravelPayHere\Enums\SubscriptionStatus;
+use LaravelPayHere\Models\OrderItem;
 use LaravelPayHere\Models\Subscription;
 use LaravelPayHere\Models\Order;
-use Workbench\App\Models\OrderLine;
 
 it('can handle webhook for normal checkout', function () {
     $order = Order::factory()
-        ->has(OrderLine::factory()->count(2), 'lines')
+        ->has(OrderItem::factory()->count(2), 'items')
         ->create();
 
     $uri = URL::signedRoute('payhere.webhook');
@@ -39,7 +39,7 @@ it('can handle webhook for normal checkout', function () {
 
 it('can handle webhook for authorize checkout', function () {
     $order = Order::factory()
-        ->has(OrderLine::factory()->count(2), 'lines')
+        ->has(OrderLine::factory()->count(2), 'items')
         ->create();
 
     $uri = URL::signedRoute('payhere.webhook');
@@ -69,7 +69,7 @@ it('can handle webhook for authorize checkout', function () {
 
 it('can handle webhook for preapproval checkout', function () {
     $order = Order::factory()
-        ->has(OrderLine::factory()->count(2), 'lines')
+        ->has(OrderLine::factory()->count(2), 'items')
         ->create();
 
     $uri = URL::signedRoute('payhere.webhook');
@@ -100,7 +100,7 @@ it('can handle webhook for preapproval checkout', function () {
 
 it('can handle webhook for recurring checkout', function () {
     $order = Order::factory()
-        ->has(OrderLine::factory()->count(2), 'lines')
+        ->has(OrderLine::factory()->count(2), 'items')
         ->has(Subscription::factory(), 'subscription')
         ->create();
 
@@ -142,7 +142,7 @@ it('can handle webhook for recurring checkout', function () {
 
 it('can handle webhook for a payment charge', function () {
     $order = Order::factory()
-        ->has(OrderLine::factory()->count(2), 'lines')
+        ->has(OrderLine::factory()->count(2), 'items')
         ->has(Subscription::factory(), 'subscription')
         ->create();
 

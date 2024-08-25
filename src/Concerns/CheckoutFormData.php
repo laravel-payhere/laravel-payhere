@@ -111,7 +111,7 @@ trait CheckoutFormData
      */
     private function items(): string|array
     {
-        $relationship = PayHere::$orderLinesRelationship;
+        $relationship = PayHere::$orderItemsRelationship;
         $lines = $this->order->{$relationship} ?? [];
         $items = [];
 
