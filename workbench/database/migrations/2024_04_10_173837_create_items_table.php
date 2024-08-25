@@ -8,16 +8,18 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('payhere_items', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('price');
+            $table->text('description')->nullable();
+            $table->string('thumbnail')->nullable();
+            $table->integer('price')->unsigned();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('items');
     }
 };
