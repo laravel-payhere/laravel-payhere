@@ -65,15 +65,15 @@ class PayHerePanelProvider extends PanelProvider
             ])
             ->discoverPages(
                 in: __DIR__.'/../../src/Filament/Pages',
-                for: 'Dasundev\\PayHere\\Filament\\Pages'
+                for: 'LaravelPayHere\\Filament\\Pages'
             )
             ->discoverWidgets(
                 in: __DIR__.'/../../src/Filament/Widgets',
-                for: 'Dasundev\\PayHere\\Filament\\Widgets'
+                for: 'LaravelPayHere\\Filament\\Widgets'
             )
             ->discoverResources(
                 in: __DIR__.'/../../src/Filament/Resources',
-                for: 'Dasundev\\PayHere\\Filament\\Resources'
+                for: 'LaravelPayHere\\Filament\\Resources'
             )
             ->bootUsing(function () {
                 Table::$defaultCurrency = config('payhere.currency');
