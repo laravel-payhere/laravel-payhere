@@ -7,7 +7,7 @@ use LaravelPayHere\Models\Item;
 use LaravelPayHere\Models\Order;
 use LaravelPayHere\Models\OrderItem;
 
-class OrderLineFactory extends Factory
+class OrderItemFactory extends Factory
 {
     protected $model = OrderItem::class;
 
@@ -27,8 +27,8 @@ class OrderLineFactory extends Factory
         ];
     }
 
-    protected static function newFactory(): OrderLineFactory
+    protected static function newFactory(): OrderItemFactory
     {
-        return new OrderLineFactory;
+        return new OrderItemFactory;
     }
 }

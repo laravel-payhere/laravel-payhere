@@ -4,6 +4,8 @@ namespace LaravelPayHere\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use LaravelPayHere\Database\Factories\OrderFactory;
+use LaravelPayHere\Database\Factories\OrderItemFactory;
 use LaravelPayHere\Models\Contracts\PayHereOrderLine;
 
 class OrderItem extends Model implements PayHereOrderLine
@@ -40,5 +42,10 @@ class OrderItem extends Model implements PayHereOrderLine
     public function payHereOrderLineUnitPrice(): float
     {
         return $this->unit_price;
+    }
+
+    public static function newFactory(): OrderItemFactory
+    {
+        return new OrderItemFactory;
     }
 }

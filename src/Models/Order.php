@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use LaravelPayHere\Database\Factories\OrderFactory;
 use LaravelPayHere\Models\Contracts\PayHereOrder;
 use LaravelPayHere\PayHere;
 
@@ -38,5 +39,10 @@ class Order extends Model implements PayHereOrder
     public function payHereOrderTotal(): float
     {
         return $this->total;
+    }
+
+    public static function newFactory(): OrderFactory
+    {
+        return new OrderFactory;
     }
 }
