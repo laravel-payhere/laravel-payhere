@@ -23,7 +23,8 @@
     },
     "autoload": {
         "psr-4": {
-            "LaravelPayHere\\": "src/"
+            "LaravelPayHere\\": "src/",
+            "LaravelPayHere\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
