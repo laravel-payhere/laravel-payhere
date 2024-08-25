@@ -41,7 +41,7 @@ class Order extends Model implements PayHereOrder
         return $this->total;
     }
 
-    public static function newFactory(): OrderFactory
+    public static function factory(): OrderFactory
     {
         return new OrderFactory;
     }
