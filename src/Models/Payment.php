@@ -74,7 +74,7 @@ class Payment extends Model
         $query->where('refunded', false);
     }
 
-    protected static function newFactory(): PaymentFactory
+    protected static function factory(): PaymentFactory
     {
         return new PaymentFactory;
     }

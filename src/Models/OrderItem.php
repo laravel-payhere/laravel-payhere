@@ -44,7 +44,7 @@ class OrderItem extends Model implements PayHereOrderLine
         return $this->unit_price;
     }
 
-    public static function newFactory(): OrderItemFactory
+    public static function factory(): OrderItemFactory
     {
         return new OrderItemFactory;
     }

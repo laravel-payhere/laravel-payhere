@@ -84,7 +84,7 @@ class Subscription extends Model
         $this->update(['status' => SubscriptionStatus::Completed]);
     }
 
-    protected static function newFactory(): SubscriptionFactory
+    protected static function factory(): SubscriptionFactory
     {
         return new SubscriptionFactory;
     }
