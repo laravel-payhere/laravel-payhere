@@ -33,7 +33,7 @@ class PayHerePanelProvider extends PanelProvider
             ->navigationItems([
                 NavigationItem::make('Documentation')
                     ->icon('heroicon-o-book-open')
-                    ->url('https://www.dasun.dev/docs/laravel-payhere')
+                    ->url('https://laravel-payhere.com/docs')
                     ->hidden(config('app.env') !== 'local')
                     ->openUrlInNewTab()
                     ->sort(1),
