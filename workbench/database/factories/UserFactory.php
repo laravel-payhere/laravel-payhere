@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelPayHere\Database\Factories;
+namespace Workbench\App\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -20,10 +20,5 @@ class UserFactory extends Factory
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
-    }
-
-    protected static function newFactory(): UserFactory
-    {
-        return new UserFactory;
     }
 }
