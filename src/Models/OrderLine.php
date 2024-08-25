@@ -9,6 +9,8 @@ class OrderLine extends Model implements PayHereOrderLine
 {
     protected $guarded = [];
 
+    protected $table = 'payhere_order_lines';
+
     public function payHereOrderLineId(): string
     {
         // TODO: Implement payHereOrderLineId() method.
