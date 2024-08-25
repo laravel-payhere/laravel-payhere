@@ -10,7 +10,7 @@ use LaravelPayHere\Enums\MessageType;
 use LaravelPayHere\Enums\PaymentMethod;
 use LaravelPayHere\Enums\PaymentStatus;
 use LaravelPayHere\PayHere;
-use Workbench\Database\Factories\PaymentFactory;
+use LaravelPayHere\Database\Factories\PaymentFactory;
 
 class Payment extends Model
 {

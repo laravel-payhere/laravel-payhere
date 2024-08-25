@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use LaravelPayHere\Enums\SubscriptionStatus;
 use LaravelPayHere\Models\Concerns\ManagesSubscriptions;
 use LaravelPayHere\PayHere;
-use Workbench\Database\Factories\SubscriptionFactory;
+use LaravelPayHere\Database\Factories\SubscriptionFactory;
 
 class Subscription extends Model
 {

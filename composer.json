@@ -30,7 +30,6 @@
         "psr-4": {
             "LaravelPayHere\\Tests\\": "tests",
             "Workbench\\App\\": "workbench/app/",
-            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
