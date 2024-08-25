@@ -21,13 +21,13 @@ return new class extends Migration
                 'refunded',
                 'cancelled',
             ])->default('on_hold');
-            $table->integer('total');
+            $table->float('total');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('payhere_orders');
     }
 };
