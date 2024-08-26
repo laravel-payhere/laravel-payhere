@@ -304,6 +304,12 @@ trait CheckoutFormData
         );
     }
 
+    /**
+     * Get the currency of the order.
+     *
+     * @return string
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     */
     private function getCurrency(): string
     {
         $currency = $this->currency ?? config('payhere.currency');
@@ -331,6 +337,11 @@ trait CheckoutFormData
         return $this->orderId;
     }
 
+    /**
+     * Get the items of the order.
+     *
+     * @return string|array
+     */
     private function getItems(): string|array
     {
         if (! is_null($this->title)) {
