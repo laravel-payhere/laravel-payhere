@@ -15,11 +15,15 @@ trait CheckoutFormData
 {
     /**
      * Recurring payment details.
+     * 
+     * @var array|null
      */
     private ?array $recurring = null;
 
     /**
      * Indicates if preapproval is required.
+     * 
+     * @var bool
      */
     private bool $preapproval = false;
 
@@ -30,51 +34,71 @@ trait CheckoutFormData
 
     /**
      * Platform information.
+     * 
+     * @var string|null
      */
     private ?string $platform = null;
 
     /**
      * Startup fee amount.
+     * 
+     * @var float|null
      */
     private ?float $startupFee = null;
 
     /**
      * Custom data for the checkout form.
+     * 
+     * @var array|null
      */
     private ?array $customData = null;
 
     /**
      * Item name.
+     * 
+     * @var string|null
      */
     private ?string $item = null;
 
     /**
      * The title of the transaction.
+     * 
+     * @var string|null
      */
     private ?string $title = null;
 
     /**
      * Items
+     * 
+     * @var array|null
      */
     private ?array $items = [];
 
     /**
      * The currency code for the transaction.
+     * 
+     * @var string|null
      */
     private ?string $currency = null;
 
     /**
      * The order id for the transaction.
+     * 
+     * @var string|null
      */
     private ?string $orderId = null;
 
     /**
      * The amount of the transaction.
+     * 
+     * @var float|null
      */
     private ?float $amount = null;
 
     /**
      * Indicates if the user is a guest.
+     * 
+     * @var bool
      */
     private bool $guest = false;
 
@@ -99,6 +123,11 @@ trait CheckoutFormData
         ];
     }
 
+    /**
+     * Set the user as a guest.
+     * 
+     * @return $this
+     */
     public function guest(): static
     {
         $this->guest = true;
@@ -333,6 +362,9 @@ trait CheckoutFormData
 
     /**
      * Set the amount of currency for the transaction.
+     * 
+     * @param float $amount
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function amount(float $amount): static
     {
@@ -345,6 +377,9 @@ trait CheckoutFormData
      * Generate a hash string.
      *
      * The hash value is required starting from 2023-01-16.
+     * 
+     * @return string
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
      */
     private function generateHash(): string
     {
