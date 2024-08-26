@@ -54,13 +54,6 @@ trait CheckoutFormData
     private ?array $customData = null;
 
     /**
-     * Item name.
-     * 
-     * @var string|null
-     */
-    private ?string $item = null;
-
-    /**
      * The title of the transaction.
      * 
      * @var string|null
@@ -346,20 +339,7 @@ trait CheckoutFormData
 
         return $this;
     }
-
-    /**
-     * Set the name of item.
-     *
-     * @param  string  $item
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
-     */
-    public function item(string $item): static
-    {
-        $this->item = $item;
-
-        return $this;
-    }
-
+    
     /**
      * Set the name of currency for the transaction.
      *
