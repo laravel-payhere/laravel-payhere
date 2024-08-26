@@ -187,6 +187,19 @@ trait CheckoutFormData
     }
 
     /**
+     * Set the title of the transaction.
+     *
+     * @param string $title
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     */
+    private function title(string $title): static
+    {
+        $this->title = $title;
+        
+        return $this;
+    }
+
+    /**
      * Get other necessary details for the form.
      *
      * @return array
