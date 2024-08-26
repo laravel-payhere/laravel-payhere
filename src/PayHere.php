@@ -17,16 +17,6 @@ class PayHere
     public static string $customerModel = 'App\\Models\\User';
 
     /**
-     * The default order model class name.
-     */
-    public static string $orderModel = 'App\\Models\\Order';
-
-    /**
-     * The default order lines relationship name.
-     */
-    public static string $orderLinesRelationship = 'lines';
-
-    /**
      * The default customer relationship name.
      */
     public static string $customerRelationship = 'user';
@@ -48,23 +38,7 @@ class PayHere
     {
         static::$customerModel = $customerModel;
     }
-
-    /**
-     * Set the order model class name.
-     */
-    public static function useOrderModel($orderModel): void
-    {
-        static::$orderModel = $orderModel;
-    }
-
-    /**
-     * Set the order lines relationship name.
-     */
-    public static function useOrderLinesRelationship(string $relationship): void
-    {
-        self::$orderLinesRelationship = $relationship;
-    }
-
+    
     /**
      * Set the customer relationship name.
      */
@@ -72,14 +46,7 @@ class PayHere
     {
         self::$customerRelationship = $relationship;
     }
-
-    /**
-     * Set the customer relationship name.
-     */
-    public static function usePaymentRelationship(string $relationship): void
-    {
-        self::$paymentRelationship = $relationship;
-    }
+    
 
     /**
      * Set the subscription relationship name.
@@ -119,5 +86,15 @@ class PayHere
     public static function verifyMerchantId(string $merchantId): bool
     {
         return config('payhere.merchant_id') === $merchantId;
+    }
+
+    /**
+     * Return a new static instance.
+     * 
+     * @return static
+     */
+    public static function new(): static
+    {
+        return new static;
     }
 }

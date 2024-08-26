@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelPayHere\Concerns;
 
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
 use LaravelPayHere\Models\Contracts\PayHereCustomer;
 use LaravelPayHere\Models\Contracts\PayHereOrder;
@@ -44,7 +45,7 @@ trait CheckoutFormData
     /**
      * Startup fee amount.
      */
-    private ?int $startupFee = null;
+    private ?float $startupFee = null;
 
     /**
      * Custom data for the checkout form.
@@ -57,9 +58,24 @@ trait CheckoutFormData
     private ?string $item = null;
 
     /**
+     * Items
+     */
+    private ?array $items = [];
+
+    /**
      * The currency code for the transaction.
      */
     private ?string $currency = null;
+
+    /**
+     * The order id for the transaction.
+     */
+    private ?string $orderId = null;
+
+    /**
+     * The amount of the transaction.
+     */
+    private ?float $amount = null;
 
     /**
      * Get the form data for the checkout.
@@ -68,7 +84,7 @@ trait CheckoutFormData
     {
         return [
             'customer' => $this->customer(),
-            'items' => $this->items(),
+            'items' => $this->items,
             'other' => $this->other(),
             'recurring' => $this->recurring,
             'platform' => $this->platform,
@@ -111,23 +127,8 @@ trait CheckoutFormData
     /**
      * Get item details for the form.
      */
-    private function items(): string|array
+    private function items(array $items): string|array
     {
-        $relationship = PayHere::$orderLinesRelationship;
-        $lines = $this->order->{$relationship} ?? [];
-        $items = [];
-
-        foreach ($lines as $number => $line) {
-            $items["item_number_$number"] = $line->payHereOrderLineId();
-            $items["item_name_$number"] = $line->payHereOrderLineTitle();
-            $items["quantity_$number"] = $line->payHereOrderLineQty();
-            $items["amount_$number"] = $line->payHereOrderLineTotal();
-        }
-
-        if (empty($items)) {
-            return ['items' => $this->item ?? "Order #{$this->getOrderId()}"];
-        }
-
         return $items;
     }
 
@@ -144,7 +145,7 @@ trait CheckoutFormData
             'cancel_url' => config('payhere.cancel_url') ?? url('/'),
             'order_id' => $this->getOrderId(),
             'currency' => $this->getCurrency(),
-            'amount' => $this->order->payHereOrderTotal(),
+            'amount' => $this->amount,
             'hash' => $this->generateHash(),
         ];
     }
@@ -223,9 +224,19 @@ trait CheckoutFormData
     /**
      * Set the startup fee for the form.
      */
-    public function startupFee(string $fee): static
+    public function startupFee(float $fee): static
     {
         $this->startupFee = $fee;
+
+        return $this;
+    }
+
+    /**
+     * Set the startup fee for the form.
+     */
+    public function orderId(string $id): static
+    {
+        $this->orderId = $id;
 
         return $this;
     }
@@ -264,6 +275,16 @@ trait CheckoutFormData
     }
 
     /**
+     * Set the amount of currency for the transaction.
+     */
+    public function amount(float $amount): static
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
      * Generate a hash string.
      *
      * The hash value is required starting from 2023-01-16.
@@ -274,7 +295,7 @@ trait CheckoutFormData
             md5(
                 config('payhere.merchant_id').
                 $this->getOrderId().
-                number_format($this->order->payHereOrderTotal(), 2, '.', '').
+                number_format($this->amount, 2, '.', '').
                 $this->getCurrency().
                 strtoupper(md5(config('payhere.merchant_secret')))
             )
@@ -294,10 +315,10 @@ trait CheckoutFormData
 
     private function getOrderId(): string
     {
-        if ($this instanceof PayHereOrder) {
-            return $this->order->payhereOrderId();
+        if (! is_null($this->orderId)) {
+            return $this->orderId;
         }
-
-        return $this->order->id;
+        
+        return Str::uuid()->toString();
     }
 }
