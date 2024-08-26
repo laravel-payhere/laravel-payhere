@@ -436,13 +436,13 @@ trait CheckoutFormData
     private function getItems(): string|array
     {
         if (! is_null($this->title)) {
-            return $this->title;
+            return ['items' => $this->title];
         }
 
         if (count($this->items) !== 0) {
             return $this->items;
         }
 
-        return ['items' => 'Order'];
+        return ['items' => null];
     }
 }
