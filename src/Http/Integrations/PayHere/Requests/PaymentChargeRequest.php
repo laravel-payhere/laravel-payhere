@@ -2,9 +2,9 @@
 
 namespace LaravelPayHere\Http\Integrations\PayHere\Requests;
 
+use LaravelPayHere\PayHere;
 use Exception;
 use Illuminate\Support\Facades\URL;
-use LaravelPayHere\PayHere;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -45,7 +45,7 @@ class PaymentChargeRequest extends Request implements HasBody
             'amount' => $order->total,
             'currency' => config('payhere.currency'),
             'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
-            'itemList' => $order->items->map(function ($line) {
+            'itemList' => $order->lines->map(function ($line) {
                 return [
                     'name' => $line->payHereOrderLineTitle(),
                     'number' => $line->payHereOrderLineId(),

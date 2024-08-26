@@ -2,10 +2,10 @@
 
 namespace LaravelPayHere\Events;
 
+use LaravelPayHere\Models\Subscription;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use LaravelPayHere\Models\Subscription;
 
 class SubscriptionRenewed
 {

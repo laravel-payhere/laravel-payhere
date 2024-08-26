@@ -2,15 +2,15 @@
 
 namespace LaravelPayHere\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use LaravelPayHere\Enums\MessageType;
 use LaravelPayHere\Enums\PaymentMethod;
 use LaravelPayHere\Enums\PaymentStatus;
 use LaravelPayHere\PayHere;
-use LaravelPayHere\Database\Factories\PaymentFactory;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Workbench\Database\Factories\PaymentFactory;
 
 class Payment extends Model
 {
@@ -74,7 +74,7 @@ class Payment extends Model
         $query->where('refunded', false);
     }
 
-    protected static function factory(): PaymentFactory
+    protected static function newFactory(): PaymentFactory
     {
         return new PaymentFactory;
     }

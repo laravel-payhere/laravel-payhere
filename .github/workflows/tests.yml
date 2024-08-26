@@ -17,7 +17,7 @@ jobs:
       fail-fast: true
       matrix:
         php: [8.2, 8.3]
-        laravel: [10, 11]
+        laravel: [8, 9, 10, 11]
 
     name: Test PHP ${{ matrix.php }} with Laravel ${{ matrix.laravel }}
 

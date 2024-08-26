@@ -2,8 +2,8 @@
 
 namespace LaravelPayHere\Filament\Widgets\Stats;
 
-use Illuminate\Database\Eloquent\Builder;
 use LaravelPayHere\Models\Subscription;
+use Illuminate\Database\Eloquent\Builder;
 
 class SubscriptionStats extends BaseStats
 {

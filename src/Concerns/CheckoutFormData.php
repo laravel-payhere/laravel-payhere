@@ -2,11 +2,11 @@
 
 namespace LaravelPayHere\Concerns;
 
-use Illuminate\Support\Facades\URL;
 use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
 use LaravelPayHere\Models\Contracts\PayHereCustomer;
 use LaravelPayHere\Models\Contracts\PayHereOrder;
 use LaravelPayHere\PayHere;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @method string payhereFirstName()
@@ -111,7 +111,7 @@ trait CheckoutFormData
      */
     private function items(): string|array
     {
-        $relationship = PayHere::$orderItemsRelationship;
+        $relationship = PayHere::$orderLinesRelationship;
         $lines = $this->order->{$relationship} ?? [];
         $items = [];
 

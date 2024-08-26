@@ -1,13 +1,13 @@
 <?php
 
-namespace LaravelPayHere\Database\Factories;
+namespace Workbench\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use LaravelPayHere\Enums\MessageType;
 use LaravelPayHere\Enums\PaymentMethod;
 use LaravelPayHere\Enums\PaymentStatus;
-use LaravelPayHere\Models\Order;
 use LaravelPayHere\Models\Payment;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Workbench\App\Models\Order;
 use Workbench\App\Models\User;
 
 class PaymentFactory extends Factory
@@ -44,10 +44,5 @@ class PaymentFactory extends Factory
             'custom_1' => fake()->word,
             'custom_2' => fake()->word,
         ];
-    }
-
-    protected static function newFactory(): PaymentFactory
-    {
-        return new PaymentFactory;
     }
 }

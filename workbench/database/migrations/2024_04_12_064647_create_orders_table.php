@@ -21,7 +21,7 @@ return new class extends Migration
                 'refunded',
                 'cancelled',
             ])->default('on_hold');
-            $table->float('total');
+            $table->integer('total');
             $table->timestamps();
         });
     }

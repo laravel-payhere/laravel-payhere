@@ -17,12 +17,12 @@ class PayHere
     /**
      * The default order model class name.
      */
-    public static string $orderModel = 'LaravelPayHere\\Models\\Order';
+    public static string $orderModel = 'App\\Models\\Order';
 
     /**
-     * The default order items relationship name.
+     * The default order lines relationship name.
      */
-    public static string $orderItemsRelationship = 'items';
+    public static string $orderLinesRelationship = 'lines';
 
     /**
      * The default customer relationship name.
@@ -56,11 +56,11 @@ class PayHere
     }
 
     /**
-     * Set the order items relationship name.
+     * Set the order lines relationship name.
      */
     public static function useOrderLinesRelationship(string $relationship): void
     {
-        self::$orderItemsRelationship = $relationship;
+        self::$orderLinesRelationship = $relationship;
     }
 
     /**

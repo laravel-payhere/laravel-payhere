@@ -23,8 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LaravelPayHere\\": "src/",
-            "LaravelPayHere\\Database\\Factories\\": "database/factories/"
+            "LaravelPayHere\\": "src/"
         }
     },
     "autoload-dev": {
@@ -51,7 +50,7 @@
     "minimum-stability": "stable",
     "scripts": {
         "lint": "./vendor/bin/pint -v",
-        "test": "./vendor/bin/pest --bail",
+        "test": "./vendor/bin/pest",
         "post-autoload-dump": [
             "@clear",
             "@prepare",

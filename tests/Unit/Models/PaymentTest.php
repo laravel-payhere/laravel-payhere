@@ -1,7 +1,7 @@
 <?php
 
 use LaravelPayHere\Models\Payment;
-use LaravelPayHere\Models\Order;
+use Workbench\App\Models\Order;
 use Workbench\App\Models\User;
 
 test('to array', function () {

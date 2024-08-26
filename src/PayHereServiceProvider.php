@@ -13,16 +13,13 @@ class PayHereServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('laravel-payhere')
+            ->name('payhere')
             ->hasViews()
             ->runsMigrations()
             ->hasConfigFile()
             ->hasAssets()
             ->hasRoutes(['web', 'api'])
             ->hasMigrations([
-                'create_items_table',
-                'create_orders_table',
-                'create_order_items_table',
                 'create_payhere_payments_table',
                 'create_subscriptions_table',
             ])

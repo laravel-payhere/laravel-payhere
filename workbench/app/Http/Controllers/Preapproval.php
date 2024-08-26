@@ -4,15 +4,15 @@ namespace Workbench\App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use LaravelPayHere\Models\Order;
-use LaravelPayHere\Models\OrderItem;
+use Workbench\App\Models\Order;
+use Workbench\App\Models\OrderLine;
 
 class Preapproval extends Controller
 {
     public function __invoke(Request $request)
     {
         $order = Order::factory()
-            ->has(OrderItem::factory()->count(2), 'items')
+            ->has(OrderLine::factory()->count(2), 'lines')
             ->create();
 
         return $request

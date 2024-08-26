@@ -2,6 +2,7 @@
 
 namespace LaravelPayHere\Filament;
 
+use LaravelPayHere\Filament\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\NavigationItem;
@@ -16,7 +17,6 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use LaravelPayHere\Filament\Middleware\Authenticate;
 
 class PayHerePanelProvider extends PanelProvider
 {
@@ -26,14 +26,15 @@ class PayHerePanelProvider extends PanelProvider
             ->id('payhere')
             ->path('payhere')
             ->spa()
-            ->brandLogo(asset('vendor/payhere/images/logo.svg'))
+            ->brandLogo(asset('vendor/payhere/images/logo.png'))
+            ->brandLogoHeight('3rem')
             ->darkMode()
             ->login(config('payhere.panel_login') ? Login::class : null)
             ->topNavigation()
             ->navigationItems([
                 NavigationItem::make('Documentation')
                     ->icon('heroicon-o-book-open')
-                    ->url('https://laravel-payhere.com/docs')
+                    ->url('https://www.dasun.dev/docs/laravel-payhere')
                     ->hidden(config('app.env') !== 'local')
                     ->openUrlInNewTab()
                     ->sort(1),
@@ -64,15 +65,15 @@ class PayHerePanelProvider extends PanelProvider
             ])
             ->discoverPages(
                 in: __DIR__.'/../../src/Filament/Pages',
-                for: 'LaravelPayHere\\Filament\\Pages'
+                for: 'Dasundev\\PayHere\\Filament\\Pages'
             )
             ->discoverWidgets(
                 in: __DIR__.'/../../src/Filament/Widgets',
-                for: 'LaravelPayHere\\Filament\\Widgets'
+                for: 'Dasundev\\PayHere\\Filament\\Widgets'
             )
             ->discoverResources(
                 in: __DIR__.'/../../src/Filament/Resources',
-                for: 'LaravelPayHere\\Filament\\Resources'
+                for: 'Dasundev\\PayHere\\Filament\\Resources'
             )
             ->bootUsing(function () {
                 Table::$defaultCurrency = config('payhere.currency');
