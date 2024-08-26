@@ -2,9 +2,9 @@
 
 namespace Workbench\App\Providers;
 
-use LaravelPayHere\PayHere;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use LaravelPayHere\PayHere;
 use Workbench\App\Models\Order;
 use Workbench\App\Models\User;
 

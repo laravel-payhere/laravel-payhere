@@ -3,7 +3,7 @@
 use LaravelPayHere\Rules\ChargeType;
 
 test('valid charge type', function ($chargeType) {
-    $rule = new ChargeType();
+    $rule = new ChargeType;
 
     $fail = fn (string $errorMessage) => $this->fail($errorMessage);
 
@@ -16,7 +16,7 @@ test('valid charge type', function ($chargeType) {
 ]);
 
 test('invalid charge type', function ($chargeType) {
-    $rule = new ChargeType();
+    $rule = new ChargeType;
 
     $fail = fn (string $errorMessage) => $this->fail($errorMessage);
 

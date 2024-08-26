@@ -2,13 +2,13 @@
 
 namespace Workbench\App\Models;
 
-use LaravelPayHere\Models\Payment;
-use LaravelPayHere\Models\Subscription;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use LaravelPayHere\Models\Payment;
+use LaravelPayHere\Models\Subscription;
 use Workbench\Database\Factories\OrderFactory;
 
 class Order extends Model

@@ -2,11 +2,11 @@
 
 namespace Workbench\Database\Factories;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use LaravelPayHere\Enums\MessageType;
 use LaravelPayHere\Enums\PaymentMethod;
 use LaravelPayHere\Enums\PaymentStatus;
 use LaravelPayHere\Models\Payment;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Workbench\App\Models\Order;
 use Workbench\App\Models\User;
 

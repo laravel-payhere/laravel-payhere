@@ -2,10 +2,10 @@
 
 namespace LaravelPayHere\Http\Controllers;
 
-use LaravelPayHere\PayHere;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use LaravelPayHere\PayHere;
 
 class PayHereController extends Controller
 {
