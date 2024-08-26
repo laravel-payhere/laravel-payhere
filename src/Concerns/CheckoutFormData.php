@@ -192,7 +192,7 @@ trait CheckoutFormData
      * @param string $title
      * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
-    private function title(string $title): static
+    public function title(string $title): static
     {
         $this->title = $title;
         
