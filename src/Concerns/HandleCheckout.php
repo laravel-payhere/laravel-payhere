@@ -10,19 +10,9 @@ trait HandleCheckout
     use CheckoutFormData;
 
     /**
-     * The order associated with this object.
+     * The amount of the transaction.
      */
-    protected ?Model $order = null;
-
-    /**
-     * Set a new order for checkout.
-     */
-    public function newOrder(Model $order): static
-    {
-        $this->order = $order;
-
-        return $this;
-    }
+    private ?float $amount = null;
 
     /**
      * Initiate the checkout process.
@@ -32,6 +22,8 @@ trait HandleCheckout
      */
     public function checkout(float $amount): View
     {
+        $this->amount = $amount;
+        
         return view('payhere::checkout', [
             'data' => $this->getFormData(),
         ]);
