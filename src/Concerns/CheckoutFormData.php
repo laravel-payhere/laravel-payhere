@@ -81,6 +81,9 @@ trait CheckoutFormData
 
     /**
      * Get the form data for the checkout.
+     * 
+     * @return array
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
      */
     public function getFormData(): array
     {
@@ -98,6 +101,8 @@ trait CheckoutFormData
 
     /**
      * Get customer details for the form.
+     * 
+     * @return array
      */
     private function customer(): array
     {
@@ -128,6 +133,9 @@ trait CheckoutFormData
 
     /**
      * Get item details for the form.
+     * 
+     * @param array $items
+     * @return string|array
      */
     private function items(array $items): string|array
     {
@@ -136,6 +144,9 @@ trait CheckoutFormData
 
     /**
      * Get other necessary details for the form.
+     * 
+     * @return array
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
      */
     private function other(): array
     {
@@ -154,6 +165,8 @@ trait CheckoutFormData
 
     /**
      * Set preapproval for the payment.
+     * 
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function preapproval(): static
     {
@@ -164,6 +177,8 @@ trait CheckoutFormData
 
     /**
      * Set authorization for the payment.
+     * 
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function authorize(): static
     {
@@ -174,6 +189,8 @@ trait CheckoutFormData
 
     /**
      * Generate the action URL for the form.
+     * 
+     * @return string
      */
     private function actionUrl(): string
     {
@@ -193,6 +210,10 @@ trait CheckoutFormData
 
     /**
      * Set recurring payment details.
+     * 
+     * @param string $recurrence
+     * @param string $duration
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function recurring(string $recurrence, string $duration): static
     {
@@ -215,6 +236,9 @@ trait CheckoutFormData
 
     /**
      * Set the platform for the form.
+     * 
+     * @param string $platform
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function platform(string $platform): static
     {
@@ -225,6 +249,9 @@ trait CheckoutFormData
 
     /**
      * Set the startup fee for the form.
+     * 
+     * @param float $fee
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function startupFee(float $fee): static
     {
@@ -235,6 +262,9 @@ trait CheckoutFormData
 
     /**
      * Set the startup fee for the form.
+     * 
+     * @param string $id
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function orderId(string $id): static
     {
@@ -245,6 +275,9 @@ trait CheckoutFormData
 
     /**
      * Set custom data for the form.
+     * 
+     * @param string ...$data
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     private function customData(string ...$data): static
     {
@@ -258,6 +291,9 @@ trait CheckoutFormData
 
     /**
      * Set the name of item.
+     * 
+     * @param string $item
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function item(string $item): static
     {
@@ -268,6 +304,9 @@ trait CheckoutFormData
 
     /**
      * Set the name of currency for the transaction.
+     * 
+     * @param string $currency
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function currency(string $currency): static
     {
