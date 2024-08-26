@@ -315,6 +315,11 @@ trait CheckoutFormData
         return $currency;
     }
 
+    /**
+     * Get the ID of the order.
+     * 
+     * @return string
+     */
     private function getOrderId(): string
     {
         if (! is_null($this->orderId)) {
