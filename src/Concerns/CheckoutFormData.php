@@ -11,15 +11,6 @@ use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
 use LaravelPayHere\Models\Contracts\PayHereCustomer;
 use LaravelPayHere\PayHere;
 
-/**
- * @method string payhereFirstName()
- * @method string payhereLastName()
- * @method string payhereEmail()
- * @method string payherePhone()
- * @method string payhereAddress()
- * @method string payhereCity()
- * @method string payhereCountry()
- */
 trait CheckoutFormData
 {
     /**
@@ -145,13 +136,13 @@ trait CheckoutFormData
         }
 
         return [
-            'first_name' => $this->payhereFirstName(),
-            'last_name' => $this->payhereLastName(),
-            'email' => $this->payhereEmail(),
-            'phone' => $this->payherePhone(),
-            'address' => $this->payhereAddress(),
-            'city' => $this->payhereCity(),
-            'country' => $this->payhereCountry(),
+            'first_name' => $user->payhereFirstName(),
+            'last_name' => $user->payhereLastName(),
+            'email' => $user->payhereEmail(),
+            'phone' => $user->payherePhone(),
+            'address' => $user->payhereAddress(),
+            'city' => $user->payhereCity(),
+            'country' => $user->payhereCountry(),
         ];
     }
 
