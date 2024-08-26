@@ -68,7 +68,7 @@ trait CheckoutFormData
     private ?string $title = null;
 
     /**
-     * Items
+     * The items associated with the transaction.
      * 
      * @var array|null
      */
