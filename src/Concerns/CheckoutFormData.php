@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace LaravelPayHere\Concerns;
 
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Str;
 use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
 use LaravelPayHere\Models\Contracts\PayHereCustomer;
-use LaravelPayHere\Models\Contracts\PayHereOrder;
-use LaravelPayHere\PayHere;
 
 /**
  * @method string payhereFirstName()
@@ -324,7 +321,9 @@ trait CheckoutFormData
             return $this->orderId;
         }
         
-        return (string) rand();
+        $this->orderId = (string) rand();
+
+        return $this->orderId;
     }
 
     private function getItems(): string|array
@@ -333,7 +332,7 @@ trait CheckoutFormData
             return $this->title;
         }
 
-        if (sizeof($this->items) !== 0) {
+        if (count($this->items) !== 0) {
             return $this->items;
         }
 

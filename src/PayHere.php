@@ -38,7 +38,7 @@ class PayHere
     {
         static::$customerModel = $customerModel;
     }
-    
+
     /**
      * Set the customer relationship name.
      */
@@ -46,7 +46,6 @@ class PayHere
     {
         self::$customerRelationship = $relationship;
     }
-    
 
     /**
      * Set the subscription relationship name.
@@ -90,7 +89,7 @@ class PayHere
 
     /**
      * Return a new static instance.
-     * 
+     *
      * @return static
      */
     public static function new(): static
