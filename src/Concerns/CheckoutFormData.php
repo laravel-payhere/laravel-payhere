@@ -337,6 +337,6 @@ trait CheckoutFormData
             return $this->items;
         }
 
-        return ['items' => 'Laravel'];
+        return ['items' => 'Order'];
     }
 }
