@@ -324,7 +324,7 @@ trait CheckoutFormData
             return $this->orderId;
         }
         
-        return Str::uuid()->toString();
+        return (string) rand();
     }
 
     private function getItems(): string|array
