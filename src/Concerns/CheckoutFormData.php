@@ -15,14 +15,14 @@ trait CheckoutFormData
 {
     /**
      * Recurring payment details.
-     * 
+     *
      * @var array|null
      */
     private ?array $recurring = null;
 
     /**
      * Indicates if preapproval is required.
-     * 
+     *
      * @var bool
      */
     private bool $preapproval = false;
@@ -34,63 +34,63 @@ trait CheckoutFormData
 
     /**
      * Platform information.
-     * 
+     *
      * @var string|null
      */
     private ?string $platform = null;
 
     /**
      * Startup fee amount.
-     * 
+     *
      * @var float|null
      */
     private ?float $startupFee = null;
 
     /**
      * Custom data for the checkout form.
-     * 
+     *
      * @var array|null
      */
     private ?array $customData = null;
 
     /**
      * The title of the transaction.
-     * 
+     *
      * @var string|null
      */
     private ?string $title = null;
 
     /**
      * The items associated with the transaction.
-     * 
+     *
      * @var array|null
      */
     private ?array $items = [];
 
     /**
      * The currency code for the transaction.
-     * 
+     *
      * @var string|null
      */
     private ?string $currency = null;
 
     /**
      * The order id for the transaction.
-     * 
+     *
      * @var string|null
      */
     private ?string $orderId = null;
 
     /**
      * The amount of the transaction.
-     * 
+     *
      * @var float|null
      */
     private ?float $amount = null;
 
     /**
      * Indicates if the user is a guest.
-     * 
+     *
      * @var bool
      */
     private bool $guest = false;
@@ -99,6 +99,7 @@ trait CheckoutFormData
      * Get the form data for the checkout.
      *
      * @return array
+     *
      * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
      */
     public function getFormData(): array
@@ -117,21 +118,22 @@ trait CheckoutFormData
 
     /**
      * Set the user as a guest.
-     * 
+     *
      * @return $this
      */
     public function guest(): static
     {
         $this->guest = true;
-        
+
         return $this;
     }
 
     /**
      * Get the customer details for the transaction.
      *
-     * @param $user
+     * @param  $user
      * @return array
+     *
      * @throws \Exception
      */
     private function customer($user = null): array
@@ -147,7 +149,7 @@ trait CheckoutFormData
                 'country' => null,
             ];
         }
-        
+
         if (is_null($user)) {
             $user = Auth::user();
         }
@@ -181,13 +183,13 @@ trait CheckoutFormData
     /**
      * Set the title of the transaction.
      *
-     * @param string $title
+     * @param  string  $title
      * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function title(string $title): static
     {
         $this->title = $title;
-        
+
         return $this;
     }
 
@@ -338,7 +340,7 @@ trait CheckoutFormData
 
         return $this;
     }
-    
+
     /**
      * Set the name of currency for the transaction.
      *
@@ -354,8 +356,8 @@ trait CheckoutFormData
 
     /**
      * Set the amount of currency for the transaction.
-     * 
-     * @param float $amount
+     *
+     * @param  float  $amount
      * @return \LaravelPayHere\Concerns\CheckoutFormData
      */
     public function amount(float $amount): static
@@ -369,8 +371,9 @@ trait CheckoutFormData
      * Generate a hash string.
      *
      * The hash value is required starting from 2023-01-16.
-     * 
+     *
      * @return string
+     *
      * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
      */
     private function generateHash(): string
