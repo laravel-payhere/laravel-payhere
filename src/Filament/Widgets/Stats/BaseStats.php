@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaravelPayHere\Filament\Widgets\Stats;
 
 use Flowframe\Trend\Trend;

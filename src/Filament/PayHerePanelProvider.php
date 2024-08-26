@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaravelPayHere\Filament;
 
 use Filament\Http\Middleware\DisableBladeIconComponents;

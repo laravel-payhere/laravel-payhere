@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use LaravelPayHere\Http\Controllers\Api\PaymentController;
 use LaravelPayHere\Http\Controllers\Api\SubscriptionController;
 

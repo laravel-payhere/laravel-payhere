@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 it('can fetch all subscriptions', function () {
     $response = $this->getJson('payhere/api/subscriptions');
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\URL;
 use LaravelPayHere\Enums\SubscriptionStatus;
 use LaravelPayHere\Models\Subscription;

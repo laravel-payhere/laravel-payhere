@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaravelPayHere\Filament\Resources\SubscriptionResource;
 
 use Filament\Forms\Components\DatePicker;

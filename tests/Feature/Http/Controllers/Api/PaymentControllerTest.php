@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use LaravelPayHere\Models\Payment;
 
 it('can search payments without an order id', function () {

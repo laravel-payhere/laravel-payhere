@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaravelPayHere\Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;

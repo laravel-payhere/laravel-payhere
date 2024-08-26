@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\Route;
 use LaravelPayHere\Http\Controllers\PayHereController;
 use LaravelPayHere\Http\Controllers\WebhookController;

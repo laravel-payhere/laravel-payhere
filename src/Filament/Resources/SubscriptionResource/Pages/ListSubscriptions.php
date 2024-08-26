@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaravelPayHere\Filament\Resources\SubscriptionResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaravelPayHere\Models\Concerns;
 
 use LaravelPayHere\Services\Contracts\PayHereService;

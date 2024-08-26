@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use LaravelPayHere\Models\Payment;
 use Workbench\App\Models\Order;
 use Workbench\App\Models\User;

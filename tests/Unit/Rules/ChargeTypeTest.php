@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use LaravelPayHere\Rules\ChargeType;
 
 test('valid charge type', function ($chargeType) {

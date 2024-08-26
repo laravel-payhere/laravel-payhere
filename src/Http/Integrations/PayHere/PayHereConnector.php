@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaravelPayHere\Http\Integrations\PayHere;
 
 use Saloon\Helpers\OAuth2\OAuthConfig;
