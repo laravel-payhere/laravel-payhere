@@ -58,6 +58,11 @@ trait CheckoutFormData
     private ?string $item = null;
 
     /**
+     * The title of the transaction.
+     */
+    private ?string $title = null;
+
+    /**
      * Items
      */
     private ?array $items = [];
@@ -84,7 +89,7 @@ trait CheckoutFormData
     {
         return [
             'customer' => $this->customer(),
-            'items' => $this->items,
+            'items' => $this->getItems(),
             'other' => $this->other(),
             'recurring' => $this->recurring,
             'platform' => $this->platform,
@@ -320,5 +325,18 @@ trait CheckoutFormData
         }
         
         return Str::uuid()->toString();
+    }
+
+    private function getItems(): string|array
+    {
+        if (! is_null($this->title)) {
+            return $this->title;
+        }
+
+        if (sizeof($this->items) !== 0) {
+            return $this->items;
+        }
+
+        return ['items' => 'Laravel'];
     }
 }
