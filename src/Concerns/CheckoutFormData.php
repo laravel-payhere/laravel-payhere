@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelPayHere\Concerns;
 
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
@@ -82,6 +83,11 @@ trait CheckoutFormData
     private ?float $amount = null;
 
     /**
+     * Indicates if the user is a guest.
+     */
+    private bool $guest = false;
+
+    /**
      * Get the form data for the checkout.
      *
      * @return array
@@ -102,17 +108,9 @@ trait CheckoutFormData
         ];
     }
 
-    public function guest(): array
+    public function guest(): void
     {
-        return [
-            'first_name' => null,
-            'last_name' => null,
-            'email' => null,
-            'phone' => null,
-            'address' => null,
-            'city' => null,
-            'country' => null,
-        ];
+        $this->guest = true;
     }
 
     /**
@@ -120,15 +118,28 @@ trait CheckoutFormData
      *
      * @param $user
      * @return array
+     * @throws \Exception
      */
     private function customer($user = null): array
     {
+        if ($this->guest) {
+            return [
+                'first_name' => null,
+                'last_name' => null,
+                'email' => null,
+                'phone' => null,
+                'address' => null,
+                'city' => null,
+                'country' => null,
+            ];
+        }
+        
         if (is_null($user)) {
             $user = Auth::user();
         }
 
         if (! $user instanceof PayHereCustomer) {
-            throw new \Exception('The '.PayHere::$customerModel.' class must be implement the LaravelPayHere\Models\Contracts\PayHereCustomer interface');
+            throw new Exception('The '.PayHere::$customerModel.' class must be implement the LaravelPayHere\Models\Contracts\PayHereCustomer interface');
         }
 
         return [
