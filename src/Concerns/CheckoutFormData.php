@@ -99,7 +99,6 @@ trait CheckoutFormData
      * Get the form data for the checkout.
      *
      * @return array
-     *
      * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
      */
     public function getFormData(): array
