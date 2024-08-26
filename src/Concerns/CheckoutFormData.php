@@ -60,6 +60,11 @@ trait CheckoutFormData
     private ?string $currency = null;
 
     /**
+     * The amount of the transaction.
+     */
+    private ?float $amount = null;
+
+    /**
      * Get the form data for the checkout.
      */
     public function getFormData(): array
