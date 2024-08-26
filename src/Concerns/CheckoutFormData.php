@@ -108,9 +108,11 @@ trait CheckoutFormData
         ];
     }
 
-    public function guest(): void
+    public function guest(): static
     {
         $this->guest = true;
+        
+        return $this;
     }
 
     /**
