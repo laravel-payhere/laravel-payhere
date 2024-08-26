@@ -435,14 +435,10 @@ trait CheckoutFormData
      */
     private function getItems(): string|array
     {
-        if (! is_null($this->title)) {
-            return ['items' => $this->title];
-        }
-
         if (count($this->items) !== 0) {
             return $this->items;
         }
 
-        return ['items' => null];
+        return ['items' => ! is_null($this->title) ? $this->title : null];
     }
 }
