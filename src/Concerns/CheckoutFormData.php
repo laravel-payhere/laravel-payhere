@@ -382,17 +382,7 @@ trait CheckoutFormData
 
         return "$baseUrl/pay/$action";
     }
-
-    /**
-     * Get the amount of the transaction.
-     * 
-     * @return float|null
-     */
-    public function getAmount(): ?float
-    {
-        return $this->amount - $this->startupFee;
-    }
-
+    
     /**
      * Get the form data for the checkout.
      *
@@ -413,7 +403,7 @@ trait CheckoutFormData
             'cancel_url' => config('payhere.cancel_url') ?? url('/'),
             'order_id' => $this->getOrderId(),
             'currency' => $this->getCurrency(),
-            'amount' => $this->getAmount(),
+            'amount' => $this->amount - $this->startupFee,
             'hash' => $this->generateHash(),
             'recurring' => $this->recurring,
             'platform' => $this->platform,
