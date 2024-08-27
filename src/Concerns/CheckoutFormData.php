@@ -107,37 +107,7 @@ trait CheckoutFormData
      * @var int|null
      */
     private ?int $custom2 = null;
-
-    /**
-     * Get the form data for the checkout.
-     *
-     * @return array
-     *
-     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
-     */
-    public function getFormData(): array
-    {
-        return [
-            'title' => $this->title,
-            'customer' => $this->getCustomer(),
-            'items' => $this->getItems(),
-            'action' => $this->getActionUrl(),
-            'merchant_id' => config('payhere.merchant_id'),
-            'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
-            'return_url' => config('payhere.return_url') ?? URL::signedRoute('payhere.return'),
-            'cancel_url' => config('payhere.cancel_url') ?? url('/'),
-            'order_id' => $this->getOrderId(),
-            'currency' => $this->getCurrency(),
-            'amount' => $this->amount,
-            'hash' => $this->generateHash(),
-            'recurring' => $this->recurring,
-            'platform' => $this->platform,
-            'startup_fee' => $this->startupFee,
-            'custom_1' => $this->customData['custom_1'] ?? null,
-            'custom_2' => $this->customData['custom_2'] ?? null,
-        ];
-    }
-
+    
     /**
      * Set the user as a guest.
      *
@@ -148,47 +118,6 @@ trait CheckoutFormData
         $this->guest = true;
 
         return $this;
-    }
-
-    /**
-     * Get the customer details for the transaction.
-     *
-     * @param  $user
-     * @return array
-     *
-     * @throws \Exception
-     */
-    private function getCustomer($user = null): array
-    {
-        if ($this->guest) {
-            return [
-                'first_name' => null,
-                'last_name' => null,
-                'email' => null,
-                'phone' => null,
-                'address' => null,
-                'city' => null,
-                'country' => null,
-            ];
-        }
-
-        if (is_null($user)) {
-            $user = Auth::user();
-        }
-
-        if (! $user instanceof PayHereCustomer) {
-            throw new Exception('The '.PayHere::$customerModel.' class must be implement the LaravelPayHere\Models\Contracts\PayHereCustomer interface');
-        }
-
-        return [
-            'first_name' => $user->payhereFirstName(),
-            'last_name' => $user->payhereLastName(),
-            'email' => $user->payhereEmail(),
-            'phone' => $user->payherePhone(),
-            'address' => $user->payhereAddress(),
-            'city' => $user->payhereCity(),
-            'country' => $user->payhereCountry(),
-        ];
     }
 
     /**
@@ -239,27 +168,6 @@ trait CheckoutFormData
         $this->authorize = true;
 
         return $this;
-    }
-
-    /**
-     * Generate the action URL for the form.
-     *
-     * @return string
-     */
-    private function getActionUrl(): string
-    {
-        $baseUrl = config('payhere.base_url');
-        $action = 'checkout';
-
-        if ($this->preapproval) {
-            $action = 'preapprove';
-        }
-
-        if ($this->authorize) {
-            $action = 'authorize';
-        }
-
-        return "$baseUrl/pay/$action";
     }
 
     /**
@@ -353,6 +261,19 @@ trait CheckoutFormData
     }
 
     /**
+     * Set the trial period in days.
+     *
+     * @param int $trialDays
+     * @return static
+     */
+    public function trialDays(int $trialDays): static
+    {
+        $this->trialEndsAt = now()->addDays($trialDays)->toDateTimeString();
+
+        return $this;
+    }
+
+    /**
      * Generate a hash string.
      *
      * The hash value is required starting from 2023-01-16.
@@ -421,15 +342,94 @@ trait CheckoutFormData
     }
 
     /**
-     * Set the trial period in days.
-     * 
-     * @param int $trialDays
-     * @return static
+     * Get the customer details for the transaction.
+     *
+     * @param  $user
+     * @return array
+     *
+     * @throws \Exception
      */
-    public function trialDays(int $trialDays): static
+    private function getCustomer($user = null): array
     {
-        $this->trialEndsAt = now()->addDays($trialDays)->toDateTimeString();
+        if ($this->guest) {
+            return [
+                'first_name' => null,
+                'last_name' => null,
+                'email' => null,
+                'phone' => null,
+                'address' => null,
+                'city' => null,
+                'country' => null,
+            ];
+        }
 
-        return $this;
+        if (is_null($user)) {
+            $user = Auth::user();
+        }
+
+        if (! $user instanceof PayHereCustomer) {
+            throw new Exception('The '.PayHere::$customerModel.' class must be implement the LaravelPayHere\Models\Contracts\PayHereCustomer interface');
+        }
+
+        return [
+            'first_name' => $user->payhereFirstName(),
+            'last_name' => $user->payhereLastName(),
+            'email' => $user->payhereEmail(),
+            'phone' => $user->payherePhone(),
+            'address' => $user->payhereAddress(),
+            'city' => $user->payhereCity(),
+            'country' => $user->payhereCountry(),
+        ];
+    }
+
+    /**
+     * Generate the action URL for the form.
+     *
+     * @return string
+     */
+    private function getActionUrl(): string
+    {
+        $baseUrl = config('payhere.base_url');
+        $action = 'checkout';
+
+        if ($this->preapproval) {
+            $action = 'preapprove';
+        }
+
+        if ($this->authorize) {
+            $action = 'authorize';
+        }
+
+        return "$baseUrl/pay/$action";
+    }
+
+    /**
+     * Get the form data for the checkout.
+     *
+     * @return array
+     *
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     */
+    public function getFormData(): array
+    {
+        return [
+            'title' => $this->title,
+            'customer' => $this->getCustomer(),
+            'items' => $this->getItems(),
+            'action' => $this->getActionUrl(),
+            'merchant_id' => config('payhere.merchant_id'),
+            'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
+            'return_url' => config('payhere.return_url') ?? URL::signedRoute('payhere.return'),
+            'cancel_url' => config('payhere.cancel_url') ?? url('/'),
+            'order_id' => $this->getOrderId(),
+            'currency' => $this->getCurrency(),
+            'amount' => $this->amount,
+            'hash' => $this->generateHash(),
+            'recurring' => $this->recurring,
+            'platform' => $this->platform,
+            'startup_fee' => $this->startupFee,
+            'custom_1' => $this->customData['custom_1'] ?? null,
+            'custom_2' => $this->customData['custom_2'] ?? null,
+        ];
     }
 }
