@@ -396,7 +396,7 @@ trait CheckoutFormData
     }
 
     /**
-     * Get the ID of the order.
+     * Get the id of the order.
      *
      * @return string
      */
