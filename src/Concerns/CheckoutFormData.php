@@ -406,8 +406,8 @@ trait CheckoutFormData
             'recurring' => $this->recurring,
             'platform' => $this->platform,
             'startup_fee' => $this->startupFee,
-            'custom_1' => $this->customData['custom_1'] ?? null,
-            'custom_2' => $this->customData['custom_2'] ?? null,
+            'custom_1' => $this->custom1,
+            'custom_2' => $this->custom2,
         ];
     }
 
