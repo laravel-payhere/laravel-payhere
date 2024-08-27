@@ -413,7 +413,7 @@ trait CheckoutFormData
             'cancel_url' => config('payhere.cancel_url') ?? url('/'),
             'order_id' => $this->getOrderId(),
             'currency' => $this->getCurrency(),
-            'amount' => $this->amount,
+            'amount' => $this->getAmount(),
             'hash' => $this->generateHash(),
             'recurring' => $this->recurring,
             'platform' => $this->platform,
