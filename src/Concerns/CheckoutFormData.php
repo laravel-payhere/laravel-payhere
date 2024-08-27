@@ -274,28 +274,6 @@ trait CheckoutFormData
     }
 
     /**
-     * Generate a hash string.
-     *
-     * The hash value is required starting from 2023-01-16.
-     *
-     * @return string
-     *
-     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
-     */
-    private function generateHash(): string
-    {
-        return strtoupper(
-            md5(
-                config('payhere.merchant_id').
-                $this->getOrderId().
-                number_format($this->amount, 2, '.', '').
-                $this->getCurrency().
-                strtoupper(md5(config('payhere.merchant_secret')))
-            )
-        );
-    }
-
-    /**
      * Get the currency of the order.
      *
      * @return string
@@ -431,5 +409,27 @@ trait CheckoutFormData
             'custom_1' => $this->customData['custom_1'] ?? null,
             'custom_2' => $this->customData['custom_2'] ?? null,
         ];
+    }
+
+    /**
+     * Generate a hash string.
+     *
+     * The hash value is required starting from 2023-01-16.
+     *
+     * @return string
+     *
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     */
+    private function generateHash(): string
+    {
+        return strtoupper(
+            md5(
+                config('payhere.merchant_id').
+                $this->getOrderId().
+                number_format($this->amount, 2, '.', '').
+                $this->getCurrency().
+                strtoupper(md5(config('payhere.merchant_secret')))
+            )
+        );
     }
 }
