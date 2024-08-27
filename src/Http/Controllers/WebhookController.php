@@ -50,30 +50,19 @@ class WebhookController extends Controller
             return;
         }
 
-        // Abort if order not found.
-        if (! $order = PayHere::$orderModel::find($orderId)) {
-            Log::warning('[PayHere] Order not found', ['order_id' => $orderId]);
-
-            return;
-        }
-
-        $relationship = PayHere::$customerRelationship;
-
-        $user = $order->{$relationship};
-
-        $payment = $this->createPayment($user, $request);
-
+        $payment = $this->createPayment($request);
+        
         event(new PaymentVerified($payment));
 
         if ($this->isRecurringPayment($request)) {
-            $this->updateSubscription($user, $request);
+            $this->updateSubscription($request);
         }
     }
 
-    private function createPayment($user, Request $request): Payment
+    private function createPayment(Request $request): Payment
     {
         return Payment::create([
-            'user_id' => $user?->id,
+            'user_id' => $request->custom_1,
             'merchant_id' => $request->merchant_id,
             'order_id' => $request->order_id,
             'payment_id' => $request->payment_id,
@@ -102,9 +91,10 @@ class WebhookController extends Controller
         ]);
     }
 
-    public function updateSubscription($user, Request $request): void
+    public function updateSubscription(Request $request): void
     {
-        $subscriptionId = $request->custom_1;
+        $userId = $request->custom_1;
+        $subscriptionId = $request->custom_2;
 
         if (! $subscription = Subscription::find($subscriptionId)) {
             Log::warning('[PayHere] Subscription not found', ['subscription_id' => $subscriptionId]);
@@ -115,7 +105,7 @@ class WebhookController extends Controller
         $daysUntilNextRecurrence = now()->diffInDays($request->item_rec_date_next);
 
         $subscription->update([
-            'user_id' => $user->id,
+            'user_id' => $userId,
             'payhere_subscription_id' => $request->subscription_id,
             'ends_at' => now()->addDays($daysUntilNextRecurrence),
         ]);
@@ -137,16 +127,22 @@ class WebhookController extends Controller
 
     /**
      * Check if the payment is recurring.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return bool
      */
-    private function isRecurringPayment($request)
+    private function isRecurringPayment(Request $request)
     {
         return (int) $request->recurring === 1;
     }
 
     /**
      * Check if the subscription is new.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return bool
      */
-    private function isNewSubscription($request): bool
+    private function isNewSubscription(Request $request): bool
     {
         return (int) $request->item_rec_install_paid === 1;
     }
