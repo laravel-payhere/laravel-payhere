@@ -184,7 +184,7 @@ trait CheckoutFormData
      * @param array $items
      * @return static
      */
-    private function items(array $items): static
+    public function items(array $items): static
     {
         $this->items = $items;
 

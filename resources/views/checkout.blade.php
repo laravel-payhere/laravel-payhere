@@ -159,9 +159,9 @@
     </form>
 </div>
 <script>
-    setTimeout(function () {
-        document.getElementById('checkout-form').submit();
-    }, 1000);
+    // setTimeout(function () {
+    //     document.getElementById('checkout-form').submit();
+    // }, 1000);
 </script>
 </body>
 </html>
