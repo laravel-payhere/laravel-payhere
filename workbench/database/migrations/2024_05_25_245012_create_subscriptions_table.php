@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('payhere_subscription_id')->index()->nullable();
             $table->foreignId('user_id')->index()->nullable();
+            $table->foreignId('order_id')->index();
             $table->timestamp('trial_ends_at')->nullable();
             $table->timestamp('ends_at')->nullable();
             $table->enum('status', [0, 1, -1, -2, -3])->default(-3)->nullable();
