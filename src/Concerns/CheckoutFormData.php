@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
 use LaravelPayHere\Models\Contracts\PayHereCustomer;
+use LaravelPayHere\Models\Subscription;
 use LaravelPayHere\PayHere;
 
 trait CheckoutFormData
@@ -89,6 +90,11 @@ trait CheckoutFormData
     private bool $guest = false;
 
     /**
+     * The date when the trial period ends.
+     */
+    private ?string $trialEndsAt = null;
+
+    /**
      * The 1st custom parameter.
      *
      * @var string|null
@@ -98,9 +104,9 @@ trait CheckoutFormData
     /**
      * The 2nd custom parameter.
      *
-     * @var string|null
+     * @var int|null
      */
-    private ?string $custom2 = null;
+    private ?int $custom2 = null;
 
     /**
      * Get the form data for the checkout.
@@ -270,13 +276,13 @@ trait CheckoutFormData
             'duration' => $duration,
         ];
 
-        $subscription = $this->subscriptions()->create([
+        $subscription = Subscription::create([
             'order_id' => $this->getOrderId(),
             'ends_at' => now()->add($duration),
             'trial_ends_at' => $this->trialEndsAt,
         ]);
 
-        $this->customData($subscription->id);
+        $this->custom2 = $subscription->id;
 
         return $this;
     }
@@ -412,5 +418,18 @@ trait CheckoutFormData
     private function getItems(): array
     {
         return $this->items;
+    }
+
+    /**
+     * Set the trial period in days.
+     * 
+     * @param int $trialDays
+     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     */
+    public function trialDays(int $trialDays): static
+    {
+        $this->trialEndsAt = now()->addDays($trialDays)->toDateTimeString();
+
+        return $this;
     }
 }
