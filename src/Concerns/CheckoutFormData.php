@@ -107,7 +107,15 @@ trait CheckoutFormData
         return [
             'customer' => $this->getCustomer(),
             'items' => $this->getItems(),
-            'other' => $this->other(),
+            'action' => $this->actionUrl(),
+            'merchant_id' => config('payhere.merchant_id'),
+            'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
+            'return_url' => config('payhere.return_url') ?? URL::signedRoute('payhere.return'),
+            'cancel_url' => config('payhere.cancel_url') ?? url('/'),
+            'order_id' => $this->getOrderId(),
+            'currency' => $this->getCurrency(),
+            'amount' => $this->amount,
+            'hash' => $this->generateHash(),
             'recurring' => $this->recurring,
             'platform' => $this->platform,
             'startup_fee' => $this->startupFee,
@@ -193,28 +201,6 @@ trait CheckoutFormData
         $this->title = $title;
 
         return $this;
-    }
-
-    /**
-     * Get other necessary details for the form.
-     *
-     * @return array
-     *
-     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
-     */
-    private function other(): array
-    {
-        return [
-            'action' => $this->actionUrl(),
-            'merchant_id' => config('payhere.merchant_id'),
-            'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
-            'return_url' => config('payhere.return_url') ?? URL::signedRoute('payhere.return'),
-            'cancel_url' => config('payhere.cancel_url') ?? url('/'),
-            'order_id' => $this->getOrderId(),
-            'currency' => $this->getCurrency(),
-            'amount' => $this->amount,
-            'hash' => $this->generateHash(),
-        ];
     }
 
     /**

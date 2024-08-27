@@ -114,29 +114,41 @@
             <em>Please do not refresh the page or click the "Back" or "Close" button of your browser.</em>
         </div>
     </div>
-    <form id="checkout-form" action="{{ $data['other']['action'] }}" method="post">
-        @foreach ($data['other'] as $key => $value)
-            <input type="hidden" name="{{ $key }}" value="{{ $value }}">
-        @endforeach
+    <form id="checkout-form" action="{{ $data['action'] }}" method="post">
+        <input type="hidden" name="merchant_id" value="{{ $data['merchant_id'] }}">
+        <input type="hidden" name="notify_url" value="{{ $data['notify_url'] }}">
+        <input type="hidden" name="return_url" value="{{ $data['return_url'] }}">
+        <input type="hidden" name="cancel_url" value="{{ $data['cancel_url'] }}">
+        <input type="hidden" name="order_id" value="{{ $data['order_id'] }}">
+        <input type="hidden" name="currency" value="{{ $data['currency'] }}">
+        <input type="hidden" name="amount" value="{{ $data['amount'] }}">
+        <input type="hidden" name="hash" value="{{ $data['hash'] }}">
+        
         @foreach ($data['customer'] as $key => $value)
             <input type="hidden" name="{{ $key }}" value="{{ $value }}">
         @endforeach
+        
         @isset($data['recurring'])
             <input type="hidden" name="recurrence" value="{{ $data['recurring']['recurrence'] }}">
             <input type="hidden" name="duration" value="{{ $data['recurring']['duration'] }}">
         @endisset
+        
         @isset($data['platform'])
             <input type="hidden" name="platform" value="{{ $data['platform'] }}">
         @endisset
+        
         @isset($data['startup_fee'])
             <input type="hidden" name="startup_fee" value="{{ $data['startup_fee'] }}">
         @endisset
+        
         @isset($data['custom_1'])
             <input type="hidden" name="custom_1" value="{{ $data['custom_1'] }}">
         @endisset
+        
         @isset($data['custom_2'])
             <input type="hidden" name="custom_2" value="{{ $data['custom_2'] }}">
         @endisset
+        
         @foreach ($data['items'] as $key => $value)
             <input type="hidden" name="{{ $key }}" value="{{ $value }}">
         @endforeach
