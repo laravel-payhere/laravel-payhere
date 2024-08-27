@@ -410,4 +410,14 @@ trait CheckoutFormData
 
         return $this->orderId;
     }
+
+    /**
+     * Get items for the transaction.
+     *
+     * @return array
+     */
+    private function getItems(): array
+    {
+        return $this->items;
+    }
 }
