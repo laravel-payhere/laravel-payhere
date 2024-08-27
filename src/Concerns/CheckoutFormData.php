@@ -424,7 +424,7 @@ trait CheckoutFormData
      * Set the trial period in days.
      * 
      * @param int $trialDays
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function trialDays(int $trialDays): static
     {
