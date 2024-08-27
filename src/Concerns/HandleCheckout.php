@@ -14,6 +14,7 @@ trait HandleCheckout
      * Initiate the checkout process.
      *
      * @return \Illuminate\Contracts\View\View
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
      */
     public function checkout(): View
     {
