@@ -384,6 +384,16 @@ trait CheckoutFormData
     }
 
     /**
+     * Get the amount of the transaction.
+     * 
+     * @return float|null
+     */
+    public function getAmount(): ?float
+    {
+        return $this->amount - $this->startupFee;
+    }
+
+    /**
      * Get the form data for the checkout.
      *
      * @return array
