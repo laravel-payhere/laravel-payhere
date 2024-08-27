@@ -107,7 +107,7 @@ trait CheckoutFormData
         return [
             'customer' => $this->getCustomer(),
             'items' => $this->getItems(),
-            'action' => $this->actionUrl(),
+            'action' => $this->getActionUrl(),
             'merchant_id' => config('payhere.merchant_id'),
             'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
             'return_url' => config('payhere.return_url') ?? URL::signedRoute('payhere.return'),
@@ -232,7 +232,7 @@ trait CheckoutFormData
      *
      * @return string
      */
-    private function actionUrl(): string
+    private function getActionUrl(): string
     {
         $baseUrl = config('payhere.base_url');
         $action = 'checkout';
