@@ -25,11 +25,6 @@ class Subscription extends Model
         'status' => SubscriptionStatus::class,
     ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(PayHere::$customerModel);
-    }
-
     public function order(): BelongsTo
     {
         return $this->belongsTo(PayHere::$orderModel);
