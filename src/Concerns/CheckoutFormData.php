@@ -344,7 +344,7 @@ trait CheckoutFormData
         if (is_null($user)) {
             $user = Auth::user();
             
-            $this->custom1 = $user->getAuthIdentifier();
+            $this->custom1 = (string) $user->getAuthIdentifier();
         }
 
         if (! $user instanceof PayHereCustomer) {
