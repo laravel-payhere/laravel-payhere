@@ -47,13 +47,6 @@ trait CheckoutFormData
     private ?float $startupFee = null;
 
     /**
-     * Custom data for the checkout form.
-     *
-     * @var array|null
-     */
-    private ?array $customData = null;
-
-    /**
      * The title of the transaction.
      *
      * @var string|null
@@ -323,22 +316,6 @@ trait CheckoutFormData
     public function orderId(string $id): static
     {
         $this->orderId = $id;
-
-        return $this;
-    }
-
-    /**
-     * Set custom data for the form.
-     *
-     * @param  string  ...$data
-     * @return static
-     */
-    private function customData(string ...$data): static
-    {
-        $this->customData = [
-            'custom_1' => $data[0] ?? null,
-            'custom_2' => $data[1] ?? null,
-        ];
 
         return $this;
     }
