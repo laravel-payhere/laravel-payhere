@@ -177,7 +177,9 @@ trait CheckoutFormData
      */
     private function items(array $items): string|array
     {
-        return $items;
+        $this->items = $items;
+
+        return $this;
     }
 
     /**
