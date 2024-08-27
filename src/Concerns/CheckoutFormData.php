@@ -96,6 +96,20 @@ trait CheckoutFormData
     private bool $guest = false;
 
     /**
+     * The 1st custom parameter.
+     *
+     * @var string|null
+     */
+    private ?string $custom1 = null;
+
+    /**
+     * The 2nd custom parameter.
+     *
+     * @var string|null
+     */
+    private ?string $custom2 = null;
+
+    /**
      * Get the form data for the checkout.
      *
      * @return array
