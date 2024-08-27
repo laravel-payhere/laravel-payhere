@@ -25,11 +25,6 @@ class Subscription extends Model
         'status' => SubscriptionStatus::class,
     ];
 
-    public function order(): BelongsTo
-    {
-        return $this->belongsTo(PayHere::$orderModel);
-    }
-
     /**
      * Determine if the subscription is within its trial period.
      */
