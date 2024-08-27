@@ -105,7 +105,7 @@ trait CheckoutFormData
     public function getFormData(): array
     {
         return [
-            'customer' => $this->customer(),
+            'customer' => $this->getCustomer(),
             'items' => $this->getItems(),
             'other' => $this->other(),
             'recurring' => $this->recurring,
@@ -136,7 +136,7 @@ trait CheckoutFormData
      *
      * @throws \Exception
      */
-    private function customer($user = null): array
+    private function getCustomer($user = null): array
     {
         if ($this->guest) {
             return [
