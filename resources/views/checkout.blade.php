@@ -115,15 +115,6 @@
         </div>
     </div>
     <form id="checkout-form" action="{{ $data['action'] }}" method="post">
-        <input type="hidden" name="merchant_id" value="{{ $data['merchant_id'] }}">
-        <input type="hidden" name="notify_url" value="{{ $data['notify_url'] }}">
-        <input type="hidden" name="return_url" value="{{ $data['return_url'] }}">
-        <input type="hidden" name="cancel_url" value="{{ $data['cancel_url'] }}">
-        <input type="hidden" name="order_id" value="{{ $data['order_id'] }}">
-        <input type="hidden" name="currency" value="{{ $data['currency'] }}">
-        <input type="hidden" name="amount" value="{{ $data['amount'] }}">
-        <input type="hidden" name="hash" value="{{ $data['hash'] }}">
-        
         @foreach ($data['customer'] as $key => $value)
             <input type="hidden" name="{{ $key }}" value="{{ $value }}">
         @endforeach
@@ -152,6 +143,15 @@
         @foreach ($data['items'] as $key => $value)
             <input type="hidden" name="{{ $key }}" value="{{ $value }}">
         @endforeach
+
+        <input type="hidden" name="merchant_id" value="{{ $data['merchant_id'] }}">
+        <input type="hidden" name="notify_url" value="{{ $data['notify_url'] }}">
+        <input type="hidden" name="return_url" value="{{ $data['return_url'] }}">
+        <input type="hidden" name="cancel_url" value="{{ $data['cancel_url'] }}">
+        <input type="hidden" name="order_id" value="{{ $data['order_id'] }}">
+        <input type="hidden" name="currency" value="{{ $data['currency'] }}">
+        <input type="hidden" name="amount" value="{{ $data['amount'] }}">
+        <input type="hidden" name="hash" value="{{ $data['hash'] }}">
     </form>
 </div>
 <script>
