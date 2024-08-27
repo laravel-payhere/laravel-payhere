@@ -43,9 +43,9 @@ trait CheckoutFormData
     /**
      * Startup fee amount.
      *
-     * @var float|null
+     * @var float
      */
-    private ?float $startupFee = null;
+    private float $startupFee = 0;
 
     /**
      * The title of the transaction.
