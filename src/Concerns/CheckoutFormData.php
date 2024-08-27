@@ -107,7 +107,7 @@ trait CheckoutFormData
         return [
             'title' => $this->title,
             'customer' => $this->getCustomer(),
-            'items' => $this->items,
+            'items' => $this->getItems(),
             'action' => $this->getActionUrl(),
             'merchant_id' => config('payhere.merchant_id'),
             'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
@@ -415,6 +415,7 @@ trait CheckoutFormData
      * Get items for the transaction.
      *
      * @return array
+     * @throws \Exception
      */
     private function getItems(): array
     {
