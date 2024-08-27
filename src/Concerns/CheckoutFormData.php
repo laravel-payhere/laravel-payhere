@@ -181,7 +181,7 @@ trait CheckoutFormData
     /**
      * Get item details for the form.
      *
-     * @param array $items
+     * @param  array  $items
      * @return static
      */
     public function items(array $items): static
@@ -415,6 +415,7 @@ trait CheckoutFormData
      * Get the items for the transaction.
      *
      * @return array
+     *
      * @throws \Exception
      */
     private function getItems(): array
