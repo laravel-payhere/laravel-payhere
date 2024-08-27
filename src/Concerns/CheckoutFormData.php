@@ -263,7 +263,6 @@ trait CheckoutFormData
         ];
 
         $subscription = $this->subscriptions()->create([
-            'user_id' => $this->id,
             'order_id' => $this->getOrderId(),
             'ends_at' => now()->add($duration),
             'trial_ends_at' => $this->trialEndsAt,
