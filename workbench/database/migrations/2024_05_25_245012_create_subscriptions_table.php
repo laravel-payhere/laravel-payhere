@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('payhere_subscription_id')->unique()->nullable();
-            $table->foreignId('user_id')->index()->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('order_id')->unique();
             $table->timestamp('trial_ends_at')->nullable();
             $table->timestamp('ends_at')->nullable();
