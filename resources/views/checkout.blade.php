@@ -139,6 +139,10 @@
         @isset($data['custom_2'])
             <input type="hidden" name="custom_2" value="{{ $data['custom_2'] }}">
         @endisset
+
+        @isset($data['title'])
+            <input type="hidden" name="items" value="{{ $data['title'] }}">
+        @endisset
         
         @foreach ($data['items'] as $key => $value)
             <input type="hidden" name="{{ $key }}" value="{{ $value }}">
