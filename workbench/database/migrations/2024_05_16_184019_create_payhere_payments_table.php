@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('refunded')->default(false);
             $table->text('refund_reason')->nullable();
             $table->string('authorization_token')->nullable();
-            $table->string('subscription_id')->index()->nullable();
+            $table->unsignedBigInteger('subscription_id')->nullable();
             $table->float('payhere_amount');
             $table->float('captured_amount')->nullable();
             $table->string('payhere_currency');
