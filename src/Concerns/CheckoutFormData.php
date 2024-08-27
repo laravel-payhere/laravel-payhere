@@ -412,7 +412,7 @@ trait CheckoutFormData
     }
 
     /**
-     * Get items for the transaction.
+     * Get the items for the transaction.
      *
      * @return array
      * @throws \Exception
