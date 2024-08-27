@@ -105,8 +105,9 @@ trait CheckoutFormData
     public function getFormData(): array
     {
         return [
+            'title' => $this->title,
             'customer' => $this->getCustomer(),
-            'items' => $this->getItems(),
+            'items' => $this->items,
             'action' => $this->getActionUrl(),
             'merchant_id' => config('payhere.merchant_id'),
             'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
@@ -180,10 +181,10 @@ trait CheckoutFormData
     /**
      * Get item details for the form.
      *
-     * @param  array  $items
-     * @return string|array
+     * @param array $items
+     * @return static
      */
-    private function items(array $items): string|array
+    private function items(array $items): static
     {
         $this->items = $items;
 
@@ -194,7 +195,7 @@ trait CheckoutFormData
      * Set the title of the transaction.
      *
      * @param  string  $title
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function title(string $title): static
     {
@@ -206,7 +207,7 @@ trait CheckoutFormData
     /**
      * Set preapproval for the payment.
      *
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function preapproval(): static
     {
@@ -218,7 +219,7 @@ trait CheckoutFormData
     /**
      * Set authorization for the payment.
      *
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function authorize(): static
     {
@@ -253,7 +254,7 @@ trait CheckoutFormData
      *
      * @param  string  $recurrence
      * @param  string  $duration
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function recurring(string $recurrence, string $duration): static
     {
@@ -277,7 +278,7 @@ trait CheckoutFormData
      * Set the platform for the form.
      *
      * @param  string  $platform
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function platform(string $platform): static
     {
@@ -290,7 +291,7 @@ trait CheckoutFormData
      * Set the startup fee for the form.
      *
      * @param  float  $fee
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function startupFee(float $fee): static
     {
@@ -303,7 +304,7 @@ trait CheckoutFormData
      * Set the startup fee for the form.
      *
      * @param  string  $id
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function orderId(string $id): static
     {
@@ -316,7 +317,7 @@ trait CheckoutFormData
      * Set custom data for the form.
      *
      * @param  string  ...$data
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     private function customData(string ...$data): static
     {
@@ -332,7 +333,7 @@ trait CheckoutFormData
      * Set the name of currency for the transaction.
      *
      * @param  string  $currency
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function currency(string $currency): static
     {
@@ -345,7 +346,7 @@ trait CheckoutFormData
      * Set the amount of currency for the transaction.
      *
      * @param  float  $amount
-     * @return \LaravelPayHere\Concerns\CheckoutFormData
+     * @return static
      */
     public function amount(float $amount): static
     {
@@ -408,19 +409,5 @@ trait CheckoutFormData
         $this->orderId = (string) rand();
 
         return $this->orderId;
-    }
-
-    /**
-     * Get the items of the order.
-     *
-     * @return string|array
-     */
-    private function getItems(): string|array
-    {
-        if (count($this->items) !== 0) {
-            return $this->items;
-        }
-
-        return ['items' => ! is_null($this->title) ? $this->title : null];
     }
 }
