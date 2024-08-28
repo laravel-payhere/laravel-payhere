@@ -5,10 +5,435 @@ declare(strict_types=1);
 namespace LaravelPayHere\Concerns;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
+use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
+use LaravelPayHere\Models\Contracts\PayHereCustomer;
+use LaravelPayHere\Models\Subscription;
+use LaravelPayHere\PayHere;
 
 trait HandleCheckout
 {
-    use CheckoutFormData;
+    /**
+     * Recurring payment details.
+     *
+     * @var array|null
+     */
+    private ?array $recurring = null;
+
+    /**
+     * Indicates if preapproval is required.
+     *
+     * @var bool
+     */
+    private bool $preapproval = false;
+
+    /**
+     * Indicates if authorization is required.
+     */
+    private bool $authorize = false;
+
+    /**
+     * Platform information.
+     *
+     * @var string|null
+     */
+    private ?string $platform = null;
+
+    /**
+     * Startup fee amount.
+     *
+     * @var float
+     */
+    private float $startupFee = 0;
+
+    /**
+     * The title of the transaction.
+     *
+     * @var string|null
+     */
+    private ?string $title = null;
+
+    /**
+     * The items associated with the transaction.
+     *
+     * @var array|null
+     */
+    private ?array $items = [];
+
+    /**
+     * The currency code for the transaction.
+     *
+     * @var string|null
+     */
+    private ?string $currency = null;
+
+    /**
+     * The order id for the transaction.
+     *
+     * @var string|null
+     */
+    private ?string $orderId = null;
+
+    /**
+     * The amount of the transaction.
+     *
+     * @var float|null
+     */
+    private ?float $amount = null;
+
+    /**
+     * Indicates if the user is a guest.
+     *
+     * @var bool
+     */
+    private bool $guest = false;
+
+    /**
+     * The date when the trial period ends.
+     */
+    private ?string $trialEndsAt = null;
+
+    /**
+     * The 1st custom parameter.
+     *
+     * @var string|null
+     */
+    private ?string $custom1 = null;
+
+    /**
+     * The 2nd custom parameter.
+     *
+     * @var int|null
+     */
+    private ?int $custom2 = null;
+
+    /**
+     * Set the user as a guest.
+     *
+     * @return $this
+     */
+    public function guest(): static
+    {
+        $this->guest = true;
+
+        return $this;
+    }
+
+    /**
+     * Get item details for the form.
+     *
+     * @param  array  $items
+     * @return static
+     */
+    public function items(array $items): static
+    {
+        $this->items = $items;
+
+        return $this;
+    }
+
+    /**
+     * Set the title of the transaction.
+     *
+     * @param  string  $title
+     * @return static
+     */
+    public function title(string $title): static
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Set preapproval for the payment.
+     *
+     * @return static
+     */
+    public function preapproval(): static
+    {
+        $this->preapproval = true;
+
+        return $this;
+    }
+
+    /**
+     * Set authorization for the payment.
+     *
+     * @return static
+     */
+    public function authorize(): static
+    {
+        $this->authorize = true;
+
+        return $this;
+    }
+
+    /**
+     * Set recurring payment details.
+     *
+     * @param  string  $recurrence
+     * @param  string  $duration
+     * @return static
+     */
+    public function recurring(string $recurrence, string $duration): static
+    {
+        $this->recurring = [
+            'recurrence' => $recurrence,
+            'duration' => $duration,
+        ];
+
+        $subscription = Subscription::create([
+            'order_id' => $this->getOrderId(),
+            'ends_at' => now()->add($duration),
+            'trial_ends_at' => $this->trialEndsAt,
+        ]);
+
+        $this->custom2 = $subscription->id;
+
+        return $this;
+    }
+
+    /**
+     * Set the platform for the form.
+     *
+     * @param  string  $platform
+     * @return static
+     */
+    public function platform(string $platform): static
+    {
+        $this->platform = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Set the startup fee for the form.
+     *
+     * @param  float  $fee
+     * @return static
+     */
+    public function startupFee(float $fee): static
+    {
+        $this->startupFee = $fee;
+
+        return $this;
+    }
+
+    /**
+     * Set the startup fee for the form.
+     *
+     * @param  string  $id
+     * @return static
+     */
+    public function orderId(string $id): static
+    {
+        $this->orderId = $id;
+
+        return $this;
+    }
+
+    /**
+     * Set the name of currency for the transaction.
+     *
+     * @param  string  $currency
+     * @return static
+     */
+    public function currency(string $currency): static
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Set the amount of currency for the transaction.
+     *
+     * @param  float  $amount
+     * @return static
+     */
+    public function amount(float $amount): static
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Set the trial period in days.
+     *
+     * @param int $trialDays
+     * @return static
+     */
+    public function trialDays(int $trialDays): static
+    {
+        $this->trialEndsAt = now()->addDays($trialDays)->toDateTimeString();
+
+        return $this;
+    }
+
+    /**
+     * Get the currency of the order.
+     *
+     * @return string
+     *
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     */
+    private function getCurrency(): string
+    {
+        $currency = $this->currency ?? config('payhere.currency');
+
+        if (! in_array($currency, ['LKR', 'USD', 'EUR', 'GBP', 'AUD'])) {
+            throw new UnsupportedCurrencyException;
+        }
+
+        return $currency;
+    }
+
+    /**
+     * Get the id of the order.
+     *
+     * @return string
+     */
+    private function getOrderId(): string
+    {
+        if (! is_null($this->orderId)) {
+            return $this->orderId;
+        }
+
+        $this->orderId = (string) rand();
+
+        return $this->orderId;
+    }
+
+    /**
+     * Get the items for the transaction.
+     *
+     * @return array
+     *
+     * @throws \Exception
+     */
+    private function getItems(): array
+    {
+        return $this->items;
+    }
+
+    /**
+     * Get the customer details for the transaction.
+     *
+     * @param  $user
+     * @return array
+     *
+     * @throws \Exception
+     */
+    private function getCustomer($user = null): array
+    {
+        if ($this->guest) {
+            return [
+                'first_name' => null,
+                'last_name' => null,
+                'email' => null,
+                'phone' => null,
+                'address' => null,
+                'city' => null,
+                'country' => null,
+            ];
+        }
+
+        if (is_null($user)) {
+            $user = Auth::user();
+
+            $this->custom1 = (string) $user->getAuthIdentifier();
+        }
+
+        if (! $user instanceof PayHereCustomer) {
+            throw new Exception('The '.PayHere::$customerModel.' class must be implement the LaravelPayHere\Models\Contracts\PayHereCustomer interface');
+        }
+
+        return [
+            'first_name' => $user->payhereFirstName(),
+            'last_name' => $user->payhereLastName(),
+            'email' => $user->payhereEmail(),
+            'phone' => $user->payherePhone(),
+            'address' => $user->payhereAddress(),
+            'city' => $user->payhereCity(),
+            'country' => $user->payhereCountry(),
+        ];
+    }
+
+    /**
+     * Generate the action URL for the form.
+     *
+     * @return string
+     */
+    private function getActionUrl(): string
+    {
+        $baseUrl = config('payhere.base_url');
+        $action = 'checkout';
+
+        if ($this->preapproval) {
+            $action = 'preapprove';
+        }
+
+        if ($this->authorize) {
+            $action = 'authorize';
+        }
+
+        return "$baseUrl/pay/$action";
+    }
+
+    /**
+     * Generate a hash string.
+     *
+     * The hash value is required starting from 2023-01-16.
+     *
+     * @return string
+     *
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     */
+    private function generateHash(): string
+    {
+        return strtoupper(
+            md5(
+                config('payhere.merchant_id').
+                $this->getOrderId().
+                number_format($this->amount, 2, '.', '').
+                $this->getCurrency().
+                strtoupper(md5(config('payhere.merchant_secret')))
+            )
+        );
+    }
+
+    /**
+     * Get the form data for the checkout.
+     *
+     * @return array
+     *
+     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     */
+    public function getFormData(): array
+    {
+        return [
+            'title' => $this->title,
+            'customer' => $this->getCustomer(),
+            'items' => $this->getItems(),
+            'action' => $this->getActionUrl(),
+            'merchant_id' => config('payhere.merchant_id'),
+            'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
+            'return_url' => config('payhere.return_url') ?? URL::signedRoute('payhere.return'),
+            'cancel_url' => config('payhere.cancel_url') ?? url('/'),
+            'order_id' => $this->getOrderId(),
+            'currency' => $this->getCurrency(),
+            'amount' => $this->amount - $this->startupFee,
+            'hash' => $this->generateHash(),
+            'recurring' => $this->recurring,
+            'platform' => $this->platform,
+            'startup_fee' => $this->startupFee,
+            'custom_1' => $this->custom1,
+            'custom_2' => $this->custom2,
+        ];
+    }
 
     /**
      * Initiate the checkout process.
