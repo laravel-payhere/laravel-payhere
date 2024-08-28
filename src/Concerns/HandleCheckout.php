@@ -263,7 +263,7 @@ trait HandleCheckout
     /**
      * Set the trial period in days.
      *
-     * @param int $trialDays
+     * @param  int  $trialDays
      * @return static
      */
     public function trialDays(int $trialDays): static
@@ -439,6 +439,7 @@ trait HandleCheckout
      * Initiate the checkout process.
      *
      * @return \Illuminate\Contracts\View\View
+     *
      * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
      */
     public function checkout(): View

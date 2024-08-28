@@ -51,7 +51,7 @@ class WebhookController extends Controller
         }
 
         $payment = $this->createPayment($request);
-        
+
         event(new PaymentVerified($payment));
 
         if ($this->isRecurringPayment($request)) {
@@ -127,8 +127,8 @@ class WebhookController extends Controller
 
     /**
      * Check if the payment is recurring.
-     * 
-     * @param \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
     private function isRecurringPayment(Request $request): bool
@@ -138,8 +138,8 @@ class WebhookController extends Controller
 
     /**
      * Check if the subscription is new.
-     * 
-     * @param \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
     private function isNewSubscription(Request $request): bool
