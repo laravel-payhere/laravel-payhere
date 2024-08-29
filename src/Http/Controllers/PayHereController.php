@@ -25,10 +25,10 @@ class PayHereController extends Controller
 
         $orderId = $request->input('order_id');
         
-        $order = Payment::whereOrderId($orderId)->first();
+        $payment = Payment::whereOrderId($orderId)->first();
 
         return view('payhere::return', [
-            'total' => $order->total,
+            'amount' => $payment->payhere_amount,
         ]);
     }
 }
