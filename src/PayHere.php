@@ -24,8 +24,8 @@ class PayHere
 
     /**
      * Set the customer model class name.
-     * 
-     * @param $customerModel
+     *
+     * @param  $customerModel
      */
     public static function useCustomerModel($customerModel): void
     {
@@ -35,13 +35,13 @@ class PayHere
     /**
      * Set the subscription model class name.
      *
-     * @param $subscriptionModel
+     * @param  $subscriptionModel
      */
     public static function useSubscriptionModel($subscriptionModel): void
     {
         static::$subscriptionModel = $subscriptionModel;
     }
-    
+
     /**
      * Verify the payment notification.
      */
@@ -68,8 +68,8 @@ class PayHere
 
     /**
      * Verify if the provided merchant ID matches the configured PayHere merchant ID.
-     * 
-     * @param string $merchantId
+     *
+     * @param  string  $merchantId
      * @return bool
      */
     public static function verifyMerchantId(string $merchantId): bool
