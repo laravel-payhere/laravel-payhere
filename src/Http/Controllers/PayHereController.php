@@ -7,6 +7,7 @@ namespace PayHere\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use PayHere\Models\Payment;
 use PayHere\PayHere;
 
 class PayHereController extends Controller
@@ -22,7 +23,9 @@ class PayHereController extends Controller
             abort(401);
         }
 
-        $order = PayHere::$orderModel::findOrFail($request->order_id);
+        $orderId = $request->input('order_id');
+        
+        $order = Payment::whereOrderId($orderId)->first();
 
         return view('payhere::return', [
             'total' => $order->total,
