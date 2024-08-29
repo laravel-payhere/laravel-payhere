@@ -17,15 +17,20 @@ use PayHere\Services\Contracts\PayHereService;
 
 class PayHereApiService implements PayHereService
 {
-    public function refundPayment(Payment $payment, ?string $reason = null): array
+    private PayHereConnector $connector;
+    
+    public function __construct()
     {
         $connector = new PayHereConnector;
 
         $authenticator = $connector->getAccessToken();
 
         $connector->authenticate($authenticator);
+    }
 
-        $response = $connector->send(new RefundPaymentRequest(
+    public function refundPayment(Payment $payment, ?string $reason = null): array
+    {
+        $response = $this->connector->send(new RefundPaymentRequest(
             paymentId: $payment->payment_id,
             description: $reason
         ));
@@ -45,13 +50,7 @@ class PayHereApiService implements PayHereService
 
     public function cancelSubscription(Subscription $subscription): array
     {
-        $connector = new PayHereConnector;
-
-        $authenticator = $connector->getAccessToken();
-
-        $connector->authenticate($authenticator);
-
-        $response = $connector->send(new CancelSubscriptionRequest($subscription->payhere_subscription_id));
+        $response = $this->connector->send(new CancelSubscriptionRequest($subscription->payhere_subscription_id));
 
         $payload = $response->json();
 
@@ -68,13 +67,7 @@ class PayHereApiService implements PayHereService
 
     public function retrySubscription(Subscription $subscription): array
     {
-        $connector = new PayHereConnector;
-
-        $authenticator = $connector->getAccessToken();
-
-        $connector->authenticate($authenticator);
-
-        $response = $connector->send(new RetrySubscriptionRequest($subscription->payhere_subscription_id));
+        $response = $this->connector->send(new RetrySubscriptionRequest($subscription->payhere_subscription_id));
 
         $payload = $response->json();
 
