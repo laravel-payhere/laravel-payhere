@@ -9,6 +9,9 @@ use PayHere\PayHere;
 
 trait ManagesSubscriptions
 {
+    /**
+     * Sets up a one-to-many relationship with the Subscription model.
+     */
     public function subscriptions(): HasMany
     {
         return $this->hasMany(PayHere::$subscriptionModel);
