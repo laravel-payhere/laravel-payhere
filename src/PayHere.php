@@ -6,6 +6,7 @@ namespace PayHere;
 
 use PayHere\Concerns\HandleCheckout;
 use PayHere\Enums\PaymentStatus;
+use PayHere\Models\Subscription;
 
 class PayHere
 {
@@ -15,6 +16,11 @@ class PayHere
      * The default customer model class name.
      */
     public static string $customerModel = 'App\\Models\\User';
+
+    /**
+     * The default subscription model class name.
+     */
+    public static string $subscriptionModel = Subscription::class;
 
     /**
      * The default customer relationship name.
@@ -30,7 +36,7 @@ class PayHere
      * The default subscription relationship name.
      */
     public static string $subscriptionRelationship = 'subscription';
-
+    
     /**
      * Set the customer model class name.
      */
