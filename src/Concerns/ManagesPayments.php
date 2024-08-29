@@ -14,6 +14,6 @@ trait ManagesPayments
      */
     public function payments(): HasOne
     {
-        return $this->hasOne(Payment::class);
+        return $this->hasOne(Payment::class)->orderByDesc('created_at');
     }
 }

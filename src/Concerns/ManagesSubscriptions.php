@@ -14,6 +14,6 @@ trait ManagesSubscriptions
      */
     public function subscriptions(): HasMany
     {
-        return $this->hasMany(PayHere::$subscriptionModel);
+        return $this->hasMany(PayHere::$subscriptionModel)->orderByDesc('created_at');
     }
 }
