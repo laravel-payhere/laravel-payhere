@@ -21,11 +21,11 @@ class PayHereApiService implements PayHereService
     
     public function __construct()
     {
-        $connector = new PayHereConnector;
+        $this->connector = new PayHereConnector;
 
-        $authenticator = $connector->getAccessToken();
+        $authenticator = $this->connector->getAccessToken();
 
-        $connector->authenticate($authenticator);
+        $this->connector->authenticate($authenticator);
     }
 
     public function refundPayment(Payment $payment, ?string $reason = null): array
