@@ -6,12 +6,12 @@ namespace PayHere\Tests\Browser;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
+use Orchestra\Testbench\Attributes\WithMigration;
 use PayHere\Tests\Browser\Pages\Authorize;
 use PayHere\Tests\Browser\Pages\Checkout;
 use PayHere\Tests\Browser\Pages\Preapproval;
 use PayHere\Tests\Browser\Pages\Recurring;
 use PayHere\Tests\DuskTestCase;
-use Orchestra\Testbench\Attributes\WithMigration;
 use PHPUnit\Framework\Attributes\Test;
 use Workbench\App\Models\User;
 

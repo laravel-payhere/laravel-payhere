@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace PayHere\Tests;
 
-use PayHere\Filament\PayHerePanelProvider;
-use PayHere\PayHereServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\Dusk\TestCase;
+use PayHere\Filament\PayHerePanelProvider;
+use PayHere\PayHereServiceProvider;
 use Workbench\App\Models\User;
 use Workbench\App\Providers\WorkbenchServiceProvider;
 
