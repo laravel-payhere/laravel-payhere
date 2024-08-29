@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PayHere\Concerns;
 
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
