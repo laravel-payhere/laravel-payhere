@@ -87,6 +87,9 @@ class PayHere
 
     /**
      * Verify if the provided merchant ID matches the configured PayHere merchant ID.
+     * 
+     * @param string $merchantId
+     * @return bool
      */
     public static function verifyMerchantId(string $merchantId): bool
     {
