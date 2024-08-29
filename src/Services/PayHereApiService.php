@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Services;
+namespace PayHere\Services;
 
-use LaravelPayHere\Events\PaymentRefunded;
-use LaravelPayHere\Events\SubscriptionCancelled;
-use LaravelPayHere\Events\SubscriptionRetrySucceeded;
-use LaravelPayHere\Http\Integrations\PayHere\PayHereConnector;
-use LaravelPayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
-use LaravelPayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
-use LaravelPayHere\Http\Integrations\PayHere\Requests\RetrySubscriptionRequest;
-use LaravelPayHere\Models\Payment;
-use LaravelPayHere\Models\Subscription;
-use LaravelPayHere\Services\Contracts\PayHereService;
+use PayHere\Events\PaymentRefunded;
+use PayHere\Events\SubscriptionCancelled;
+use PayHere\Events\SubscriptionRetrySucceeded;
+use PayHere\Http\Integrations\PayHere\PayHereConnector;
+use PayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
+use PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
+use PayHere\Http\Integrations\PayHere\Requests\RetrySubscriptionRequest;
+use PayHere\Models\Payment;
+use PayHere\Models\Subscription;
+use PayHere\Services\Contracts\PayHereService;
 
 class PayHereApiService implements PayHereService
 {

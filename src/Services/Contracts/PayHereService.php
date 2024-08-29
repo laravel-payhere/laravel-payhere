@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Services\Contracts;
+namespace PayHere\Services\Contracts;
 
-use LaravelPayHere\Models\Payment;
-use LaravelPayHere\Models\Subscription;
+use PayHere\Models\Payment;
+use PayHere\Models\Subscription;
 
 interface PayHereService
 {

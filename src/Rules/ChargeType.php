@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Rules;
+namespace PayHere\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use LaravelPayHere\Enums\ChargeType as ChargeTypeEnum;
+use PayHere\Enums\ChargeType as ChargeTypeEnum;
 
 class ChargeType implements ValidationRule
 {

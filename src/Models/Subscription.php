@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Models;
+namespace PayHere\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use LaravelPayHere\Enums\SubscriptionStatus;
-use LaravelPayHere\Models\Concerns\ManagesSubscriptions;
+use PayHere\Enums\SubscriptionStatus;
+use PayHere\Models\Concerns\ManagesSubscriptions;
 use Workbench\Database\Factories\SubscriptionFactory;
 
 class Subscription extends Model

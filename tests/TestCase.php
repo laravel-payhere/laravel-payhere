@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Tests;
+namespace PayHere\Tests;
 
-use LaravelPayHere\PayHereServiceProvider;
+use PayHere\PayHereServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Workbench\App\Providers\WorkbenchServiceProvider;

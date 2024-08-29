@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Http\Integrations\PayHere\Requests;
+namespace PayHere\Http\Integrations\PayHere\Requests;
 
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;

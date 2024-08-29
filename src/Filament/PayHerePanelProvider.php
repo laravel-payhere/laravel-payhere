@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Filament;
+namespace PayHere\Filament;
 
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -18,7 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use LaravelPayHere\Filament\Middleware\Authenticate;
+use PayHere\Filament\Middleware\Authenticate;
 
 class PayHerePanelProvider extends PanelProvider
 {
@@ -66,15 +66,15 @@ class PayHerePanelProvider extends PanelProvider
             ])
             ->discoverPages(
                 in: __DIR__.'/../../src/Filament/Pages',
-                for: 'LaravelPayHere\\Filament\\Pages'
+                for: 'PayHere\\Filament\\Pages'
             )
             ->discoverWidgets(
                 in: __DIR__.'/../../src/Filament/Widgets',
-                for: 'LaravelPayHere\\Filament\\Widgets'
+                for: 'PayHere\\Filament\\Widgets'
             )
             ->discoverResources(
                 in: __DIR__.'/../../src/Filament/Resources',
-                for: 'LaravelPayHere\\Filament\\Resources'
+                for: 'PayHere\\Filament\\Resources'
             )
             ->bootUsing(function () {
                 Table::$defaultCurrency = config('payhere.currency');

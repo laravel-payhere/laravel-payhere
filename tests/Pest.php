@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelPayHere\Tests\TestCase;
+use PayHere\Tests\TestCase;
 
 /*
 |--------------------------------------------------------------------------

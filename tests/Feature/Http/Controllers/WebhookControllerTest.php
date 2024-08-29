@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\URL;
-use LaravelPayHere\Enums\SubscriptionStatus;
-use LaravelPayHere\Models\Subscription;
+use PayHere\Enums\SubscriptionStatus;
+use PayHere\Models\Subscription;
 use Workbench\App\Models\Order;
 use Workbench\App\Models\OrderLine;
 

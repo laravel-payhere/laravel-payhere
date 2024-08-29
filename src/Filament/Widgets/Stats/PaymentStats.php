@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Filament\Widgets\Stats;
+namespace PayHere\Filament\Widgets\Stats;
 
 use Illuminate\Database\Eloquent\Builder;
-use LaravelPayHere\Models\Payment;
+use PayHere\Models\Payment;
 
 class PaymentStats extends BaseStats
 {

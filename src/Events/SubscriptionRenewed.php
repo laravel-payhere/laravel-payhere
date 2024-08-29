@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Events;
+namespace PayHere\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use LaravelPayHere\Models\Subscription;
+use PayHere\Models\Subscription;
 
 class SubscriptionRenewed
 {

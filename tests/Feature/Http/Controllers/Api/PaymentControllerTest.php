@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelPayHere\Models\Payment;
+use PayHere\Models\Payment;
 
 it('can search payments without an order id', function () {
     $response = $this->getJson('payhere/api/payments/search');

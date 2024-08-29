@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Filament\Resources\PaymentResource;
+namespace PayHere\Filament\Resources\PaymentResource;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Split;
@@ -18,11 +18,11 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
-use LaravelPayHere\Enums\PaymentMethod;
-use LaravelPayHere\Enums\PaymentStatus;
-use LaravelPayHere\Enums\RefundStatus;
-use LaravelPayHere\Models\Payment;
-use LaravelPayHere\Services\Contracts\PayHereService;
+use PayHere\Enums\PaymentMethod;
+use PayHere\Enums\PaymentStatus;
+use PayHere\Enums\RefundStatus;
+use PayHere\Models\Payment;
+use PayHere\Services\Contracts\PayHereService;
 
 class PaymentResource extends Resource
 {

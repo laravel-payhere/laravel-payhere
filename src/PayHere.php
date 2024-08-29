@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere;
+namespace PayHere;
 
-use LaravelPayHere\Concerns\HandleCheckout;
-use LaravelPayHere\Enums\PaymentStatus;
+use PayHere\Concerns\HandleCheckout;
+use PayHere\Enums\PaymentStatus;
 
 class PayHere
 {

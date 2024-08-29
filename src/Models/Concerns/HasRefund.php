@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Models\Concerns;
+namespace PayHere\Models\Concerns;
 
-use LaravelPayHere\Services\Contracts\PayHereService;
+use PayHere\Services\Contracts\PayHereService;
 
 /**
  * @property $payment

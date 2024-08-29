@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Exceptions;
+namespace PayHere\Exceptions;
 
 use Exception;
 

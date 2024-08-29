@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Http\Controllers;
+namespace PayHere\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use LaravelPayHere\PayHere;
+use PayHere\PayHere;
 
 class PayHereController extends Controller
 {

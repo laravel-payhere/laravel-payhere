@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Filament\Contracts;
+namespace PayHere\Filament\Contracts;
 
 interface PayHerePanelUser
 {

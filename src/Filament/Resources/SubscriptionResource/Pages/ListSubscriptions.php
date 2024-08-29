@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Filament\Resources\SubscriptionResource\Pages;
+namespace PayHere\Filament\Resources\SubscriptionResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;
-use LaravelPayHere\Filament\Resources\SubscriptionResource\SubscriptionResource;
+use PayHere\Filament\Resources\SubscriptionResource\SubscriptionResource;
 
 class ListSubscriptions extends ListRecords
 {

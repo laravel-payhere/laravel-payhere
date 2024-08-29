@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Tests\Browser\Pages;
+namespace PayHere\Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page;
-use LaravelPayHere\Tests\Browser\Concerns\HandlesPayment;
-use LaravelPayHere\Tests\Browser\Concerns\HasPayHereSiteElements;
-use LaravelPayHere\Tests\Browser\Concerns\PayHereBrowserAssertions;
+use PayHere\Tests\Browser\Concerns\HandlesPayment;
+use PayHere\Tests\Browser\Concerns\HasPayHereSiteElements;
+use PayHere\Tests\Browser\Concerns\PayHereBrowserAssertions;
 
 class Checkout extends Page
 {

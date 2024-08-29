@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Enums;
+namespace PayHere\Enums;
 
 enum RefundStatus: int
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Filament\Resources\PaymentResource\Pages;
+namespace PayHere\Filament\Resources\PaymentResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;
-use LaravelPayHere\Filament\Resources\PaymentResource\PaymentResource;
+use PayHere\Filament\Resources\PaymentResource\PaymentResource;
 
 class ListPayments extends ListRecords
 {

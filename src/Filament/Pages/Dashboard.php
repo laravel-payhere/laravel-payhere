@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Filament\Pages;
+namespace PayHere\Filament\Pages;
 
 use Filament\Pages\Dashboard as BaseDashboard;
 

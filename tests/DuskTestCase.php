@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Tests;
+namespace PayHere\Tests;
 
-use LaravelPayHere\Filament\PayHerePanelProvider;
-use LaravelPayHere\PayHereServiceProvider;
+use PayHere\Filament\PayHerePanelProvider;
+use PayHere\PayHereServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\Dusk\TestCase;
 use Workbench\App\Models\User;

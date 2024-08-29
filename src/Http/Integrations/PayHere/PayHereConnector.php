@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Http\Integrations\PayHere;
+namespace PayHere\Http\Integrations\PayHere;
 
 use Saloon\Helpers\OAuth2\OAuthConfig;
 use Saloon\Http\Auth\BasicAuthenticator;

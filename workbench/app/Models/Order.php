@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use LaravelPayHere\Models\Payment;
-use LaravelPayHere\Models\Subscription;
+use PayHere\Models\Payment;
+use PayHere\Models\Subscription;
 use Workbench\Database\Factories\OrderFactory;
 
 class Order extends Model

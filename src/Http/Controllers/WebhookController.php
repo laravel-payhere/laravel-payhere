@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Http\Controllers;
+namespace PayHere\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
-use LaravelPayHere\Enums\SubscriptionStatus;
-use LaravelPayHere\Events\PaymentVerified;
-use LaravelPayHere\Events\SubscriptionActivated;
-use LaravelPayHere\Events\SubscriptionRenewed;
-use LaravelPayHere\Models\Payment;
-use LaravelPayHere\Models\Subscription;
-use LaravelPayHere\PayHere;
+use PayHere\Enums\SubscriptionStatus;
+use PayHere\Events\PaymentVerified;
+use PayHere\Events\SubscriptionActivated;
+use PayHere\Events\SubscriptionRenewed;
+use PayHere\Models\Payment;
+use PayHere\Models\Subscription;
+use PayHere\PayHere;
 
 class WebhookController extends Controller
 {

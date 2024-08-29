@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelPayHere\Rules\ChargeType;
+use PayHere\Rules\ChargeType;
 
 test('valid charge type', function ($chargeType) {
     $rule = new ChargeType;

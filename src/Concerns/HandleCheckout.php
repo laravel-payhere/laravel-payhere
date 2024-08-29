@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Concerns;
+namespace PayHere\Concerns;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
-use LaravelPayHere\Exceptions\UnsupportedCurrencyException;
-use LaravelPayHere\Models\Contracts\PayHereCustomer;
-use LaravelPayHere\Models\Subscription;
-use LaravelPayHere\PayHere;
+use PayHere\Exceptions\UnsupportedCurrencyException;
+use PayHere\Models\Contracts\PayHereCustomer;
+use PayHere\Models\Subscription;
+use PayHere\PayHere;
 
 trait HandleCheckout
 {
@@ -278,7 +278,7 @@ trait HandleCheckout
      *
      * @return string
      *
-     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     * @throws \PayHere\Exceptions\UnsupportedCurrencyException
      */
     private function getCurrency(): string
     {
@@ -348,7 +348,7 @@ trait HandleCheckout
         }
 
         if (! $user instanceof PayHereCustomer) {
-            throw new Exception('The '.PayHere::$customerModel.' class must be implement the LaravelPayHere\Models\Contracts\PayHereCustomer interface');
+            throw new Exception('The '.PayHere::$customerModel.' class must be implement the PayHere\Models\Contracts\PayHereCustomer interface');
         }
 
         return [
@@ -390,7 +390,7 @@ trait HandleCheckout
      *
      * @return string
      *
-     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     * @throws \PayHere\Exceptions\UnsupportedCurrencyException
      */
     private function generateHash(): string
     {
@@ -410,7 +410,7 @@ trait HandleCheckout
      *
      * @return array
      *
-     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     * @throws \PayHere\Exceptions\UnsupportedCurrencyException
      */
     public function getFormData(): array
     {
@@ -440,7 +440,7 @@ trait HandleCheckout
      *
      * @return \Illuminate\Contracts\View\View
      *
-     * @throws \LaravelPayHere\Exceptions\UnsupportedCurrencyException
+     * @throws \PayHere\Exceptions\UnsupportedCurrencyException
      */
     public function checkout(): View
     {

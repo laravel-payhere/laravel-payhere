@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Concerns;
+namespace PayHere\Concerns;
 
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use LaravelPayHere\Models\Payment;
+use PayHere\Models\Payment;
 
 trait ManagesPayments
 {

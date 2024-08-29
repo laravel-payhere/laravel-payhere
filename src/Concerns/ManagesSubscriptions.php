@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Concerns;
+namespace PayHere\Concerns;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use LaravelPayHere\Models\Subscription;
+use PayHere\Models\Subscription;
 
 trait ManagesSubscriptions
 {

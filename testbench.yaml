@@ -1,6 +1,6 @@
 providers:
-  - LaravelPayHere\PayHereServiceProvider
-  - LaravelPayHere\Filament\PayHerePanelProvider
+  - PayHere\PayHereServiceProvider
+  - PayHere\Filament\PayHerePanelProvider
   - Workbench\App\Providers\WorkbenchServiceProvider
 
 migrations:

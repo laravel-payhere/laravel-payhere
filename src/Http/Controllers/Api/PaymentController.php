@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Http\Controllers\Api;
+namespace PayHere\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use JsonException;
-use LaravelPayHere\Http\Integrations\PayHere\PayHereConnector;
-use LaravelPayHere\Http\Integrations\PayHere\Requests\CapturePaymentRequest;
-use LaravelPayHere\Http\Integrations\PayHere\Requests\ListPaymentsRequest;
-use LaravelPayHere\Http\Integrations\PayHere\Requests\PaymentChargeRequest;
-use LaravelPayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
-use LaravelPayHere\Rules\ChargeType;
+use PayHere\Http\Integrations\PayHere\PayHereConnector;
+use PayHere\Http\Integrations\PayHere\Requests\CapturePaymentRequest;
+use PayHere\Http\Integrations\PayHere\Requests\ListPaymentsRequest;
+use PayHere\Http\Integrations\PayHere\Requests\PaymentChargeRequest;
+use PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
+use PayHere\Rules\ChargeType;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
 

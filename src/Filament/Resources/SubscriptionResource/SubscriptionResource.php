@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Filament\Resources\SubscriptionResource;
+namespace PayHere\Filament\Resources\SubscriptionResource;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Split;
@@ -15,9 +15,9 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use LaravelPayHere\Enums\SubscriptionStatus;
-use LaravelPayHere\Models\Subscription;
-use LaravelPayHere\Services\Contracts\PayHereService;
+use PayHere\Enums\SubscriptionStatus;
+use PayHere\Models\Subscription;
+use PayHere\Services\Contracts\PayHereService;
 
 class SubscriptionResource extends Resource
 {

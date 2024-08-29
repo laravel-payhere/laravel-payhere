@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere\Tests\Browser\Concerns;
+namespace PayHere\Tests\Browser\Concerns;
 
 trait HasPayHereSiteElements
 {

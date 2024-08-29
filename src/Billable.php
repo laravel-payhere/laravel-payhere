@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaravelPayHere;
+namespace PayHere;
 
-use LaravelPayHere\Concerns\ManagesPayments;
-use LaravelPayHere\Concerns\ManagesSubscriptions;
+use PayHere\Concerns\ManagesPayments;
+use PayHere\Concerns\ManagesSubscriptions;
 
 trait Billable
 {
