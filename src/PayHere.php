@@ -23,22 +23,9 @@ class PayHere
     public static string $subscriptionModel = Subscription::class;
 
     /**
-     * The default customer relationship name.
-     */
-    public static string $customerRelationship = 'user';
-
-    /**
-     * The default payment relationship name.
-     */
-    public static string $paymentRelationship = 'payment';
-
-    /**
-     * The default subscription relationship name.
-     */
-    public static string $subscriptionRelationship = 'subscription';
-    
-    /**
      * Set the customer model class name.
+     * 
+     * @param $customerModel
      */
     public static function useCustomerModel($customerModel): void
     {
@@ -46,21 +33,15 @@ class PayHere
     }
 
     /**
-     * Set the customer relationship name.
+     * Set the subscription model class name.
+     *
+     * @param $subscriptionModel
      */
-    public static function useCustomerRelationship(string $relationship): void
+    public static function useSubscriptionModel($subscriptionModel): void
     {
-        self::$customerRelationship = $relationship;
+        static::$subscriptionModel = $subscriptionModel;
     }
-
-    /**
-     * Set the subscription relationship name.
-     */
-    public static function useSubscriptionRelationship(string $relationship): void
-    {
-        self::$subscriptionRelationship = $relationship;
-    }
-
+    
     /**
      * Verify the payment notification.
      */
