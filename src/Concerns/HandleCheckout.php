@@ -6,6 +6,7 @@ namespace PayHere\Concerns;
 
 use Exception;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use PayHere\Exceptions\UnsupportedCurrencyException;
@@ -15,6 +16,13 @@ use PayHere\PayHere;
 
 trait HandleCheckout
 {
+    /**
+     * The PayHere customer.
+     *
+     * @var \Illuminate\Database\Eloquent\Model|null
+     */
+    private ?Model $customer = null;
+    
     /**
      * Recurring payment details.
      *
@@ -108,6 +116,18 @@ trait HandleCheckout
      * @var int|null
      */
     private ?int $custom2 = null;
+
+    /**
+     * Set the customer.
+     *
+     * @return $this
+     */
+    public function customer($customer): static
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
 
     /**
      * Set the user as a guest.
@@ -350,7 +370,7 @@ trait HandleCheckout
             throw new Exception('The '.PayHere::$customerModel.' class must be implement the PayHere\Models\Contracts\PayHereCustomer interface');
         }
 
-        $this->custom1 = (string) $user->getAuthIdentifier();
+        $this->custom1 = (string) $user->id();
 
         return [
             'first_name' => $user->payhereFirstName(),
