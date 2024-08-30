@@ -118,7 +118,7 @@ trait HandleCheckout
     private ?int $custom2 = null;
 
     /**
-     * Set the customer.
+     * Set the customer for the transaction.
      *
      * @return $this
      */
