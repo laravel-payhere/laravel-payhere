@@ -82,7 +82,7 @@ class PayHere
      *
      * @return static
      */
-    public static function new(): static
+    public static function builder(): static
     {
         return new static;
     }
