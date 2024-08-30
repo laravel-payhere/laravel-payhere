@@ -343,14 +343,14 @@ trait HandleCheckout
         }
 
         if (is_null($user)) {
-            if (! $user instanceof PayHereCustomer) {
-                throw new Exception('The '.PayHere::$customerModel.' class must be implement the PayHere\Models\Contracts\PayHereCustomer interface');
-            }
-            
             $user = Auth::user();
-
-            $this->custom1 = (string) $user->getAuthIdentifier();
         }
+
+        if (! $user instanceof PayHereCustomer) {
+            throw new Exception('The '.PayHere::$customerModel.' class must be implement the PayHere\Models\Contracts\PayHereCustomer interface');
+        }
+
+        $this->custom1 = (string) $user->getAuthIdentifier();
 
         return [
             'first_name' => $user->payhereFirstName(),
