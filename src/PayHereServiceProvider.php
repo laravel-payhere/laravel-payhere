@@ -41,17 +41,14 @@ class PayHereServiceProvider extends PackageServiceProvider
 
     public function registeringPackage(): void
     {
-        $this->registerPayHereFacade();
-        $this->registerServices();
-    }
-
-    private function registerPayHereFacade(): void
-    {
         $this->app->singleton('payhere', fn () => new PayHere);
-    }
-
-    private function registerServices(): void
-    {
+        
         $this->app->bind(PayHereService::class, PayHereApiService::class);
+        
+    }
+    
+    public function packageRegistered(): void
+    {
+        $this->app['config']->set('payhere.base_url', config('payhere.sandbox') ? 'https://sandbox.payhere.lk' : 'https://www.payhere.lk');
     }
 }
