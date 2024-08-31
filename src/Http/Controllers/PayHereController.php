@@ -22,13 +22,7 @@ class PayHereController extends Controller
         if (! $request->hasValidSignatureWhileIgnoring(['order_id'])) {
             abort(401);
         }
-
-        $orderId = $request->input('order_id');
-
-        $payment = Payment::whereOrderId($orderId)->first();
-
-        return view('payhere::return', [
-            'amount' => 2000,
-        ]);
+        
+        return view('payhere::return');
     }
 }
