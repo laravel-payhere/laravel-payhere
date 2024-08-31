@@ -60,7 +60,7 @@ class Payment extends Model
             'refunded' => true,
             'refund_reason' => $reason,
         ]);
-        
+
         PaymentRefunded::dispatch($this);
     }
 

@@ -360,7 +360,7 @@ trait HandleCheckout
                 'country' => null,
             ];
         }
-        
+
         $user = $this->customer ?? Auth::user();
 
         if (! $user instanceof PayHereCustomer) {

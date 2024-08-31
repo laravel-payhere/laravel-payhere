@@ -7,7 +7,6 @@ namespace PayHere\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use PayHere\Models\Payment;
 use PayHere\PayHere;
 
 class PayHereController extends Controller
@@ -22,7 +21,7 @@ class PayHereController extends Controller
         if (! $request->hasValidSignatureWhileIgnoring(['order_id'])) {
             abort(401);
         }
-        
+
         return view('payhere::return');
     }
 }

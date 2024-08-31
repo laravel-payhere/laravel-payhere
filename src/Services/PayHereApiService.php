@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace PayHere\Services;
 
-use PayHere\Events\PaymentRefunded;
-use PayHere\Events\SubscriptionCancelled;
-use PayHere\Events\SubscriptionRetrySucceeded;
 use PayHere\Http\Integrations\PayHere\PayHereConnector;
 use PayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
 use PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;

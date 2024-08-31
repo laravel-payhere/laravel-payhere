@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use PayHere\Models\Payment;
-use Workbench\App\Models\Order;
 use Workbench\App\Models\User;
 
 test('to array', function () {
