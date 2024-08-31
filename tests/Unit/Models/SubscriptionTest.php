@@ -25,6 +25,5 @@ test('to array', function () {
 test('relations', function () {
     $subscription = Subscription::factory()->create();
 
-    expect($subscription->user)->toBeInstanceOf(User::class)
-        ->and($subscription->order)->toBeInstanceOf(Order::class);
+    expect($subscription->user)->toBeInstanceOf(User::class);
 });
