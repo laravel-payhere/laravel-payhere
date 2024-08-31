@@ -172,7 +172,8 @@ class PaymentResource extends Resource
 
                 SelectFilter::make('status_code')
                     ->label('Status')
-                    ->options(PaymentStatus::class),
+                    ->options(PaymentStatus::class)
+                    ->multiple(),
 
             ], layout: FiltersLayout::AboveContentCollapsible)
             ->actions([
