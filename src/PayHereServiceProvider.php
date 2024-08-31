@@ -45,7 +45,6 @@ class PayHereServiceProvider extends PackageServiceProvider
         $this->app->singleton('payhere', fn () => new PayHere);
         
         $this->app->bind(PayHereService::class, PayHereApiService::class);
-        
     }
     
     public function packageRegistered(): void
