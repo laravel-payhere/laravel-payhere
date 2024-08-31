@@ -56,8 +56,6 @@ class PayHereApiService implements PayHereService
 
         if ((int) $status === 1) {
             $subscription->markAsCancelled();
-
-            SubscriptionCancelled::dispatch($subscription);
         }
 
         return $payload;

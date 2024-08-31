@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PayHere\Enums\SubscriptionStatus;
+use PayHere\Events\SubscriptionCancelled;
 use PayHere\Models\Concerns\ManagesSubscriptions;
 use PayHere\PayHere;
 use Workbench\Database\Factories\SubscriptionFactory;
@@ -67,6 +68,8 @@ class Subscription extends Model
     public function markAsCancelled(): void
     {
         $this->update(['status' => SubscriptionStatus::Cancelled]);
+
+        SubscriptionCancelled::dispatch($this);
     }
 
     public function markAsActive(): void
