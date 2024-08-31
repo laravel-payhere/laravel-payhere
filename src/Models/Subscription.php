@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PayHere\Enums\SubscriptionStatus;
 use PayHere\Events\SubscriptionCancelled;
+use PayHere\Events\SubscriptionRetrySucceeded;
 use PayHere\Models\Concerns\ManagesSubscriptions;
 use PayHere\PayHere;
 use Workbench\Database\Factories\SubscriptionFactory;
@@ -75,6 +76,8 @@ class Subscription extends Model
     public function markAsActive(): void
     {
         $this->update(['status' => SubscriptionStatus::Active]);
+
+        SubscriptionRetrySucceeded::dispatch($this);
     }
 
     public function markAsCompleted(): void

@@ -71,8 +71,6 @@ class PayHereApiService implements PayHereService
 
         if ((int) $status === 1) {
             $subscription->markAsActive();
-
-            SubscriptionRetrySucceeded::dispatch($subscription);
         }
 
         return $payload;
