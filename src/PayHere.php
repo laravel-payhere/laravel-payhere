@@ -11,6 +11,8 @@ use PayHere\Models\Subscription;
 class PayHere
 {
     use HandleCheckout;
+    
+    const SUPPORTED_CURRENCIES = ['LKR', 'USD', 'EUR', 'GBP', 'AUD'];
 
     /**
      * The default customer model class name.

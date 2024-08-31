@@ -305,7 +305,7 @@ trait HandleCheckout
     {
         $currency = $this->currency ?? config('payhere.currency');
 
-        if (! in_array($currency, ['LKR', 'USD', 'EUR', 'GBP', 'AUD'])) {
+        if (! in_array($currency, PayHere::SUPPORTED_CURRENCIES)) {
             throw new UnsupportedCurrencyException;
         }
 
