@@ -348,7 +348,7 @@ trait HandleCheckout
      *
      * @throws \Exception
      */
-    private function getCustomer($user = null): array
+    private function getCustomer(): array
     {
         if ($this->guest) {
             return [
@@ -361,10 +361,8 @@ trait HandleCheckout
                 'country' => null,
             ];
         }
-
-        if (! is_null($this->customer)) {
-            $user = $this->customer;
-        }
+        
+        $user = $this->customer ?? Auth::user();
 
         if (! $user instanceof PayHereCustomer) {
             throw new Exception('The '.PayHere::$customerModel.' class must be implement the PayHere\Models\Contracts\PayHereCustomer interface');
