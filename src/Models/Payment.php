@@ -56,10 +56,7 @@ class Payment extends Model
 
     public function markAsRefunded(?string $reason = null): void
     {
-        $this->update([
-            'refunded' => true,
-            'refund_reason' => $reason,
-        ]);
+        $this->update(['refunded' => true, 'refund_reason' => $reason]);
 
         PaymentRefunded::dispatch($this);
     }
