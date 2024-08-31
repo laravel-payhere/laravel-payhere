@@ -343,7 +343,6 @@ trait HandleCheckout
     /**
      * Get the customer details for the transaction.
      *
-     * @param  $user
      * @return array
      *
      * @throws \Exception
