@@ -129,4 +129,16 @@ return [
     */
 
     'panel_login' => env('PAYHERE_PANEL_LOGIN', true),
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | PayHere Panel Logo
+    |--------------------------------------------------------------------------
+    |
+    | Path to the default brand logo for the PayHere panel.
+    |
+    */
+
+    'panel_logo' => 'public/vendor/payhere/images/logo.svg',
 ];
