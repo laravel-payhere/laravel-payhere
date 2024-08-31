@@ -38,6 +38,7 @@ class SubscriptionResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('user.name')
+                    ->default('Guest')
                     ->sortable()
                     ->searchable(),
 
