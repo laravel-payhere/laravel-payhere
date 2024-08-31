@@ -6,6 +6,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | PayHere Sandbox Mode
+    |--------------------------------------------------------------------------
+    |
+    | This option allows you to toggle between the PayHere sandbox (test) mode 
+    | and live mode. When set to true, the sandbox environment will be used 
+    | for testing transactions. Set to false for live transactions.
+    */
+
+    'sandbox' => env('PAYHERE_SANDBOX', false),
+    
+    /*
+    |--------------------------------------------------------------------------
     | PayHere API Base URL
     |--------------------------------------------------------------------------
     |
