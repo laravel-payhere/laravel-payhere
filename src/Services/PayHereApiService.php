@@ -41,8 +41,6 @@ class PayHereApiService implements PayHereService
 
         if ((int) $status === 1) {
             $payment->markAsRefunded($reason);
-
-            PaymentRefunded::dispatch($payment);
         }
 
         return $payload;

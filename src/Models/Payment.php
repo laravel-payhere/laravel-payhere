@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PayHere\Enums\MessageType;
 use PayHere\Enums\PaymentMethod;
 use PayHere\Enums\PaymentStatus;
+use PayHere\Events\PaymentRefunded;
 use PayHere\PayHere;
 use Workbench\Database\Factories\PaymentFactory;
 
@@ -53,12 +54,14 @@ class Payment extends Model
         return $this->belongsTo(PayHere::$orderModel);
     }
 
-    public function markAsRefunded(?string $reason = null): bool
+    public function markAsRefunded(?string $reason = null): void
     {
-        return $this->update([
+        $this->update([
             'refunded' => true,
             'refund_reason' => $reason,
         ]);
+        
+        PaymentRefunded::dispatch($this);
     }
 
     public function isRefundable(): bool
