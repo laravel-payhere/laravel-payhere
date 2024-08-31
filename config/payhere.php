@@ -10,8 +10,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option allows you to toggle between the PayHere sandbox (test) mode 
-    | and live mode. When set to true, the sandbox environment will be used 
-    | for testing transactions. Set to false for live transactions.
+    | and live mode.
     */
 
     'sandbox' => env('PAYHERE_SANDBOX', false),
