@@ -41,6 +41,7 @@ class PayHereServiceProvider extends PackageServiceProvider
 
     public function registeringPackage(): void
     {
+        // Register the PayHere facade.
         $this->app->singleton('payhere', fn () => new PayHere);
         
         $this->app->bind(PayHereService::class, PayHereApiService::class);
