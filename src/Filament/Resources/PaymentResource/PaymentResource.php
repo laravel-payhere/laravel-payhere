@@ -42,7 +42,7 @@ class PaymentResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('user.name')
-                    ->default('Guest')
+                    ->default('Guest User')
                     ->sortable()
                     ->searchable(),
 
