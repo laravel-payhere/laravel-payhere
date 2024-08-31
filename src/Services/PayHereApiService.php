@@ -18,7 +18,7 @@ use PayHere\Services\Contracts\PayHereService;
 class PayHereApiService implements PayHereService
 {
     private PayHereConnector $connector;
-    
+
     public function __construct()
     {
         $this->connector = new PayHereConnector;

@@ -24,7 +24,7 @@ class PayHereController extends Controller
         }
 
         $orderId = $request->input('order_id');
-        
+
         $payment = Payment::whereOrderId($orderId)->first();
 
         return view('payhere::return', [

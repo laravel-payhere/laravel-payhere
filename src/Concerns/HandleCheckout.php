@@ -22,7 +22,7 @@ trait HandleCheckout
      * @var \Illuminate\Database\Eloquent\Model|null
      */
     private ?Model $customer = null;
-    
+
     /**
      * Recurring payment details.
      *
