@@ -30,9 +30,9 @@ class WebhookController extends Controller
 
         $verifiedPayment = PayHere::verifyPaymentNotification(
             orderId: $orderId,
-            amount: $request->payhere_amount,
+            amount: (float) $request->payhere_amount,
             currency: $request->payhere_currency,
-            statusCode: $request->status_code,
+            statusCode: (int) $request->status_code,
             md5sig: $request->md5sig,
         );
 
