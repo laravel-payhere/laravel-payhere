@@ -37,6 +37,7 @@ class PaymentResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('payment_id')
+                    ->copyable()
                     ->sortable()
                     ->searchable(),
 
@@ -100,6 +101,7 @@ class PaymentResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('subscription_id')
+                    ->copyable()
                     ->searchable()
                     ->sortable(),
 

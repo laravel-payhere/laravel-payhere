@@ -33,6 +33,7 @@ class SubscriptionResource extends Resource
             ->columns([
                 TextColumn::make('payhere_subscription_id')
                     ->label('Subscription id')
+                    ->copyable()
                     ->sortable()
                     ->searchable(),
 
