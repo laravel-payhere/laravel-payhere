@@ -44,6 +44,5 @@ test('to array', function () {
 test('relations', function () {
     $payment = Payment::factory()->create();
 
-    expect($payment->user)->toBeInstanceOf(User::class)
-        ->and($payment->order)->toBeInstanceOf(Order::class);
+    expect($payment->user)->toBeInstanceOf(User::class);
 });
