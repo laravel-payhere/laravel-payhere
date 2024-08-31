@@ -141,4 +141,5 @@ return [
     */
 
     'panel_logo' => 'public/vendor/payhere/images/logo.svg',
+    
 ];
