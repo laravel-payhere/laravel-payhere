@@ -133,13 +133,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | PayHere Panel Logo
+    | PayHere Panel Brand Logo
     |--------------------------------------------------------------------------
     |
     | Path to the default brand logo for the PayHere panel.
     |
     */
 
-    'panel_logo' => 'public/vendor/payhere/images/logo.svg',
+    'brand_logo' => asset('vendor/payhere/images/logo.svg'),
     
 ];
