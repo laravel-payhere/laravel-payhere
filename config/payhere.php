@@ -9,8 +9,7 @@ return [
     | PayHere Sandbox Mode
     |--------------------------------------------------------------------------
     |
-    | This option allows you to toggle between the PayHere sandbox (test) mode 
-    | and live mode.
+    | Toggle between sandbox (test) and live environments.
     */
 
     'sandbox' => env('PAYHERE_SANDBOX', false),
