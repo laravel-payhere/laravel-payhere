@@ -49,9 +49,6 @@ class PayHereServiceProvider extends PackageServiceProvider
     
     public function packageRegistered(): void
     {
-        $this->app['config']->set('payhere.base_url', config('payhere.sandbox') 
-            ? 'https://sandbox.payhere.lk' 
-            : 'https://www.payhere.lk'
-        );
+        $this->app['config']->set('payhere.base_url', config('payhere.sandbox') ? 'https://sandbox.payhere.lk' : 'https://www.payhere.lk');
     }
 }
