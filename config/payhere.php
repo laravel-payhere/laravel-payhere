@@ -140,6 +140,6 @@ return [
     |
     */
 
-    'brand_logo' => asset('vendor/payhere/images/logo.svg'),
+    'panel_brand_logo' => asset('vendor/payhere/images/logo.svg'),
     
 ];
