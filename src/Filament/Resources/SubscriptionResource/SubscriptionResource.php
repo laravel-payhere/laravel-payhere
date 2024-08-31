@@ -100,8 +100,12 @@ class SubscriptionResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('status')
+                    ->multiple()
                     ->options(SubscriptionStatus::class)
-                    ->default(SubscriptionStatus::Active->value),
+                    ->default([
+                        SubscriptionStatus::Active->value,
+                        SubscriptionStatus::Completed->value,
+                    ]),
             ])
             ->defaultSort('created_at', 'desc');
     }
