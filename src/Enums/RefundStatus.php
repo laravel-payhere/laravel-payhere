@@ -6,8 +6,8 @@ namespace PayHere\Enums;
 
 enum RefundStatus: int
 {
-    case REFUND_SUCCESS = 1;
-    case REFUND_ERROR = 0;
-    case REFUND_FAILED = -1;
-    case INVALID_API_AUTHORIZATION = -2;
+    case Success = 1;
+    case Error = 0;
+    case Failed = -1;
+    case InvalidApiAuthorization = -2;
 }
