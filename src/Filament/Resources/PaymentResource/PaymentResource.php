@@ -214,21 +214,14 @@ class PaymentResource extends Resource
         ));
 
         $payload = $response->json();
-
-        $status = (int) $payload['status'];
-
-        if ($status === 1) {
-            $payment->markAsRefunded($reason);
-        }
         
-        $message = $payload['msg'];
+        $notification = Notification::make()->title($payload['msg']);
 
-        $notification = Notification::make()->title($message);
-
-        if ($status === RefundStatus::Success->value) {
-            $notification->success()->send();
-        } else {
-            $notification->danger()->send();
+        if ((int) $payload['status'] !== RefundStatus::Success->value) {
+            $notification->danger()->send(); return;
         }
+
+        $payment->markAsRefunded($reason);
+        $notification->success()->send();
     }
 }
