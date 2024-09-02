@@ -222,6 +222,7 @@ class PaymentResource extends Resource
         }
 
         $payment->markAsRefunded($reason);
+        
         $notification->success()->send();
     }
 }
