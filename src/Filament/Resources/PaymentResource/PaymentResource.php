@@ -203,7 +203,7 @@ class PaymentResource extends Resource
         $service = app(PayHereService::class);
         $payload = $service->refundPayment($payment, $reason);
 
-        $status = $payload['status'];
+        $status = (int) $payload['status'];
         $message = $payload['msg'];
 
         $notification = Notification::make()->title($message);
