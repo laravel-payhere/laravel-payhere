@@ -21,6 +21,8 @@ use Illuminate\Support\Str;
 use PayHere\Enums\PaymentMethod;
 use PayHere\Enums\PaymentStatus;
 use PayHere\Enums\RefundStatus;
+use PayHere\Http\Integrations\PayHere\PayHereConnector;
+use PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
 use PayHere\Models\Payment;
 use PayHere\Services\Contracts\PayHereService;
 
@@ -200,10 +202,25 @@ class PaymentResource extends Resource
 
     public static function refund(Payment $payment, ?string $reason = null): void
     {
-        $service = app(PayHereService::class);
-        $payload = $service->refundPayment($payment, $reason);
+        $connector = new PayHereConnector;
+
+        $authenticator = $connector->getAccessToken();
+
+        $connector->authenticate($authenticator);
+        
+        $response = $connector->send(new RefundPaymentRequest(
+            paymentId: $payment->payment_id,
+            description: $reason
+        ));
+
+        $payload = $response->json();
 
         $status = (int) $payload['status'];
+
+        if ($status === 1) {
+            $payment->markAsRefunded($reason);
+        }
+        
         $message = $payload['msg'];
 
         $notification = Notification::make()->title($message);
