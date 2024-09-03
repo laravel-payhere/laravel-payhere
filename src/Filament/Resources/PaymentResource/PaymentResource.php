@@ -215,9 +215,12 @@ class PaymentResource extends Resource
 
         $payload = $response->json();
         
-        $notification = Notification::make()->title($payload['msg']);
+        $statusCode = (int) $payload['status'];
+        $message = $payload['msg'];
+        
+        $notification = Notification::make()->title($message);
 
-        if ((int) $payload['status'] !== RefundStatus::Success->value) {
+        if ($statusCode !== RefundStatus::Success->value) {
             $notification->danger()->send(); return;
         }
 
