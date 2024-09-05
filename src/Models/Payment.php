@@ -28,14 +28,6 @@ class Payment extends Model
         'status_code' => PaymentStatus::class,
         'message_type' => MessageType::class,
         'refunded' => 'boolean',
-        'payment_id' => 'encrypted',
-        'subscription_id' => 'encrypted',
-        'md5sig' => 'encrypted',
-        'authorization_token' => 'encrypted',
-        'customer_token' => 'encrypted',
-        'card_holder_name' => 'encrypted',
-        'card_expiry' => 'encrypted',
-        'card_no' => 'encrypted',
     ];
 
     protected $hidden = [
