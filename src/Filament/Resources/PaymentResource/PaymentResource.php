@@ -220,7 +220,7 @@ class PaymentResource extends Resource
         
         $notification = Notification::make()->title($message);
 
-        if ($statusCode !== RefundStatus::Success->value) {
+        if ($statusCode !== 1) {
             $notification->danger()->send(); return;
         }
 
