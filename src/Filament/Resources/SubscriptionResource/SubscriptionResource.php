@@ -17,6 +17,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use PayHere\Enums\SubscriptionStatus;
 use PayHere\Http\Integrations\PayHere\PayHereConnector;
+use PayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
 use PayHere\Http\Integrations\PayHere\Requests\RetrySubscriptionRequest;
 use PayHere\Models\Subscription;
 use PayHere\Services\Contracts\PayHereService;
@@ -124,21 +125,30 @@ class SubscriptionResource extends Resource
 
     private static function cancelSubscription(Subscription $subscription): void
     {
-        $service = app(PayHereService::class);
-        $payload = $service->cancelSubscription($subscription);
+        $connector = new PayHereConnector;
 
-        $status = $payload['status'];
+        $authenticator = $connector->getAccessToken();
+
+        $connector->authenticate($authenticator);
+
+        $response = $connector->send(new CancelSubscriptionRequest($subscription->payhere_subscription_id));
+
+        $payload = $response->json();
+
+        $statusCode = (int) $payload['status'];
         $message = $payload['msg'];
 
         $notification = Notification::make()->title($message);
 
-        if ($status === 1) {
-            $notification->success()->send();
+        if ($statusCode !== 1) {
+            $notification->danger()->send();
 
             return;
         }
 
-        $notification->danger()->send();
+        $subscription->markAsCancelled();
+
+        $notification->success()->send();
     }
 
     private static function retrySubscription(Subscription $subscription): void
