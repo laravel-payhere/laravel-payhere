@@ -20,7 +20,6 @@ use PayHere\Http\Integrations\PayHere\PayHereConnector;
 use PayHere\Http\Integrations\PayHere\Requests\CancelSubscriptionRequest;
 use PayHere\Http\Integrations\PayHere\Requests\RetrySubscriptionRequest;
 use PayHere\Models\Subscription;
-use PayHere\Services\Contracts\PayHereService;
 
 class SubscriptionResource extends Resource
 {
@@ -159,14 +158,14 @@ class SubscriptionResource extends Resource
         $authenticator = $connector->getAccessToken();
 
         $connector->authenticate($authenticator);
-        
+
         $response = $connector->send(new RetrySubscriptionRequest($subscription->payhere_subscription_id));
 
         $payload = $response->json();
 
         $statusCode = (int) $payload['status'];
         $message = $payload['msg'];
-        
+
         $notification = Notification::make()->title($message);
 
         if ($statusCode !== 1) {
@@ -176,7 +175,7 @@ class SubscriptionResource extends Resource
         }
 
         $subscription->markAsActive();
-        
+
         $notification->success()->send();
     }
 }

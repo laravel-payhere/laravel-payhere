@@ -20,11 +20,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use PayHere\Enums\PaymentMethod;
 use PayHere\Enums\PaymentStatus;
-use PayHere\Enums\RefundStatus;
 use PayHere\Http\Integrations\PayHere\PayHereConnector;
 use PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
 use PayHere\Models\Payment;
-use PayHere\Services\Contracts\PayHereService;
 
 class PaymentResource extends Resource
 {
@@ -207,25 +205,27 @@ class PaymentResource extends Resource
         $authenticator = $connector->getAccessToken();
 
         $connector->authenticate($authenticator);
-        
+
         $response = $connector->send(new RefundPaymentRequest(
             paymentId: $payment->payment_id,
             description: $reason
         ));
 
         $payload = $response->json();
-        
+
         $statusCode = (int) $payload['status'];
         $message = $payload['msg'];
-        
+
         $notification = Notification::make()->title($message);
 
         if ($statusCode !== 1) {
-            $notification->danger()->send(); return;
+            $notification->danger()->send();
+
+            return;
         }
 
         $payment->markAsRefunded($reason);
-        
+
         $notification->success()->send();
     }
 }

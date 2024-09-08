@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace PayHere;
 
-use PayHere\Services\Contracts\PayHereService;
-use PayHere\Services\PayHereApiService;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
