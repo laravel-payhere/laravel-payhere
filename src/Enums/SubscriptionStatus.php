@@ -18,22 +18,22 @@ enum SubscriptionStatus: int implements HasColor, HasLabel
     public function getLabel(): ?string
     {
         return match ($this) {
-            self::Pending => 'Pending',
             self::Active => 'Active',
             self::Completed => 'Completed',
-            self::Failed => 'Failed',
             self::Cancelled => 'Cancelled',
+            self::Failed => 'Failed',
+            self::Pending => 'Pending',
         };
     }
 
     public function getColor(): string|array|null
     {
         return match ($this) {
-            self::Pending => 'warning',
-            self::Cancelled => 'gray',
             self::Active => 'success',
             self::Completed => 'info',
+            self::Cancelled => 'gray',
             self::Failed => 'danger',
+            self::Pending => 'warning',
         };
     }
 }

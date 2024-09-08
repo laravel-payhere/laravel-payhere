@@ -110,6 +110,7 @@ class SubscriptionResource extends Resource
                     ->default([
                         SubscriptionStatus::Active->value,
                         SubscriptionStatus::Completed->value,
+                        SubscriptionStatus::Failed->value,
                         SubscriptionStatus::Cancelled->value,
                     ]),
             ])
