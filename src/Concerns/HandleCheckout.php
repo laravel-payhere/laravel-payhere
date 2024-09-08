@@ -52,9 +52,9 @@ trait HandleCheckout
     /**
      * Startup fee amount.
      *
-     * @var float
+     * @var float|null
      */
-    private float $startupFee = 0;
+    private ?float $startupFee = null;
 
     /**
      * The title of the transaction.
@@ -66,9 +66,9 @@ trait HandleCheckout
     /**
      * The items associated with the transaction.
      *
-     * @var array|null
+     * @var array
      */
-    private ?array $items = [];
+    private array $items = [];
 
     /**
      * The currency code for the transaction.
