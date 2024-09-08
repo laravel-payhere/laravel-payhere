@@ -22,19 +22,15 @@ use Workbench\App\Http\Controllers\Recurring;
 */
 
 Route::get('/checkout', Checkout::class)
-    ->middleware('auth')
     ->name('checkout');
 
 Route::get('/preapproval', Preapproval::class)
-    ->middleware('auth')
     ->name('preapproval');
 
 Route::get('/authorize', Authorize::class)
-    ->middleware('auth')
     ->name('authorize');
 
 Route::get('/recurring', Recurring::class)
-    ->middleware('auth')
     ->name('recurring');
 
 Route::post('/webhook', [WebhookController::class, 'handleWebhook'])
