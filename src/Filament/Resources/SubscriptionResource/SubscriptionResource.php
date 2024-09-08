@@ -110,8 +110,8 @@ class SubscriptionResource extends Resource
                     ->default([
                         SubscriptionStatus::Active->value,
                         SubscriptionStatus::Completed->value,
-                        SubscriptionStatus::Failed->value,
                         SubscriptionStatus::Cancelled->value,
+                        SubscriptionStatus::Failed->value,
                     ]),
             ])
             ->defaultSort('created_at', 'desc');
