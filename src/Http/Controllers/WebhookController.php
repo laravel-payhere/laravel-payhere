@@ -102,17 +102,24 @@ class WebhookController extends Controller
             return;
         }
 
-        $daysUntilNextRecurrence = now()->diffInDays($request->item_rec_date_next);
-
         $subscription->update([
             'user_id' => $userId,
             'payhere_subscription_id' => $request->subscription_id,
-            'ends_at' => now()->addDays($daysUntilNextRecurrence),
         ]);
+        
+        $nextInstallmentDate = $request->item_rec_date_next;
+        
+        if (! is_null($nextInstallmentDate)) {
+            $daysUntilNextRecurrence = now()->diffInDays($nextInstallmentDate);
+            
+            $subscription->update([
+                'ends_at' => now()->addDays($daysUntilNextRecurrence),
+            ]);
+        }
+        
+        $subscriptionStatus = (string) $request->item_rec_status;
 
-        $subscription->refresh();
-
-        match ((string) $request->item_rec_status) {
+        match ($subscriptionStatus) {
             SubscriptionStatus::Active->value => $subscription->markAsActive(),
             SubscriptionStatus::Cancelled->value => $subscription->markAsCancelled(),
             SubscriptionStatus::Completed->value => $subscription->markAsCompleted(),
