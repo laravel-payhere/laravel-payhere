@@ -7,8 +7,6 @@ namespace Workbench\App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use PayHere\PayHere;
-use Workbench\App\Models\Order;
-use Workbench\App\Models\OrderLine;
 
 class Preapproval extends Controller
 {
