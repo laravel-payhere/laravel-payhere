@@ -33,6 +33,8 @@ class Subscription extends Model
 
     /**
      * Determine if the subscription is within its trial period.
+     * 
+     * @return bool
      */
     public function onTrial(): bool
     {
@@ -41,6 +43,8 @@ class Subscription extends Model
 
     /**
      * Filter query by on trial.
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder $query
      */
     public function scopeOnTrial(Builder $query): void
     {
@@ -49,22 +53,39 @@ class Subscription extends Model
 
     /**
      * Filter active subscriptions.
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder $query
      */
     public function scopeActive(Builder $query): void
     {
         $query->where('status', SubscriptionStatus::Active);
     }
 
+    /**
+     * Determine if the subscription has failed.
+     * 
+     * @return bool
+     */
     public function isFailed(): bool
     {
         return $this->status === SubscriptionStatus::Failed;
     }
 
+    /**
+     * Check if the subscription is eligible for cancellation.
+     * 
+     * @return bool
+     */
     public function isCancellable(): bool
     {
         return ! is_null($this->payhere_subscription_id) && $this->status === SubscriptionStatus::Active;
     }
 
+    /**
+     * Mark the subscription as cancelled.
+     * 
+     * @return void
+     */
     public function markAsCancelled(): void
     {
         $this->update(['status' => SubscriptionStatus::Cancelled]);
@@ -72,6 +93,11 @@ class Subscription extends Model
         SubscriptionCancelled::dispatch($this);
     }
 
+    /**
+     * Mark the subscription as active.
+     * 
+     * @return void
+     */
     public function markAsActive(): void
     {
         $this->update(['status' => SubscriptionStatus::Active]);
@@ -79,6 +105,11 @@ class Subscription extends Model
         SubscriptionActivated::dispatch($this);
     }
 
+    /**
+     * Mark the subscription as completed.
+     * 
+     * @return void
+     */
     public function markAsCompleted(): void
     {
         $this->update(['status' => SubscriptionStatus::Completed]);
