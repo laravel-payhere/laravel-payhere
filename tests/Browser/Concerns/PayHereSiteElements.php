@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PayHere\Tests\Browser\Concerns;
 
-trait HasPayHereSiteElements
+trait PayHereSiteElements
 {
     public static function siteElements(): array
     {

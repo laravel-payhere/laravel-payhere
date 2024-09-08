@@ -7,13 +7,13 @@ namespace PayHere\Tests\Browser\Pages;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page;
 use PayHere\Tests\Browser\Concerns\HandlesPayment;
-use PayHere\Tests\Browser\Concerns\HasPayHereSiteElements;
+use PayHere\Tests\Browser\Concerns\PayHereSiteElements;
 use PayHere\Tests\Browser\Concerns\PayHereBrowserAssertions;
 
 class Checkout extends Page
 {
     use HandlesPayment;
-    use HasPayHereSiteElements;
+    use PayHereSiteElements;
     use PayHereBrowserAssertions;
 
     public function url(): string
