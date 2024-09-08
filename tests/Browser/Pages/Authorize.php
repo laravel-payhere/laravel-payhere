@@ -7,14 +7,14 @@ namespace PayHere\Tests\Browser\Pages;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page;
 use PayHere\Tests\Browser\Concerns\HandlesPayment;
-use PayHere\Tests\Browser\Concerns\PayHereSiteElements;
 use PayHere\Tests\Browser\Concerns\PayHereBrowserAssertions;
+use PayHere\Tests\Browser\Concerns\PayHereSiteElements;
 
 class Authorize extends Page
 {
     use HandlesPayment;
-    use PayHereSiteElements;
     use PayHereBrowserAssertions;
+    use PayHereSiteElements;
 
     public function url(): string
     {

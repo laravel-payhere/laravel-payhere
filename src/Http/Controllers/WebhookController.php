@@ -106,20 +106,20 @@ class WebhookController extends Controller
             'user_id' => $userId,
             'payhere_subscription_id' => $request->subscription_id,
         ]);
-        
+
         $nextInstallmentDate = $request->item_rec_date_next;
 
-        // If the PayHere webhook provides the 'item_rec_date_next' parameter, 
-        // calculate the number of days until the next recurring installment 
+        // If the PayHere webhook provides the 'item_rec_date_next' parameter,
+        // calculate the number of days until the next recurring installment
         // and update the subscription's end date accordingly.
         if (! is_null($nextInstallmentDate)) {
             $daysUntilNextRecurrence = now()->diffInDays($nextInstallmentDate);
-            
+
             $subscription->update([
                 'ends_at' => now()->addDays($daysUntilNextRecurrence),
             ]);
         }
-        
+
         $subscriptionStatus = (string) $request->item_rec_status;
 
         match ($subscriptionStatus) {

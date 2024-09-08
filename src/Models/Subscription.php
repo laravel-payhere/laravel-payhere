@@ -31,7 +31,7 @@ class Subscription extends Model
 
     /**
      * Determine if the subscription is within its trial period.
-     * 
+     *
      * @return bool
      */
     public function onTrial(): bool
@@ -41,8 +41,8 @@ class Subscription extends Model
 
     /**
      * Filter query by on trial.
-     * 
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      */
     public function scopeOnTrial(Builder $query): void
     {
@@ -51,8 +51,8 @@ class Subscription extends Model
 
     /**
      * Filter active subscriptions.
-     * 
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
      */
     public function scopeActive(Builder $query): void
     {
@@ -61,7 +61,7 @@ class Subscription extends Model
 
     /**
      * Determine if the subscription has failed.
-     * 
+     *
      * @return bool
      */
     public function isFailed(): bool
@@ -71,7 +71,7 @@ class Subscription extends Model
 
     /**
      * Check if the subscription is eligible for cancellation.
-     * 
+     *
      * @return bool
      */
     public function isCancellable(): bool
@@ -81,7 +81,7 @@ class Subscription extends Model
 
     /**
      * Mark the subscription as cancelled.
-     * 
+     *
      * @return void
      */
     public function markAsCancelled(): void
@@ -93,7 +93,7 @@ class Subscription extends Model
 
     /**
      * Mark the subscription as active.
-     * 
+     *
      * @return void
      */
     public function markAsActive(): void
@@ -105,7 +105,7 @@ class Subscription extends Model
 
     /**
      * Mark the subscription as completed.
-     * 
+     *
      * @return void
      */
     public function markAsCompleted(): void
