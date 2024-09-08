@@ -11,14 +11,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PayHere\Enums\SubscriptionStatus;
 use PayHere\Events\SubscriptionActivated;
 use PayHere\Events\SubscriptionCancelled;
-use PayHere\Models\Concerns\ManagesSubscriptions;
 use PayHere\PayHere;
 use Workbench\Database\Factories\SubscriptionFactory;
 
 class Subscription extends Model
 {
     use HasFactory;
-    use ManagesSubscriptions;
 
     protected $guarded = [];
 
