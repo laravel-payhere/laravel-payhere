@@ -245,12 +245,12 @@ trait HandleCheckout
     /**
      * Set the startup fee for the form.
      *
-     * @param  string  $id
+     * @param  string  $orderId
      * @return static
      */
-    public function orderId(string $id): static
+    public function orderId(string $orderId): static
     {
-        $this->orderId = $id;
+        $this->orderId = $orderId;
 
         return $this;
     }
