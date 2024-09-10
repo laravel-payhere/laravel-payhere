@@ -59,13 +59,8 @@ class PaymentController
             'custom_1' => ['sometimes', 'string'],
             'custom_2' => ['sometimes', 'string'],
         ]);
-
-        $response = $this->connector->send(new PaymentChargeRequest(
-            orderId: $request->order_id,
-            type: $request->type,
-            customOne: $request->custom_1,
-            customTwo: $request->custom_2
-        ));
+        
+        $response = $this->connector->send(new PaymentChargeRequest($request->all()));
 
         return $response->json();
     }
