@@ -32,26 +32,6 @@ class PaymentChargeRequest extends Request implements HasBody
      */
     protected function defaultBody(): array
     {
-//        $order = PayHere::$orderModel::find($this->orderId);
-//
-//        return [
-//            'type' => $this->type,
-//            'order_id' => $order->id,
-//            'custom_1' => $this->customOne,
-//            'custom_2' => $this->customTwo,
-//            'customer_token' => $order->payment->customer_token,
-//            'items' => "Order #{$order->id}",
-//            'amount' => $order->total,
-//            'currency' => config('payhere.currency'),
-//            'notify_url' => config('payhere.notify_url') ?? URL::signedRoute('payhere.webhook'),
-//            'itemList' => $order->lines->map(function ($line) {
-//                return [
-//                    'name' => $line->payHereOrderLineTitle(),
-//                    'number' => $line->payHereOrderLineId(),
-//                    'quantity' => $line->payHereOrderLineQty(),
-//                    'unit_amount' => $line->payHereOrderLineUnitPrice(),
-//                ];
-//            }),
-//        ];
+        return $this->data;
     }
 }
