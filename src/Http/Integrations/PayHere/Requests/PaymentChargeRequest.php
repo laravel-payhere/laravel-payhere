@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace PayHere\Http\Integrations\PayHere\Requests;
 
 use Exception;
-use Illuminate\Support\Facades\URL;
-use PayHere\PayHere;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

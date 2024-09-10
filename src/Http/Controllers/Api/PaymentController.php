@@ -60,7 +60,7 @@ class PaymentController
             'custom_1' => ['sometimes', 'string'],
             'custom_2' => ['sometimes', 'string'],
         ]);
-        
+
         $response = $this->connector->send(new PaymentChargeRequest($request->all()));
 
         return $response->json();

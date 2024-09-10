@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use PayHere\Enums\PaymentMethod;
 use PayHere\Enums\PaymentStatus;
-use PayHere\Enums\RefundStatus;
 use PayHere\Http\Integrations\PayHere\PayHereConnector;
 use PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
 use PayHere\Models\Payment;
@@ -206,7 +205,7 @@ class PaymentResource extends Resource
         $authenticator = $connector->getAccessToken();
 
         $connector->authenticate($authenticator);
-        
+
         $data = [
             'payment_id' => $payment->payment_id,
             'description' => $reason,
