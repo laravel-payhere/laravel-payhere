@@ -6,6 +6,6 @@ namespace PayHere\Enums;
 
 enum ChargeType
 {
-    case PAYMENT;
-    case AUTHORIZE;
+    case Payment;
+    case Authorize;
 }
