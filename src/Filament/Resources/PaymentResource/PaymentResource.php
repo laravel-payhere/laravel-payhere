@@ -207,7 +207,7 @@ class PaymentResource extends Resource
         $connector->authenticate($authenticator);
         
         $data = [
-            'payment_id' => $payment->id,
+            'payment_id' => $payment->payment_id,
             'description' => $reason,
         ];
 
