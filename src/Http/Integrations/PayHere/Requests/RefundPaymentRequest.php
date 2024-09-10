@@ -16,9 +16,7 @@ class RefundPaymentRequest extends Request implements HasBody
     protected Method $method = Method::POST;
 
     public function __construct(
-        private readonly string $paymentId,
-        private readonly ?string $description = null,
-        private readonly ?string $authorizationToken = null,
+        private readonly array $data
     ) {}
 
     public function resolveEndpoint(): string
@@ -28,10 +26,6 @@ class RefundPaymentRequest extends Request implements HasBody
 
     protected function defaultBody(): array
     {
-        return [
-            'payment_id' => $this->paymentId,
-            'description' => $this->description,
-            'authorization_token' => $this->authorizationToken,
-        ];
+        return $this->data;
     }
 }
