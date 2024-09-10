@@ -65,7 +65,7 @@ class PayHere
             )
         );
 
-        return $localMd5Sig === $md5sig && ($statusCode === PaymentStatus::SUCCESS->value || $statusCode === PaymentStatus::AUTHORIZATION_SUCCESS->value);
+        return $localMd5Sig === $md5sig && ($statusCode === PaymentStatus::Success->value || $statusCode === PaymentStatus::AuthorizationSuccess->value);
     }
 
     /**

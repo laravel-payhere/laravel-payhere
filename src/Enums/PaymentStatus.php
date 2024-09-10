@@ -9,33 +9,33 @@ use Filament\Support\Contracts\HasLabel;
 
 enum PaymentStatus: int implements HasColor, HasLabel
 {
-    case AUTHORIZATION_SUCCESS = 3;
-    case SUCCESS = 2;
-    case PENDING = 0;
-    case CANCELLED = -1;
-    case FAILED = -2;
-    case CHARGEBACK = -3;
+    case AuthorizationSuccess = 3;
+    case Success = 2;
+    case Pending = 0;
+    case Cancelled = -1;
+    case Failed = -2;
+    case Chargeback = -3;
 
     public function getLabel(): ?string
     {
         return match ($this) {
-            self::AUTHORIZATION_SUCCESS => 'Authorization Success',
-            self::SUCCESS => 'Success',
-            self::PENDING => 'Pending',
-            self::CANCELLED => 'Cancelled',
-            self::FAILED => 'Failed',
-            self::CHARGEBACK => 'Chargeback'
+            self::AuthorizationSuccess => 'Authorization Success',
+            self::Success => 'Success',
+            self::Pending => 'Pending',
+            self::Cancelled => 'Cancelled',
+            self::Failed => 'Failed',
+            self::Chargeback => 'Chargeback'
         };
     }
 
     public function getColor(): string|array|null
     {
         return match ($this) {
-            self::AUTHORIZATION_SUCCESS, self::SUCCESS => 'success',
-            self::PENDING => 'warning',
-            self::CANCELLED => 'gray',
-            self::FAILED => 'danger',
-            self::CHARGEBACK => 'info'
+            self::AuthorizationSuccess, self::Success => 'success',
+            self::Pending => 'warning',
+            self::Cancelled => 'gray',
+            self::Failed => 'danger',
+            self::Chargeback => 'info'
         };
     }
 }
