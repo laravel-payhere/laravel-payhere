@@ -100,11 +100,7 @@ class PaymentController
             'authorization_token' => ['sometimes', 'string'],
         ]);
 
-        $response = $this->connector->send(new RefundPaymentRequest(
-            paymentId: $request->payment_id,
-            description: $request->description,
-            authorizationToken: $request->authorization_token
-        ));
+        $response = $this->connector->send(new RefundPaymentRequest($request->all()));
 
         return $response->json();
     }
