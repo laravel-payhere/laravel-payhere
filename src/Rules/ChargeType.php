@@ -13,8 +13,8 @@ class ChargeType implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (! in_array($value, [
-            ChargeTypeEnum::Payment->name,
-            ChargeTypeEnum::Authorize->name,
+            ChargeTypeEnum::Payment->value,
+            ChargeTypeEnum::Authorize->value,
         ], true)) {
             $fail('The :attribute must be either PAYMENT or AUTHORIZE.');
         }
