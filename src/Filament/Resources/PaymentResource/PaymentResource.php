@@ -205,11 +205,13 @@ class PaymentResource extends Resource
         $authenticator = $connector->getAccessToken();
 
         $connector->authenticate($authenticator);
+        
+        $data = [
+            'payment_id' => $payment->id,
+            'description' => $reason,
+        ];
 
-        $response = $connector->send(new RefundPaymentRequest(
-            paymentId: $payment->payment_id,
-            description: $reason
-        ));
+        $response = $connector->send(new RefundPaymentRequest($data));
 
         $payload = $response->json();
 

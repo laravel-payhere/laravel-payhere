@@ -11,6 +11,7 @@ use PayHere\Http\Integrations\PayHere\Requests\CapturePaymentRequest;
 use PayHere\Http\Integrations\PayHere\Requests\ListPaymentsRequest;
 use PayHere\Http\Integrations\PayHere\Requests\PaymentChargeRequest;
 use PayHere\Http\Integrations\PayHere\Requests\RefundPaymentRequest;
+use PayHere\Models\Payment;
 use PayHere\Rules\ChargeType;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
