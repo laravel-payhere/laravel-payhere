@@ -80,11 +80,7 @@ class PaymentController
             'amount' => ['required', 'numeric'],
         ]);
 
-        $response = $this->connector->send(new CapturePaymentRequest(
-            description: $request->description,
-            authorizationToken: $request->authorization_token,
-            amount: $request->amount
-        ));
+        $response = $this->connector->send(new CapturePaymentRequest($request->all()));
 
         return $response->json();
     }
