@@ -78,7 +78,7 @@ class PayHerePanelProvider extends PanelProvider
             )
             ->bootUsing(function () {
                 Table::$defaultCurrency = config('payhere.currency');
-                Table::$defaultDateTimeDisplayFormat = 'M 5, Y H:i:s A';
+                Table::$defaultDateTimeDisplayFormat = 'M d, Y H:i:s A';
 
                 static::ensurePayHerePanelAccessEnabled();
             });
