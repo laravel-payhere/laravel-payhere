@@ -14,7 +14,7 @@
 </head>
 <body class="antialiased">
 <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-gray-100 selection:bg-red-500 selection:text-white">
-    <div class="w-full sm:w-3/4 xl:w-1/3 mx-auto p-6">
+    <div class="w-full sm:w-3/4 xl:w-1/2 mx-auto p-6">
         <div class="px-6 py-4 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex items-center focus:outline focus:outline-2 focus:outline-red-500">
             <svg width="60" height="60" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="28.5" cy="28" r="28" fill="#41D195" fill-opacity="0.12"/>
@@ -24,7 +24,7 @@
                 <h2 class="text-xl font-semibold text-gray-900">Payment successful</h2>
 
                 <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                    Your payment is currently being verified.
+                    Thanks for your payment, it is currently being verified.
                 </p>
             </div>
         </div>
