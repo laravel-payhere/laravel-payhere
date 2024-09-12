@@ -1,119 +1,25 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ __('Payment successful') }}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{{ __('Redirecting to PayHere') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Figtree:400&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="//fonts.bunny.net" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600" rel="stylesheet" />
 
-    <style>
-        :root {
-            --font-family: 'Figtree', sans-serif;
-            --background-color: #ffffff;
-            --text-color: #000000;
-            --accent-color: #6b7280;
-            --button-bg-color: #000000;
-            --button-text-color: #ffffff;
-            --button-hover-bg-color: #111827;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background-color: #111827;
-                --text-color: #e5e7eb;
-                --button-bg-color: #e5e7eb;
-                --button-text-color: #000000;
-                --button-hover-bg-color: #d1d5db;
-            }
-        }
-
-        html, body {
-            font-family: var(--font-family);
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--background-color);
-            color: var(--text-color);
-            text-align: center;
-        }
-
-        .container {
-            max-width: 768px;
-            margin: 0 auto;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 36px;
-            font-weight: 500;
-        }
-
-        h2 {
-            font-size: 32px;
-            font-weight: 500;
-        }
-
-        p {
-            font-size: 18px;
-        }
-
-        em {
-            color: var(--accent-color);
-            font-size: 16px;
-        }
-
-        a {
-            background: var(--button-bg-color);
-            color: var(--button-text-color);
-            padding: 10px 20px;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            text-decoration: none;
-        }
-
-        a:hover {
-            background: var(--button-hover-bg-color);
-        }
-
-        @media only screen and (max-width: 600px) {
-            h1 {
-                font-size: 32px;
-            }
-
-            h2 {
-                font-size: 28px;
-            }
-
-            em {
-                font-size: 14px;
-            }
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<div class="container">
-    <svg class="check-circle" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M8.5 11.5L11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-    </svg>
-    <h2>{{ __('Payment successful') }}</h2>
-    <em>{{ __("We've received your payment, and it is being verified.") }}</em>
-    <div style="margin-top: 3rem">
-        <a href="/" aria-label="Take me to home">
-            {{ __('Take me to home') }}
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 12H5m14 0-4 4m4-4-4-4"/>
-            </svg>
-        </a>
+<body class="font-sans antialiased">
+<div class="absolute top-0 w-full flex justify-content-center items-center h-screen">
+    <div class="mx-auto max-w-7xl flex items-center gap-5">
+        <svg width="100" height="100" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28.5" cy="28" r="28" fill="#41D195" fill-opacity="0.12"/>
+            <path d="M28 14.6667C20.6533 14.6667 14.6666 20.6533 14.6666 28C14.6666 35.3467 20.6533 41.3333 28 41.3333C35.3466 41.3333 41.3333 35.3467 41.3333 28C41.3333 20.6533 35.3466 14.6667 28 14.6667ZM34.3733 24.9333L26.8133 32.4933C26.6266 32.68 26.3733 32.7867 26.1066 32.7867C25.84 32.7867 25.5866 32.68 25.4 32.4933L21.6266 28.72C21.24 28.3333 21.24 27.6933 21.6266 27.3067C22.0133 26.92 22.6533 26.92 23.04 27.3067L26.1066 30.3733L32.96 23.52C33.3466 23.1333 33.9866 23.1333 34.3733 23.52C34.76 23.9067 34.76 24.5333 34.3733 24.9333Z" fill="#41D195"/>
+        </svg>
+        <h1 class="text-black text-3xl font-medium">Payment success!</h1>
     </div>
 </div>
 </body>
