@@ -37,7 +37,7 @@
 <body class="bg-black font-sans antialiased">
 <div class="bg-gradient-to-b from-blue-700 to-black h-screen">
     <div class="absolute top-0 w-full flex justify-content-center items-center h-screen">
-        <div class="flex flex-col gap-5 mx-auto max-w-7xl bg-black bg-opacity-20 px-32 py-24 rounded-2xl">
+        <div class="flex flex-col gap-5 mx-auto max-w-7xl bg-black bg-opacity-20 px-24 py-24 rounded-2xl">
             <h1 class="text-white text-2xl font-medium">Redirecting to <span class="font-['Ubuntu']">Pay<span class="text-yellow-500">Here</span></span></h1>
             <p class="text-white">{{ __('You will be redirected to the payment gateway in a few seconds.') }}</p>
         </div>
