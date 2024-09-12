@@ -7,7 +7,9 @@
     <title>{{ __('Redirecting to PayHere') }}</title>
 </head>
 <body>
+
 <p>Redirecting to PayHere...</p>
+
 <form id="checkoutForm" action="{{ $data['action'] }}" method="post">
     @foreach ($data['customer'] as $key => $value)
         <input type="hidden" name="{{ $key }}" value="{{ $value }}">
