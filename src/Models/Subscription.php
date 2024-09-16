@@ -105,7 +105,7 @@ class Subscription extends Model
         if ($this->isDirty('status')) {
             SubscriptionActivated::dispatch($this);
         }
-        
+
         $this->save();
     }
 
@@ -117,7 +117,7 @@ class Subscription extends Model
     public function markAsCompleted(): void
     {
         $this->update(['status' => SubscriptionStatus::Completed]);
-        
+
         SubscriptionCompleted::dispatch($this);
     }
 

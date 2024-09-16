@@ -9,8 +9,6 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use PayHere\Enums\SubscriptionStatus;
 use PayHere\Events\PaymentVerified;
-use PayHere\Events\SubscriptionActivated;
-use PayHere\Events\SubscriptionRenewed;
 use PayHere\Models\Payment;
 use PayHere\Models\Subscription;
 use PayHere\PayHere;
@@ -19,8 +17,8 @@ class WebhookController extends Controller
 {
     /**
      * Handle incoming webhook notification from PayHere.
-     * 
-     * @param \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      */
     public function handleWebhook(Request $request)
     {
@@ -63,8 +61,8 @@ class WebhookController extends Controller
 
     /**
      * Create a new payment.
-     * 
-     * @param \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \PayHere\Models\Payment
      */
     private function createPayment(Request $request): Payment
@@ -101,8 +99,8 @@ class WebhookController extends Controller
 
     /**
      * Update the subscription.
-     * 
-     * @param \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return void
      */
     private function updateSubscription(Request $request): void
