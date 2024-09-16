@@ -19,6 +19,8 @@ class WebhookController extends Controller
 {
     /**
      * Handle incoming webhook notification from PayHere.
+     * 
+     * @param \Illuminate\Http\Request $request
      */
     public function handleWebhook(Request $request)
     {
@@ -59,6 +61,12 @@ class WebhookController extends Controller
         }
     }
 
+    /**
+     * Create a new payment.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \PayHere\Models\Payment
+     */
     private function createPayment(Request $request): Payment
     {
         return Payment::create([
@@ -91,7 +99,13 @@ class WebhookController extends Controller
         ]);
     }
 
-    public function updateSubscription(Request $request): void
+    /**
+     * Update the subscription.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     */
+    private function updateSubscription(Request $request): void
     {
         $userId = $request->custom_1;
         $subscriptionId = $request->custom_2;
