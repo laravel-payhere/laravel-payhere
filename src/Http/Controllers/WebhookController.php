@@ -151,6 +151,6 @@ class WebhookController extends Controller
      */
     private function isRecurringPayment(Request $request): bool
     {
-        return (int) $request->recurring === 1;
+        return $request->boolean('recurring');
     }
 }
