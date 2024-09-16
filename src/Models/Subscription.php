@@ -99,9 +99,13 @@ class Subscription extends Model
      */
     public function markAsActive(): void
     {
-        $this->update(['status' => SubscriptionStatus::Active]);
-
-        SubscriptionActivated::dispatch($this);
+        $this->status = SubscriptionStatus::Active;
+        
+        if ($this->isDirty('status')) {
+            SubscriptionActivated::dispatch($this);
+        }
+        
+        $this->save();
     }
 
     /**
