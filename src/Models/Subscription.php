@@ -100,7 +100,8 @@ class Subscription extends Model
     public function markAsActive(): void
     {
         $this->status = SubscriptionStatus::Active;
-        
+
+        // Dispatch the activation event only if the status has changed
         if ($this->isDirty('status')) {
             SubscriptionActivated::dispatch($this);
         }
