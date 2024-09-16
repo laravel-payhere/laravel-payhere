@@ -56,7 +56,7 @@ class WebhookController extends Controller
 
         event(new PaymentVerified($payment));
 
-        if ($this->isRecurringPayment($request)) {
+        if ($this->isPaymentRecurring($request)) {
             $this->updateSubscription($request);
         }
     }
@@ -149,7 +149,7 @@ class WebhookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-    private function isRecurringPayment(Request $request): bool
+    private function isPaymentRecurring(Request $request): bool
     {
         return $request->boolean('recurring');
     }
