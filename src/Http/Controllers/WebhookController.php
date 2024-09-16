@@ -141,12 +141,6 @@ class WebhookController extends Controller
             SubscriptionStatus::Cancelled->value => $subscription->markAsCancelled(),
             SubscriptionStatus::Completed->value => $subscription->markAsCompleted(),
         };
-
-        if ($this->isNewSubscription($request)) {
-            event(new SubscriptionActivated($subscription));
-        } else {
-            event(new SubscriptionRenewed($subscription));
-        }
     }
 
     /**
@@ -158,16 +152,5 @@ class WebhookController extends Controller
     private function isRecurringPayment(Request $request): bool
     {
         return (int) $request->recurring === 1;
-    }
-
-    /**
-     * Check if the subscription is new.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return bool
-     */
-    private function isNewSubscription(Request $request): bool
-    {
-        return (int) $request->item_rec_install_paid === 1;
     }
 }

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PayHere\Enums\SubscriptionStatus;
 use PayHere\Events\SubscriptionActivated;
 use PayHere\Events\SubscriptionCancelled;
+use PayHere\Events\SubscriptionCompleted;
 use PayHere\PayHere;
 use Workbench\Database\Factories\SubscriptionFactory;
 
@@ -111,6 +112,8 @@ class Subscription extends Model
     public function markAsCompleted(): void
     {
         $this->update(['status' => SubscriptionStatus::Completed]);
+        
+        SubscriptionCompleted::dispatch($this);
     }
 
     protected static function newFactory(): SubscriptionFactory
