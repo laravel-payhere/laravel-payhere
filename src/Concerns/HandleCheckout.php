@@ -210,19 +210,6 @@ trait HandleCheckout
     }
 
     /**
-     * Set the platform for the form.
-     *
-     * @param  string  $platform
-     * @return static
-     */
-    public function platform(string $platform): static
-    {
-        $this->platform = $platform;
-
-        return $this;
-    }
-
-    /**
      * Set the startup fee for the form.
      *
      * @param  float  $fee
