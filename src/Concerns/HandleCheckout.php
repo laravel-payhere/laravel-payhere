@@ -43,13 +43,6 @@ trait HandleCheckout
     private bool $authorize = false;
 
     /**
-     * Platform information.
-     *
-     * @var string|null
-     */
-    private ?string $platform = null;
-
-    /**
      * Startup fee amount.
      *
      * @var float|null
@@ -446,7 +439,7 @@ trait HandleCheckout
             'amount' => $this->amount - $this->startupFee,
             'hash' => $this->generateHash(),
             'recurring' => $this->recurring,
-            'platform' => $this->platform,
+            'platform' => 'Laravel',
             'startup_fee' => $this->startupFee,
             'custom_1' => $this->custom1,
             'custom_2' => $this->custom2,
