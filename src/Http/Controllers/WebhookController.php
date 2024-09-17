@@ -40,12 +40,16 @@ class WebhookController extends Controller
 
         $verifiedMerchant = PayHere::verifyMerchantId($merchantId);
 
-        // Verify that both the payment and the merchant are validated before proceeding.
-        if (! $verifiedPayment || ! $verifiedMerchant) {
-            Log::error('[PayHere] Verification failed', [
-                'verifiedPayment' => $verifiedPayment,
-                'verifiedMerchant' => $verifiedMerchant,
-            ]);
+        // Verify the merchant is validated before proceeding.
+        if (! $verifiedMerchant) {
+            Log::error('PayHere merchant verification failed');
+
+            return;
+        }
+
+        // Verify the payment is validated before proceeding.
+        if (! $verifiedPayment) {
+            Log::error('PayHere payment verification failed');
 
             return;
         }
