@@ -439,10 +439,10 @@ trait HandleCheckout
             'amount' => $this->amount - $this->startupFee,
             'hash' => $this->generateHash(),
             'recurring' => $this->recurring,
-            'platform' => 'Laravel',
             'startup_fee' => $this->startupFee,
             'custom_1' => $this->custom1,
             'custom_2' => $this->custom2,
+            'platform' => 'Laravel',
         ];
     }
 
