@@ -113,7 +113,7 @@ class WebhookController extends Controller
         $subscriptionId = $request->custom_2;
 
         if (! $subscription = Subscription::find($subscriptionId)) {
-            Log::warning('[PayHere] Subscription not found', ['subscription_id' => $subscriptionId]);
+            Log::error('PayHere subscription not found', ['subscription_id' => $subscriptionId]);
 
             return;
         }
