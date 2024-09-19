@@ -101,7 +101,7 @@ class Subscription extends Model
     {
         $this->status = SubscriptionStatus::Active;
 
-        // Dispatch the activation event only if the status has changed
+        // Dispatch the event only if the status has changed
         SubscriptionActivated::dispatchIf($this->isDirty('status'), $this);
 
         $this->save();
