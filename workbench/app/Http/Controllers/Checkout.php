@@ -13,6 +13,7 @@ class Checkout extends Controller
     public function __invoke(Request $request)
     {
         return PayHere::builder()
+            ->guest()
             ->amount(100)
             ->checkout();
     }

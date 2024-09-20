@@ -15,7 +15,9 @@ abstract class DuskTestCase extends TestCase
 {
     use WithWorkbench;
 
-    protected static $baseServeHost = 'localhost';
+    protected static $baseServeHost = 'laravel.test';
+    
+    protected static $baseServePort = 80;
 
     protected function getEnvironmentSetUp($app): void
     {

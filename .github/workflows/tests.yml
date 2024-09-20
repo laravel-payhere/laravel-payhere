@@ -21,6 +21,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        
+      - name: Add laravel.test to /etc/hosts
+        run: |
+          echo "127.0.0.1 laravel.test" | sudo tee -a /etc/hosts
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
