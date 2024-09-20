@@ -12,6 +12,8 @@ class Authorize extends Controller
     public function __invoke()
     {
         return PayHere::builder()
+            ->guest()
+            ->title('Laravel PayHere')
             ->authorize()
             ->amount(100)
             ->checkout();

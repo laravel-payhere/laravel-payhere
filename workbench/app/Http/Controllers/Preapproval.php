@@ -13,6 +13,8 @@ class Preapproval extends Controller
     public function __invoke(Request $request)
     {
         return PayHere::builder()
+            ->guest()
+            ->title('Laravel PayHere')
             ->preapproval()
             ->amount(100)
             ->checkout();

@@ -13,6 +13,8 @@ class Recurring extends Controller
     public function __invoke(Request $request)
     {
         return PayHere::builder()
+            ->guest()
+            ->title('Laravel PayHere')
             ->recurring(
                 recurrence: '1 Month',
                 duration: '1 Year'
