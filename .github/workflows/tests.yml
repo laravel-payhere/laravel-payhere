@@ -22,14 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         
-      - name: Install Smee Client
-        run: |
-          npm install -g smee-client
-      
-      - name: Listen to PayHere Webhook
-        run: |
-          smee -t http://localhost:8001/payhere/webhook -u https://smee.io/laravel-payhere
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -41,12 +33,20 @@ jobs:
       - name: Install Dependencies
         run: |
           composer update --prefer-dist --no-interaction --no-progress --${{ matrix.stability }}
+          
+      - name: Install Smee Client
+        run: |
+          npm install -g smee-client
 
       - name: Start Chrome Driver
         run: vendor/laravel/dusk/bin/chromedriver-linux &
 
       - name: Run Laravel Server
         run: php vendor/bin/testbench serve --no-reload &
+
+      - name: Listen to PayHere Webhook
+        run: |
+          smee -t http://localhost:8001/payhere/webhook -u https://smee.io/laravel-payhere
 
       - name: Run Tests
         run: composer run test
