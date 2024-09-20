@@ -10,7 +10,7 @@ Route::group(['prefix' => 'payhere/api', 'as' => 'payhere.api.', 'middleware' =>
     Route::post('payments/charge', [PaymentController::class, 'charge'])->name('payment.charge');
     Route::post('payments/refund', [PaymentController::class, 'refund'])->name('payment.refund');
     Route::post('payments/capture', [PaymentController::class, 'capture'])->name('payment.capture');
-    
+
     Route::get('subscriptions', [SubscriptionController::class, 'index'])->name('subscription.index');
     Route::get('subscriptions/{id}/payments', [SubscriptionController::class, 'show'])->name('subscription.show');
     Route::post('subscriptions/{id}/retry', [SubscriptionController::class, 'retry'])->name('subscription.retry');
