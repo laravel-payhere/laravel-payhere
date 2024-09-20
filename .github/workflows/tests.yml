@@ -22,9 +22,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         
-      - name: Add laravel.test to /etc/hosts
+      - name: Install Smee Client
         run: |
-          echo "127.0.0.1 laravel.test" | sudo tee -a /etc/hosts
+          npm install -g smee-client
+      
+      - name: Listen to PayHere Webhook
+        run: |
+          smee -t http://localhost:8001/payhere/webhook -u https://smee.io/laravel-payhere
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
