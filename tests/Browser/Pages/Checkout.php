@@ -24,7 +24,7 @@ class Checkout extends Page
     public function assert(Browser $browser): void
     {
         $browser->pause(2000)
-            ->assertUrlIs(config('payhere.base_url'))
-            ->assertTitle('Redirecting to PayHere...');
+            ->assertUrlIs('https://sandbox.payhere.lk/pay/checkout')
+            ->assertTitle('Pay with PayHere');
     }
 }
