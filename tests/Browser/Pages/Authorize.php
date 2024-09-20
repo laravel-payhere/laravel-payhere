@@ -23,7 +23,7 @@ class Authorize extends Page
 
     public function assert(Browser $browser): void
     {
-        $browser->assertRouteIs('authorize')
-            ->assertTitle('Redirecting to PayHere...');
+        $browser->assertUrlIs('https://sandbox.payhere.lk/pay/authorize')
+            ->assertTitle('Pay with PayHere');
     }
 }

@@ -23,7 +23,7 @@ class Preapproval extends Page
 
     public function assert(Browser $browser): void
     {
-        $browser->assertRouteIs('preapproval')
-            ->assertTitle('Redirecting to PayHere...');
+        $browser->assertUrlIs('https://sandbox.payhere.lk/pay/preapprove')
+            ->assertTitle('Pay with PayHere');
     }
 }
