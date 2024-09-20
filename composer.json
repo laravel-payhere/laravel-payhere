@@ -50,7 +50,7 @@
     "minimum-stability": "stable",
     "scripts": {
         "lint": "./vendor/bin/pint -v",
-        "test": "./vendor/bin/pest",
+        "test": "./vendor/bin/pest --bail",
         "post-autoload-dump": [
             "@clear",
             "@prepare",

@@ -23,7 +23,8 @@ class Checkout extends Page
 
     public function assert(Browser $browser): void
     {
-        $browser->assertRouteIs('checkout')
+        $browser->pause(2000)
+            ->assertRouteIs('checkout')
             ->assertTitle('Redirecting to PayHere...');
     }
 }
