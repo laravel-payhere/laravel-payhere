@@ -17,8 +17,6 @@ use Workbench\App\Models\User;
 
 class CheckoutTest extends DuskTestCase
 {
-    use DatabaseMigrations;
-
     #[Test]
     #[WithMigration]
     public function it_can_process_a_payment_for_normal_checkout()
