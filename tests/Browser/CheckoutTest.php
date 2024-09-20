@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PayHere\Tests\Browser;
 
 use Laravel\Dusk\Browser;
+use Orchestra\Testbench\Concerns\WithWorkbench;
 use PayHere\Tests\Browser\Pages\Authorize;
 use PayHere\Tests\Browser\Pages\Checkout;
 use PayHere\Tests\Browser\Pages\Preapproval;
@@ -12,6 +13,8 @@ use PayHere\Tests\Browser\Pages\Recurring;
 use PayHere\Tests\DuskTestCase;
 use PHPUnit\Framework\Attributes\Test;
 use Workbench\App\Models\User;
+
+uses(WithWorkbench::class);
 
 it('can checkout', function () {
     $user = User::factory()->create();
