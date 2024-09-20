@@ -7,7 +7,7 @@ use PayHere\Http\Controllers\Api\SubscriptionController;
 
 Route::group(['prefix' => 'payhere/api', 'as' => 'payhere.api.'], function () {
     Route::prefix('payments')->as('payment.')->group(function () {
-        Route::get('search', [PaymentController::class, 'search'])->name('search');
+        Route::get('{id}', [PaymentController::class, 'show'])->name('show');
         Route::post('charge', [PaymentController::class, 'charge'])->name('charge');
         Route::post('refund', [PaymentController::class, 'refund'])->name('refund');
         Route::post('capture', [PaymentController::class, 'capture'])->name('capture');

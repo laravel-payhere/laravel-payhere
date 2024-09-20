@@ -30,16 +30,14 @@ class PaymentController
     }
 
     /**
-     * Search for payments by order ID.
+     * Retrieve payments by order ID.
      *
      * @throws FatalRequestException
      * @throws RequestException
      * @throws JsonException
      */
-    public function search(Request $request)
+    public function show($orderId)
     {
-        $orderId = $request->input('order_id');
-
         $response = $this->connector->send(new ListPaymentsRequest($orderId));
 
         return $response->json();
