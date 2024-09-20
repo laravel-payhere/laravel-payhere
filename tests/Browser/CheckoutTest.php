@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PayHere\Tests\Browser;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Orchestra\Testbench\Attributes\WithMigration;
 use PayHere\Tests\Browser\Pages\Authorize;
@@ -17,8 +16,6 @@ use Workbench\App\Models\User;
 
 class CheckoutTest extends DuskTestCase
 {
-    #[Test]
-    #[WithMigration]
     public function it_can_process_a_payment_for_normal_checkout()
     {
         $user = User::factory()->create();
@@ -35,8 +32,6 @@ class CheckoutTest extends DuskTestCase
         $this->assertDatabaseCount('payhere_payments', 1);
     }
 
-    #[Test]
-    #[WithMigration]
     public function it_can_process_a_payment_for_authorize_checkout()
     {
         $user = User::factory()->create();
@@ -53,8 +48,6 @@ class CheckoutTest extends DuskTestCase
         $this->assertDatabaseCount('payhere_payments', 1);
     }
 
-    #[Test]
-    #[WithMigration]
     public function it_can_process_a_payment_for_preapproval_checkout()
     {
         $user = User::factory()->create();
@@ -71,8 +64,6 @@ class CheckoutTest extends DuskTestCase
         $this->assertDatabaseCount('payhere_payments', 1);
     }
 
-    #[Test]
-    #[WithMigration]
     public function it_can_process_a_payment_for_recurring_checkout()
     {
         $user = User::factory()->create();
