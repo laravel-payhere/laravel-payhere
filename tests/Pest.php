@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PayHere\Tests\DuskTestCase;
 use PayHere\Tests\TestCase;
 
 /*
@@ -23,7 +24,7 @@ uses(
 )->in('Unit', 'Feature');
 
 uses(
-    TestCase::class,
+    DuskTestCase::class,
     DatabaseTruncation::class
 )->in('Browser');
 

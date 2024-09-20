@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PayHere\Tests\Browser;
 
 use Laravel\Dusk\Browser;
+use Laravel\Dusk\Dusk;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use PayHere\Tests\Browser\Pages\Authorize;
 use PayHere\Tests\Browser\Pages\Checkout;
@@ -16,7 +17,7 @@ use Workbench\App\Models\User;
 
 uses(WithWorkbench::class);
 
-it('can checkout', function () {
+test('can checkout', function () {
     $user = User::factory()->create();
 
     $this->browse(function (Browser $browser) use ($user) {
