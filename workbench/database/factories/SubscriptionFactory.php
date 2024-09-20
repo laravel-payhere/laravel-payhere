@@ -18,7 +18,7 @@ class SubscriptionFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'order_id' => Order::factory(),
+            'order_id' => rand(),
             'trial_ends_at' => now()->addMonth(),
             'ends_at' => now()->addYear(),
             'status' => SubscriptionStatus::Active,

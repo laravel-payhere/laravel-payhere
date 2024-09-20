@@ -9,7 +9,6 @@ use PayHere\Enums\MessageType;
 use PayHere\Enums\PaymentMethod;
 use PayHere\Enums\PaymentStatus;
 use PayHere\Models\Payment;
-use Workbench\App\Models\Order;
 use Workbench\App\Models\User;
 
 class PaymentFactory extends Factory
@@ -21,7 +20,7 @@ class PaymentFactory extends Factory
         return [
             'user_id' => User::factory(),
             'merchant_id' => fake()->unique()->randomNumber(),
-            'order_id' => Order::factory(),
+            'order_id' => rand(),
             'payment_id' => fake()->unique()->randomNumber(),
             'authorization_token' => fake()->uuid,
             'subscription_id' => fake()->unique()->randomNumber(),
