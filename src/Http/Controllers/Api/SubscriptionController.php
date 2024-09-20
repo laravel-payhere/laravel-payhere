@@ -47,9 +47,9 @@ class SubscriptionController
      * @throws RequestException
      * @throws JsonException
      */
-    public function show(string $subscription)
+    public function show(string $subscriptionId)
     {
-        $response = $this->connector->send(new GetSubscriptionRequest($subscription));
+        $response = $this->connector->send(new GetSubscriptionRequest($subscriptionId));
 
         return $response->json();
     }
@@ -61,9 +61,9 @@ class SubscriptionController
      * @throws RequestException
      * @throws JsonException
      */
-    public function retry(string $subscription)
+    public function retry(string $subscriptionId)
     {
-        $response = $this->connector->send(new RetrySubscriptionRequest($subscription));
+        $response = $this->connector->send(new RetrySubscriptionRequest($subscriptionId));
 
         return $response->json();
     }
@@ -75,9 +75,9 @@ class SubscriptionController
      * @throws RequestException
      * @throws JsonException
      */
-    public function cancel(string $subscription)
+    public function cancel(string $subscriptionId)
     {
-        $response = $this->connector->send(new CancelSubscriptionRequest($subscription));
+        $response = $this->connector->send(new CancelSubscriptionRequest($subscriptionId));
 
         return $response->json();
     }
