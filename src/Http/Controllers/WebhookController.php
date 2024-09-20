@@ -22,7 +22,7 @@ class WebhookController extends Controller
      */
     public function handleWebhook(Request $request)
     {
-        if (app()->environment() === 'production') {
+        if (app()->isProduction()) {
             abort_unless($request->hasValidSignature(), 401);
         }
 
