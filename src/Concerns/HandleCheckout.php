@@ -106,9 +106,9 @@ trait HandleCheckout
     /**
      * The 2nd custom parameter.
      *
-     * @var int|null
+     * @var string|null
      */
-    private ?int $custom2 = null;
+    private ?string $custom2 = null;
 
     /**
      * Set the customer for the transaction.
@@ -204,7 +204,7 @@ trait HandleCheckout
             'trial_ends_at' => $this->trialEndsAt,
         ]);
 
-        $this->custom2 = $subscription->id;
+        $this->custom2 = (string) $subscription->getKey();
 
         return $this;
     }
