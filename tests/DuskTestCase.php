@@ -17,8 +17,6 @@ abstract class DuskTestCase extends TestCase
 
     protected static $baseServeHost = 'localhost';
     
-    protected static $baseServePort = 80;
-
     protected function getEnvironmentSetUp($app): void
     {
         $app['config']->set('auth.providers.users.model', User::class);
