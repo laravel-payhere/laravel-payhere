@@ -16,6 +16,7 @@ use Workbench\App\Models\User;
 
 class CheckoutTest extends DuskTestCase
 {
+    #[Test]
     public function it_can_process_a_payment_for_normal_checkout()
     {
         $user = User::factory()->create();
@@ -32,6 +33,7 @@ class CheckoutTest extends DuskTestCase
         $this->assertDatabaseCount('payhere_payments', 1);
     }
 
+    #[Test]
     public function it_can_process_a_payment_for_authorize_checkout()
     {
         $user = User::factory()->create();
@@ -48,6 +50,7 @@ class CheckoutTest extends DuskTestCase
         $this->assertDatabaseCount('payhere_payments', 1);
     }
 
+    #[Test]
     public function it_can_process_a_payment_for_preapproval_checkout()
     {
         $user = User::factory()->create();
@@ -64,6 +67,7 @@ class CheckoutTest extends DuskTestCase
         $this->assertDatabaseCount('payhere_payments', 1);
     }
 
+    #[Test]
     public function it_can_process_a_payment_for_recurring_checkout()
     {
         $user = User::factory()->create();
