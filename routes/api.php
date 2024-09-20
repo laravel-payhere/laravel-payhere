@@ -6,16 +6,13 @@ use PayHere\Http\Controllers\Api\PaymentController;
 use PayHere\Http\Controllers\Api\SubscriptionController;
 
 Route::group(['prefix' => 'payhere/api', 'as' => 'payhere.api.'], function () {
-    Route::prefix('payments')->as('payment.')->group(function () {
-        Route::get('{id}', [PaymentController::class, 'show'])->name('show');
-        Route::post('charge', [PaymentController::class, 'charge'])->name('charge');
-        Route::post('refund', [PaymentController::class, 'refund'])->name('refund');
-        Route::post('capture', [PaymentController::class, 'capture'])->name('capture');
-    });
-    Route::prefix('subscriptions')->as('subscription.')->group(function () {
-        Route::get('/', [SubscriptionController::class, 'index'])->name('index');
-        Route::get('{id}/payments', [SubscriptionController::class, 'show'])->name('show');
-        Route::post('{id}/retry', [SubscriptionController::class, 'retry'])->name('retry');
-        Route::delete('{id}', [SubscriptionController::class, 'cancel'])->name('cancel');
-    });
+    Route::get('payments/{id}', [PaymentController::class, 'show'])->name('payment.show');
+    Route::post('payments/charge', [PaymentController::class, 'charge'])->name('payment.charge');
+    Route::post('payments/refund', [PaymentController::class, 'refund'])->name('payment.refund');
+    Route::post('payments/capture', [PaymentController::class, 'capture'])->name('payment.capture');
+    
+    Route::get('subscriptions', [SubscriptionController::class, 'index'])->name('subscription.index');
+    Route::get('subscriptions/{id}/payments', [SubscriptionController::class, 'show'])->name('subscription.show');
+    Route::post('subscriptions/{id}/retry', [SubscriptionController::class, 'retry'])->name('subscription.retry');
+    Route::delete('subscriptions/{id}', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
 });
