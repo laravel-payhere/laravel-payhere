@@ -33,6 +33,8 @@ class CheckoutTest extends DuskTestCase
                 ->payAs($user)
                 ->assertPaymentApproved();
         });
+
+        $this->assertDatabaseCount('payhere_payments', 1);
     }
 
     #[Test]
@@ -67,6 +69,8 @@ class CheckoutTest extends DuskTestCase
                 ->payAs($user)
                 ->assertPaymentApproved();
         });
+
+        $this->assertDatabaseCount('payhere_payments', 1);
     }
 
     #[Test]
@@ -83,5 +87,7 @@ class CheckoutTest extends DuskTestCase
                 ->payAs($user)
                 ->assertPaymentApproved();
         });
+
+        $this->assertDatabaseCount('payhere_payments', 1);
     }
 }

@@ -44,7 +44,7 @@ jobs:
       - name: Run Laravel Server
         run: php vendor/bin/testbench serve --no-reload &
 
-      - name: Listening to PayHere Webhook
+      - name: Start PayHere Webhook Listener
         run: |
           smee -t http://localhost:8001/payhere/webhook -u https://smee.io/laravel-payhere &
 
