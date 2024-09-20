@@ -5,7 +5,7 @@ declare(strict_types=1);
 use PayHere\Http\Controllers\Api\PaymentController;
 use PayHere\Http\Controllers\Api\SubscriptionController;
 
-Route::group(['prefix' => 'payhere/api', 'as' => 'payhere.api.'], function () {
+Route::group(['prefix' => 'payhere/api', 'as' => 'payhere.api.', 'middleware' => 'api'], function () {
     Route::get('payments/{id}', [PaymentController::class, 'show'])->name('payment.show');
     Route::post('payments/charge', [PaymentController::class, 'charge'])->name('payment.charge');
     Route::post('payments/refund', [PaymentController::class, 'refund'])->name('payment.refund');
