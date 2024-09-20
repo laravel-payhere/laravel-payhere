@@ -22,6 +22,7 @@ class WebhookController extends Controller
      */
     public function handleWebhook(Request $request)
     {
+        // Validate the signature only if the application is in production.
         if (app()->isProduction()) {
             abort_unless($request->hasValidSignature(), 401);
         }
