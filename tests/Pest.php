@@ -24,7 +24,7 @@ uses(
 
 uses(
     DuskTestCase::class,
-    DatabaseTruncation::class
+    RefreshDatabase::class
 )->in('Browser');
 
 /*
