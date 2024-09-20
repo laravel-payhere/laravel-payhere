@@ -40,26 +40,6 @@ jobs:
       - name: Run Laravel Server
         run: php vendor/bin/testbench serve --no-reload &
 
-      - name: Install Hookdeck CLI
-        run: |
-          VERSION=0.10.1
-          FILE_NAME=hookdeck_${VERSION}_linux_amd64.tar.gz
-          URL=https://github.com/hookdeck/hookdeck-cli/releases/download/v${VERSION}/${FILE_NAME}
-          
-          curl -LO ${URL} || { echo "Failed to download ${FILE_NAME}"; exit 1; }
-          
-          tar -xvf ${FILE_NAME} || { echo "Failed to extract ${FILE_NAME}"; exit 1; }
-          
-          sudo mv hookdeck /usr/local/bin/
-          
-          rm ${FILE_NAME}
-
-      - name: Configure Hookdeck Workspace
-        run: hookdeck ci --api-key ${{ secrets.HOOKDECK_API_KEY }}
-
-      - name: Listen to PayHere Webhook
-        run: hookdeck listen 8000 payhere &
-
       - name: Run Tests
         run: composer run test
         env:
@@ -68,6 +48,7 @@ jobs:
           PAYHERE_APP_ID: ${{ secrets.PAYHERE_APP_ID }}
           PAYHERE_APP_SECRET: ${{ secrets.PAYHERE_APP_SECRET }}
           PAYHERE_NOTIFY_URL: ${{ secrets.PAYHERE_NOTIFY_URL }}
+          PAYHERE_SANDBOX: true
 
       - name: Upload Failed Screenshots
         uses: actions/upload-artifact@v3
