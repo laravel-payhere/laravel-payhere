@@ -15,7 +15,7 @@ class Preapproval extends Controller
         return PayHere::builder()
             ->guest()
             ->title('Laravel PayHere')
-            ->preapproval()
+            ->preapprove()
             ->amount(100)
             ->checkout();
     }
