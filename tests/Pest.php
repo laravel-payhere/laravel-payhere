@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PayHere\Tests\DuskTestCase;
 use PayHere\Tests\TestCase;
 
 /*

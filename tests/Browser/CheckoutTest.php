@@ -11,7 +11,8 @@ use Workbench\App\Models\User;
 
 class CheckoutTest extends DuskTestCase
 {
-    public function test_normal_checkout() {
+    public function test_normal_checkout()
+    {
         $user = User::factory()->create();
 
         $this->browse(function (Browser $browser) use ($user) {
