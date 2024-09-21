@@ -323,9 +323,7 @@ trait HandleCheckout
     /**
      * Get the title for the transaction.
      *
-     * @return array
-     *
-     * @throws \Exception
+     * @return string
      */
     private function getTitle(): string
     {
@@ -429,7 +427,7 @@ trait HandleCheckout
     public function getFormData(): array
     {
         return [
-            'title' => $this->title,
+            'title' => $this->getTitle(),
             'customer' => $this->getCustomer(),
             'items' => $this->getItems(),
             'action' => $this->getActionUrl(),
