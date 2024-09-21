@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Foundation\Testing\DatabaseTruncation;
 use PayHere\Tests\TestCase;
 
 /*
@@ -14,6 +15,9 @@ use PayHere\Tests\TestCase;
 | need to change it using the "uses()" function to bind a different classes or traits.
 |
 */
+
+uses(DatabaseTruncation::class);
+
 uses(
     TestCase::class
 )->in('Unit', 'Feature');
