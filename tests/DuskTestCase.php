@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PayHere\Tests;
 
-use Orchestra\Testbench\Attributes\WithMigration;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\Dusk\TestCase;
 use PayHere\Filament\PayHerePanelProvider;
