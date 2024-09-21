@@ -321,6 +321,22 @@ trait HandleCheckout
     }
 
     /**
+     * Get the title for the transaction.
+     *
+     * @return array
+     *
+     * @throws \Exception
+     */
+    private function getTitle(): string
+    {
+        if (is_null($this->title)) {
+            return $this->getOrderId();
+        }
+        
+        return $this->title;
+    }
+
+    /**
      * Get the customer details for the transaction.
      *
      * @return array
