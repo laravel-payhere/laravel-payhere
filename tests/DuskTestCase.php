@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PayHere\Tests;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\Attributes\WithMigration;
 use Orchestra\Testbench\Concerns\WithWorkbench;
@@ -16,7 +17,7 @@ use Workbench\App\Providers\WorkbenchServiceProvider;
 abstract class DuskTestCase extends TestCase
 {
     use WithWorkbench;
-    use RefreshDatabase;
+    use DatabaseMigrations;
 
     protected static $baseServeHost = 'localhost';
 
