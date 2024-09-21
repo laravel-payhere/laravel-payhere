@@ -14,7 +14,7 @@ class Preapprove extends Controller
     {
         return PayHere::builder()
             ->guest()
-            ->title('Laravel PayHere')
+            ->title('Test')
             ->preapprove()
             ->amount(100)
             ->checkout();

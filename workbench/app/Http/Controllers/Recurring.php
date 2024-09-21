@@ -14,7 +14,7 @@ class Recurring extends Controller
     {
         return PayHere::builder()
             ->guest()
-            ->title('Laravel PayHere')
+            ->title('Test')
             ->recurring(
                 recurrence: '1 Month',
                 duration: '1 Year'
