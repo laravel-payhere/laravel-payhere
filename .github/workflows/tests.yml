@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: 'Job ID'
         run: |
-          echo ${{ strategy }}
+          echo ${{ toJSON(strategy) }}
         
 #      - uses: actions/checkout@v4
 #        
