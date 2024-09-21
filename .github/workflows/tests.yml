@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: 'Job ID'
         run: |
-          echo ${{ github.run_id }}
+          echo ${{ strategy }}
         
 #      - uses: actions/checkout@v4
 #        
