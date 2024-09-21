@@ -21,11 +21,6 @@ uses(
     RefreshDatabase::class
 )->in('Unit', 'Feature');
 
-uses(
-    DuskTestCase::class,
-    RefreshDatabase::class
-)->in('Browser');
-
 /*
 |--------------------------------------------------------------------------
 | Expectations
