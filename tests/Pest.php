@@ -16,8 +16,7 @@ use PayHere\Tests\TestCase;
 |
 */
 uses(
-    TestCase::class,
-    RefreshDatabase::class
+    TestCase::class
 )->in('Unit', 'Feature');
 
 /*
