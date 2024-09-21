@@ -18,7 +18,7 @@ class Preapproval extends Page
 
     public function url(): string
     {
-        return '/preapproval';
+        return '/preapprove';
     }
 
     public function assert(Browser $browser): void
