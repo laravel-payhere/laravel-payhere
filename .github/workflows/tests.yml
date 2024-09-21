@@ -20,7 +20,7 @@ jobs:
     name: Test PHP ${{ matrix.php }} with Laravel ${{ matrix.laravel }}
     
     env:
-      SMEE_URL: https://smee.io/laravel-payhere-${{ strategy.job-index }}
+      SMEE_URL: https://smee.io/9WLG7veUpcwYCEb-${{ strategy.job-index }}
 
     steps:        
       - uses: actions/checkout@v4
