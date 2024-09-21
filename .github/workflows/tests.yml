@@ -18,6 +18,9 @@ jobs:
         laravel: [10, 11]
 
     name: Test PHP ${{ matrix.php }} with Laravel ${{ matrix.laravel }}
+    
+    env:
+      SMEE_URL: https://smee.io/laravel-payhere-${{ strategy.job-index }}
 
     steps:        
       - uses: actions/checkout@v4
@@ -43,7 +46,7 @@ jobs:
         run: php vendor/bin/testbench serve --no-reload &
 
       - name: Start PayHere Webhook Listener
-        run: smee -t http://localhost:8001/payhere/webhook -u https://smee.io/laravel-payhere-${{ strategy.job-index }} &
+        run: smee -t http://localhost:8001/payhere/webhook -u ${{ env.SMEE_URL }} &
 
       - name: Run Tests
         run: composer run test
@@ -52,7 +55,7 @@ jobs:
           PAYHERE_MERCHANT_SECRET: ${{ secrets.PAYHERE_MERCHANT_SECRET }}
           PAYHERE_APP_ID: ${{ secrets.PAYHERE_APP_ID }}
           PAYHERE_APP_SECRET: ${{ secrets.PAYHERE_APP_SECRET }}
-          PAYHERE_NOTIFY_URL: https://smee.io/laravel-payhere-${{ strategy.job-index }}
+          PAYHERE_NOTIFY_URL: ${{ env.SMEE_URL }}
           PAYHERE_SANDBOX: true
 
       - name: Upload Failed Screenshots
