@@ -328,7 +328,7 @@ trait HandleCheckout
     private function getTitle(): string
     {
         if (is_null($this->title)) {
-            return $this->getOrderId();
+            return __('Order #:id', ['id' => $this->getOrderId()]);
         }
         
         return $this->title;
