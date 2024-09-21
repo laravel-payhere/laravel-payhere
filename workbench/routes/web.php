@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use PayHere\Http\Controllers\WebhookController;
 use Workbench\App\Http\Controllers\Authorize;
 use Workbench\App\Http\Controllers\Checkout;
-use Workbench\App\Http\Controllers\Preapproval;
+use Workbench\App\Http\Controllers\Preapprove;
 use Workbench\App\Http\Controllers\Recurring;
 
 /*
@@ -21,17 +21,13 @@ use Workbench\App\Http\Controllers\Recurring;
 |
 */
 
-Route::get('/checkout', Checkout::class)
-    ->name('checkout');
+Route::get('/checkout', Checkout::class);
 
-Route::get('/preapproval', Preapproval::class)
-    ->name('preapproval');
+Route::get('/preapprove', Preapprove::class);
 
-Route::get('/authorize', Authorize::class)
-    ->name('authorize');
+Route::get('/authorize', Authorize::class);
 
-Route::get('/recurring', Recurring::class)
-    ->name('recurring');
+Route::get('/recurring', Recurring::class);
 
 Route::post('/webhook', [WebhookController::class, 'handleWebhook'])
     ->withoutMiddleware(VerifyCsrfToken::class);

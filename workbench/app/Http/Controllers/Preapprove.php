@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use PayHere\PayHere;
 
-class Preapproval extends Controller
+class Preapprove extends Controller
 {
     public function __invoke(Request $request)
     {
