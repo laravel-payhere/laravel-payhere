@@ -20,6 +20,10 @@ jobs:
     name: Test PHP ${{ matrix.php }} with Laravel ${{ matrix.laravel }}
 
     steps:
+      - name: 'Job ID'
+        run: |
+          echo ${{ github.job }}
+        
       - uses: actions/checkout@v4
         
       - name: Setup PHP
