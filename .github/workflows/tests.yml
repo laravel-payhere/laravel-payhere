@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: 'Job ID'
         run: |
-          echo ${{ github.job }}
+          echo ${{ strategy.id }}
         
       - uses: actions/checkout@v4
         
@@ -35,12 +35,10 @@ jobs:
           coverage: none
 
       - name: Install Dependencies
-        run: |
-          composer update --prefer-dist --no-interaction --no-progress --${{ matrix.stability }}
+        run: composer update --prefer-dist --no-interaction --no-progress --${{ matrix.stability }}
           
       - name: Install Smee Client
-        run: |
-          npm install -g smee-client
+        run: npm install -g smee-client
 
       - name: Start Chrome Driver
         run: vendor/laravel/dusk/bin/chromedriver-linux &
@@ -49,8 +47,7 @@ jobs:
         run: php vendor/bin/testbench serve --no-reload &
 
       - name: Start PayHere Webhook Listener
-        run: |
-          smee -t http://localhost:8001/payhere/webhook -u ${{ secrets.PAYHERE_NOTIFY_URL }} &
+        run: smee -t http://localhost:8001/payhere/webhook -u ${{ secrets.PAYHERE_NOTIFY_URL }} &
 
       - name: Run Tests
         run: composer run test
