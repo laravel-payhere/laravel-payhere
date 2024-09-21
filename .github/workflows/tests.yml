@@ -19,49 +19,45 @@ jobs:
 
     name: Test PHP ${{ matrix.php }} with Laravel ${{ matrix.laravel }}
 
-    steps:
-      - name: 'Job ID'
-        run: |
-          echo '${{ toJSON(strategy) }}'
+    steps:        
+      - uses: actions/checkout@v4
         
-#      - uses: actions/checkout@v4
-#        
-#      - name: Setup PHP
-#        uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: ${{ matrix.php }}
-#          ini-values: error_reporting=E_ALL
-#          tools: composer:v2
-#          coverage: none
-#
-#      - name: Install Dependencies
-#        run: composer update --prefer-dist --no-interaction --no-progress --${{ matrix.stability }}
-#          
-#      - name: Install Smee Client
-#        run: npm install -g smee-client
-#
-#      - name: Start Chrome Driver
-#        run: vendor/laravel/dusk/bin/chromedriver-linux &
-#
-#      - name: Run Laravel Server
-#        run: php vendor/bin/testbench serve --no-reload &
-#
-#      - name: Start PayHere Webhook Listener
-#        run: smee -t http://localhost:8001/payhere/webhook -u ${{ secrets.PAYHERE_NOTIFY_URL }} &
-#
-#      - name: Run Tests
-#        run: composer run test
-#        env:
-#          PAYHERE_MERCHANT_ID: ${{ secrets.PAYHERE_MERCHANT_ID }}
-#          PAYHERE_MERCHANT_SECRET: ${{ secrets.PAYHERE_MERCHANT_SECRET }}
-#          PAYHERE_APP_ID: ${{ secrets.PAYHERE_APP_ID }}
-#          PAYHERE_APP_SECRET: ${{ secrets.PAYHERE_APP_SECRET }}
-#          PAYHERE_NOTIFY_URL: ${{ secrets.PAYHERE_NOTIFY_URL }}
-#          PAYHERE_SANDBOX: true
-#
-#      - name: Upload Failed Screenshots
-#        uses: actions/upload-artifact@v3
-#        if: failure()
-#        with:
-#          name: screenshots
-#          path: tests/Browser/screenshots/*
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          ini-values: error_reporting=E_ALL
+          tools: composer:v2
+          coverage: none
+
+      - name: Install Dependencies
+        run: composer update --prefer-dist --no-interaction --no-progress --${{ matrix.stability }}
+          
+      - name: Install Smee Client
+        run: npm install -g smee-client
+
+      - name: Start Chrome Driver
+        run: vendor/laravel/dusk/bin/chromedriver-linux &
+
+      - name: Run Laravel Server
+        run: php vendor/bin/testbench serve --no-reload &
+
+      - name: Start PayHere Webhook Listener
+        run: smee -t http://localhost:8001/payhere/webhook -u https://smee.io/laravel-payhere-${{ strategy.job-index }} &
+
+      - name: Run Tests
+        run: composer run test
+        env:
+          PAYHERE_MERCHANT_ID: ${{ secrets.PAYHERE_MERCHANT_ID }}
+          PAYHERE_MERCHANT_SECRET: ${{ secrets.PAYHERE_MERCHANT_SECRET }}
+          PAYHERE_APP_ID: ${{ secrets.PAYHERE_APP_ID }}
+          PAYHERE_APP_SECRET: ${{ secrets.PAYHERE_APP_SECRET }}
+          PAYHERE_NOTIFY_URL: https://smee.io/laravel-payhere-${{ strategy.job-index }}
+          PAYHERE_SANDBOX: true
+
+      - name: Upload Failed Screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: screenshots
+          path: tests/Browser/screenshots/*
