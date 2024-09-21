@@ -12,7 +12,6 @@ use Workbench\App\Models\User;
 
 class CheckoutTest extends DuskTestCase
 {
-    #[WithMigration]
     public function test_normal_checkout()
     {
         $user = User::factory()->create();
