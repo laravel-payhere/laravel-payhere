@@ -46,7 +46,7 @@ jobs:
 
       - name: Start PayHere Webhook Listener
         run: |
-          smee -t http://localhost:8001/payhere/webhook -u https://smee.io/laravel-payhere &
+          smee -t http://localhost:8001/payhere/webhook -u ${{ secrets.PAYHERE_NOTIFY_URL }} &
 
       - name: Run Tests
         run: composer run test

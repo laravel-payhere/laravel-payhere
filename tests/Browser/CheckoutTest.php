@@ -14,7 +14,7 @@ it('can checkout', function () {
     $this->browse(function (Browser $browser) use ($user) {
         $browser->loginAs($user)
             ->assertAuthenticated();
-
+    
         $browser->visit(new Checkout)
             ->payAs($user)
             ->assertPaymentApproved();
