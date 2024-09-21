@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace PayHere\Tests\Browser;
 
 use Laravel\Dusk\Browser;
+use Orchestra\Testbench\Attributes\WithMigration;
 use PayHere\Tests\Browser\Pages\Checkout;
 use PayHere\Tests\DuskTestCase;
 use Workbench\App\Models\User;
 
 class CheckoutTest extends DuskTestCase
 {
+    #[WithMigration]
     public function test_normal_checkout()
     {
         $user = User::factory()->create();
