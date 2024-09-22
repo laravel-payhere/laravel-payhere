@@ -21,7 +21,7 @@ class PaymentFactory extends Factory
             'user_id' => User::factory(),
             'merchant_id' => fake()->unique()->randomNumber(),
             'order_id' => rand(),
-            'payment_id' => fake()->unique()->randomNumber(),
+            'payhere_payment_id' => fake()->unique()->randomNumber(),
             'authorization_token' => fake()->uuid,
             'subscription_id' => fake()->unique()->randomNumber(),
             'payhere_amount' => fake()->randomFloat(2, 10, 1000),

@@ -13,7 +13,7 @@ test('to array', function () {
         'user_id',
         'order_id',
         'merchant_id',
-        'payment_id',
+        'payhere_payment_id',
         'refunded',
         'refund_reason',
         'subscription_id',

@@ -36,7 +36,7 @@ class PaymentResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('payment_id')
+                TextColumn::make('payhere_payment_id')
                     ->copyable()
                     ->sortable()
                     ->searchable(),
@@ -207,7 +207,7 @@ class PaymentResource extends Resource
         $connector->authenticate($authenticator);
 
         $data = [
-            'payment_id' => $payment->payment_id,
+            'payment_id' => $payment->payhere_payment_id,
             'description' => $reason,
         ];
 

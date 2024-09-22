@@ -55,7 +55,7 @@ class Payment extends Model
 
     public function isRefundable(): bool
     {
-        return ! is_null($this->payment_id) && $this->refunded === false;
+        return ! is_null($this->payhere_payment_id) && $this->refunded === false;
     }
 
     public function scopeRefunded(Builder $query): void

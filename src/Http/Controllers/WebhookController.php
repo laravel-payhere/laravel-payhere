@@ -76,7 +76,7 @@ class WebhookController extends Controller
             'user_id' => $request->custom_1,
             'merchant_id' => $request->merchant_id,
             'order_id' => $request->order_id,
-            'payment_id' => $request->payment_id,
+            'payhere_payment_id' => $request->payment_id,
             'authorization_token' => $request->authorization_token,
             'subscription_id' => $request->subscription_id,
             'payhere_amount' => $request->payhere_amount,

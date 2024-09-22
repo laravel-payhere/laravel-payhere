@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable();
             $table->foreignId('order_id');
             $table->string('merchant_id');
-            $table->string('payment_id')->unique()->nullable();
+            $table->string('payhere_payment_id')->unique()->nullable();
             $table->boolean('refunded')->default(false);
             $table->text('refund_reason')->nullable();
             $table->string('authorization_token')->nullable();

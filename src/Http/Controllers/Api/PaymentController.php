@@ -95,7 +95,7 @@ class PaymentController
     {
         $request->validate([
             'description' => ['required', 'string'],
-            'payment_id' => ['sometimes', 'string'],
+            'payhere_payment_id' => ['sometimes', 'string'],
             'authorization_token' => ['sometimes', 'string'],
         ]);
 
