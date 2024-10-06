@@ -330,7 +330,7 @@ trait HandleCheckout
         if (is_null($this->title)) {
             return __('Order #:id', ['id' => $this->getOrderId()]);
         }
-        
+
         return $this->title;
     }
 
