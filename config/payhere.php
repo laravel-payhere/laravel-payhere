@@ -139,6 +139,9 @@ return [
     |
     */
 
-    'panel_brand_logo' => 'vendor/payhere/images/logo.svg',
+    'panel_brand_logo' => [
+        'light' => 'vendor/payhere/images/logo-light.svg',
+        'dark' => 'vendor/payhere/images/logo-dark.svg',
+    ],
 
 ];
