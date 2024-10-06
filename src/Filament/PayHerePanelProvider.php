@@ -28,7 +28,7 @@ class PayHerePanelProvider extends PanelProvider
             ->id('payhere')
             ->path('payhere')
             ->spa()
-            ->brandLogo(config('payhere.panel_brand_logo'))
+            ->brandLogo(asset(config('payhere.panel_brand_logo')))
             ->darkMode()
             ->login(config('payhere.panel_login') ? Login::class : null)
             ->topNavigation()
