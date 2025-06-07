@@ -32,7 +32,7 @@ class CheckoutController extends Controller
 
 ## Official Documentation
 
-You can find the documentation [here](https://laravel-payhere.com/docs).
+You can find the documentation [here](https://www.dasun.dev/docs/laravel-payhere).
 
 ## Changelog
 
