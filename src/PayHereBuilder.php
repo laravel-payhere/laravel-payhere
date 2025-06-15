@@ -429,6 +429,7 @@ class PayHereBuilder
      * @return array
      *
      * @throws \PayHere\Exceptions\UnsupportedCurrencyException
+     * @throws \Exception
      */
     public function getOrder(): array
     {
