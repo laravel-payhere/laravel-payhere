@@ -7,7 +7,6 @@ namespace PayHere\Tests;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\Dusk\TestCase;
-use PayHere\Filament\PayHerePanelProvider;
 use PayHere\PayHereServiceProvider;
 use Workbench\App\Models\User;
 use Workbench\App\Providers\WorkbenchServiceProvider;
@@ -28,7 +27,6 @@ abstract class DuskTestCase extends TestCase
     {
         return [
             PayHereServiceProvider::class,
-            PayHerePanelProvider::class,
             WorkbenchServiceProvider::class,
         ];
     }
