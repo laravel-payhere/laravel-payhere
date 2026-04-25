@@ -12,7 +12,7 @@ class Recurring extends Controller
 {
     public function __invoke(Request $request)
     {
-        return PayHere::builder()
+        return PayHere::order()
             ->guest()
             ->title('Recurring Checkout Test')
             ->recurring(

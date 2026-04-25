@@ -10,7 +10,7 @@ To start using builder methods, you first need to create a builder instance:
 ```php
 use PayHere\PayHere;
 
-$builder = PayHere::builder();
+$builder = PayHere::order();
 ```
 
 ---

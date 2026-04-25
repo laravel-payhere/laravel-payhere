@@ -12,7 +12,7 @@ class Preapprove extends Controller
 {
     public function __invoke(Request $request)
     {
-        return PayHere::builder()
+        return PayHere::order()
             ->guest()
             ->title('Preapprove Checkout Test')
             ->preapprove()

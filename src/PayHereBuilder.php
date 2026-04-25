@@ -484,7 +484,7 @@ class PayHereBuilder
      *
      * @return static
      */
-    public static function builder(): static
+    public static function order(): static
     {
         return new static;
     }

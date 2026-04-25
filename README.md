@@ -22,7 +22,7 @@ class CheckoutController extends Controller
 {
     public function __invoke()
     {
-        return PayHere::builder()
+        return PayHere::order()
             ->title('iPhone 16 Pro')
             ->amount(329900)
             ->checkout();

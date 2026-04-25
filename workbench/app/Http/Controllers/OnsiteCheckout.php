@@ -11,7 +11,7 @@ class OnsiteCheckout
     public function __invoke()
     {
         return view('workbench::onsite-checkout', [
-            'order' => PayHere::builder()
+            'order' => PayHere::order()
                 ->guest()
                 ->title('Onsite Checkout Test')
                 ->amount(100)

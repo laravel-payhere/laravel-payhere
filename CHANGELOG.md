@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 1.2.0
+> 25 Apr, 2025
+
+- Rename `PayHere::builder()` to `PayHere::order()`.
+
 ## Version 1.1.0
 > 21 Feb, 2025
 

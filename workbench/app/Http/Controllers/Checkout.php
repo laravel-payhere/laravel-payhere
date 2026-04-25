@@ -12,7 +12,7 @@ class Checkout extends Controller
 {
     public function __invoke(Request $request)
     {
-        return PayHere::builder()
+        return PayHere::order()
             ->guest()
             ->title('Normal Checkout Test')
             ->amount(100)

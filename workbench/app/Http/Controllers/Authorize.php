@@ -11,7 +11,7 @@ class Authorize extends Controller
 {
     public function __invoke()
     {
-        return PayHere::builder()
+        return PayHere::order()
             ->guest()
             ->title('Authorize Checkout Test')
             ->authorize()

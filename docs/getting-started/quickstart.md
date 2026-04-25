@@ -72,7 +72,7 @@ class Checkout extends Controller
 {
     public function __invoke()
     {
-        return PayHere::builder()
+        return PayHere::order()
             ->amount(2500)
             ->checkout();
     }

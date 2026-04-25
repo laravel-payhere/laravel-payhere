@@ -16,7 +16,7 @@ class CheckoutController extends Controller
 {
     public function __invoke()
     {
-        return PayHere::builder()
+        return PayHere::order()
             ->guest()
             ->title('Perpetual License (1 Year)')
             ->amount(30000)
@@ -36,7 +36,7 @@ class CheckoutController extends Controller
 {
     public function __invoke()
     {
-        return PayHere::builder()
+        return PayHere::order()
             ->title('Shared Hosting')
             ->amount(1000)
             ->startupFee(200)
@@ -57,7 +57,7 @@ First, add the following Blade component to your view:
 
 ```html
 <x-payhere::button
-    :order="PayHere\PayHere::builder()->guest()->amount(100)->getOrder()"
+    :order="PayHere\PayHere::order()->guest()->amount(100)->getOrder()"
     class="px-8 py-4"
 >
     Buy Now
